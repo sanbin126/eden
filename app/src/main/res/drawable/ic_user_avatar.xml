@@ -1,0 +1,17 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="40dp"
+    android:height="40dp"
+    android:viewportWidth="40"
+    android:viewportHeight="40">
+
+    <!-- 这是背景圆圈 -->
+    <path
+        android:fillColor="#4CAF50"
+        android:pathData="M20,20 m-20,0 a20,20 0 1,0 40,0 a20,20 0 1,0 -40,0" />
+
+    <!-- 这是白色的图案 -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M20,12a8,8 0,1,0 0,16a8,8 0,1,0 0,-16z" />
+
+</vector>

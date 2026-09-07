@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 改为AppCompat系列主题 -->
+    <style name="Theme.Eden" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- 可添加其他主题属性，比如状态栏颜色 -->
+        <item name="android:statusBarColor">@android:color/transparent</item>
+    </style>
+</resources>
