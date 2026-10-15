@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 每日任务入口图标：清单（三个条目） -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <path
+        android:fillColor="?attr/edenColorAccent"
+        android:pathData="M4,5h2.4v2.4h-2.4zM8.6,5.6h11.4v1.2h-11.4zM4,10.8h2.4v2.4h-2.4zM8.6,11.4h11.4v1.2h-11.4zM4,16.6h2.4v2.4h-2.4zM8.6,17.2h11.4v1.2h-11.4z" />
+</vector>

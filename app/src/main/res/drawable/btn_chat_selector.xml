@@ -2,21 +2,21 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:state_pressed="true">
         <shape android:shape="oval">
-            <solid android:color="#FF66CC" />
+            <solid android:color="?attr/edenColorPrimary" />
             <stroke
                 android:width="3dp"
-                android:color="#FF3388" />
+                android:color="?attr/edenColorPrimaryDeep" />
         </shape>
     </item>
     <item>
         <shape android:shape="oval">
             <gradient
-                android:startColor="#FF8EFF"
-                android:endColor="#FF66CC"
+                android:startColor="?attr/edenColorPrimaryLight"
+                android:endColor="?attr/edenColorPrimary"
                 android:angle="45" />
             <stroke
                 android:width="3dp"
-                android:color="#FF3388" />
+                android:color="?attr/edenColorPrimaryDeep" />
         </shape>
     </item>
 </selector>

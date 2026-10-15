@@ -1,8 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- 改为AppCompat系列主题 -->
+    <!--
+         Theme.Eden 皮肤层（总开关）
+
+         把语义属性 ?attr/edenColorXxx 映射到 colors.xml 里的具体色值。
+         · 换主题色：改 colors.xml，不用动这里。
+         · 换皮肤：新建一个继承 Theme.Eden 的子主题覆盖部分属性，
+           再到 AndroidManifest / Activity 上指定它即可（见下方 Ocean 示例）。
+         · 换角色：改 edenCharPortrait / edenCharChibi 指向的 drawable。
+    -->
     <style name="Theme.Eden" parent="Theme.AppCompat.Light.NoActionBar">
-        <!-- 可添加其他主题属性，比如状态栏颜色 -->
         <item name="android:statusBarColor">@android:color/transparent</item>
+
+        <!-- 品牌主色 -->
+        <item name="edenColorPrimary">@color/eden_primary</item>
+        <item name="edenColorPrimaryPressed">@color/eden_primary_pressed</item>
+        <item name="edenColorPrimaryDeep">@color/eden_primary_deep</item>
+        <item name="edenColorPrimaryLight">@color/eden_primary_light</item>
+        <item name="edenColorAccent">@color/eden_accent</item>
+        <item name="edenColorAccentLight">@color/eden_accent_light</item>
+
+        <!-- 背景渐变 -->
+        <item name="edenColorGradientStart">@color/eden_gradient_start</item>
+        <item name="edenColorGradientEnd">@color/eden_gradient_end</item>
+
+        <!-- 表面 / 卡片 / 描边 -->
+        <item name="edenColorSurface">@color/eden_surface</item>
+        <item name="edenColorSurfaceTint">@color/eden_surface_tint</item>
+        <item name="edenColorChipBg">@color/eden_chip_bg</item>
+        <item name="edenColorBorder">@color/eden_border</item>
+
+        <!-- 文字 -->
+        <item name="edenColorTextPrimary">@color/eden_text_primary</item>
+        <item name="edenColorTextSecondary">@color/eden_text_secondary</item>
+        <item name="edenColorTextTertiary">@color/eden_text_tertiary</item>
+        <item name="edenColorTextHint">@color/eden_text_hint</item>
+        <item name="edenColorOnPrimary">@color/eden_on_primary</item>
+
+        <!-- 图标 -->
+        <item name="edenColorIcon">@color/eden_icon</item>
+        <item name="edenColorIconDisabled">@color/eden_icon_disabled</item>
+
+        <!-- 中性底 / 分隔线 -->
+        <item name="edenColorNeutralBg">@color/eden_neutral_bg</item>
+        <item name="edenColorNeutralBgAlt">@color/eden_neutral_bg_alt</item>
+        <item name="edenColorDivider">@color/eden_divider</item>
+        <item name="edenColorDividerAlt">@color/eden_divider_alt</item>
+        <item name="edenColorBorderNeutral">@color/eden_border_neutral</item>
+
+        <!-- 状态色 -->
+        <item name="edenColorDanger">@color/eden_danger</item>
+        <item name="edenColorSuccess">@color/eden_success</item>
+
+        <!-- 遮罩 -->
+        <item name="edenColorScrim">@color/eden_scrim</item>
+        <item name="edenColorScrimLight">@color/eden_scrim_light</item>
+
+        <!-- 当前角色资源（换角色时改这里 + Characters 注册表） -->
+        <item name="edenCharPortrait">@drawable/miku</item>
+        <item name="edenCharChibi">@drawable/miku_chibi</item>
     </style>
+
+    <!--
+         示例皮肤：海洋蓝 Ocean
+         继承 Theme.Eden，只覆盖需要变的属性，其余自动沿用。
+         启用方式（二选一）：
+           · 临时全量：把 AndroidManifest 里各 Activity 的
+             android:theme 改成 @style/Theme.Eden.Skin.Ocean
+           · 用户切换：在设置里 setTheme(R.style.Theme_Eden_Skin_Ocean) 后再 setContentView
+    -->
+    <style name="Theme.Eden.Skin.Ocean" parent="Theme.Eden">
+        <item name="edenColorPrimary">@color/eden_ocean_primary</item>
+        <item name="edenColorPrimaryPressed">@color/eden_ocean_primary_pressed</item>
+        <item name="edenColorPrimaryDeep">@color/eden_ocean_primary_deep</item>
+        <item name="edenColorPrimaryLight">@color/eden_ocean_primary_light</item>
+        <item name="edenColorAccent">@color/eden_ocean_accent</item>
+        <item name="edenColorAccentLight">@color/eden_ocean_accent_light</item>
+        <item name="edenColorGradientStart">@color/eden_ocean_gradient_start</item>
+        <item name="edenColorGradientEnd">@color/eden_ocean_gradient_end</item>
+        <item name="edenColorSurfaceTint">@color/eden_ocean_surface_tint</item>
+        <item name="edenColorChipBg">@color/eden_ocean_chip_bg</item>
+        <item name="edenColorBorder">@color/eden_ocean_border</item>
+    </style>
+
+    <!--
+        仅供个别 Material 组件（如 BottomNavigationView）做主题校验使用。
+        Material 组件在构造时会检查主题是否为 Theme.MaterialComponents 系，
+        否则直接抛 IllegalArgumentException。该 overlay 只作用被指定的那个控件，
+        不影响应用整体外观（Theme.Eden 仍为 AppCompat）。
+    -->
+    <style name="ThemeOverlay.Eden.MaterialComponent" parent="Theme.MaterialComponents.Light.NoActionBar" />
 </resources>

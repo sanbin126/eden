@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/story_stage_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#15131F"
+    android:fitsSystemWindows="true"
+    tools:context=".StoryPlayerActivity">
+
+    <!-- ① 背景层 -->
+    <ImageView
+        android:id="@+id/iv_story_bg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:contentDescription="@null" />
+
+    <!-- ② 立绘层（同一时刻只显示当前说话人）
+         固定靠左、底边与对话框底边对齐：下半身被不透明浅色气泡遮住 → 露出半身，立绘「站在」气泡左上 -->
+    <ImageView
+        android:id="@+id/iv_story_portrait"
+        android:layout_width="wrap_content"
+        android:layout_height="360dp"
+        android:layout_gravity="bottom|start"
+        android:layout_marginStart="14dp"
+        android:layout_marginBottom="88dp"
+        android:adjustViewBounds="true"
+        android:contentDescription="@null"
+        android:scaleType="fitEnd"
+        android:visibility="gone"
+        tools:src="@drawable/miku"
+        tools:visibility="visible" />
+
+    <!-- 场景地点标签 -->
+    <TextView
+        android:id="@+id/tv_scene_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|start"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="64dp"
+        android:textColor="#99FFFFFF"
+        android:textSize="12sp"
+        tools:text="天台 · 黄昏" />
+
+    <!-- ③ 对话层 -->
+    <LinearLayout
+        android:id="@+id/ll_story_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="88dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/ll_choices"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:orientation="vertical"
+            android:visibility="gone" />
+
+        <LinearLayout
+            android:id="@+id/ll_dialog"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_story_dialog"
+            android:minHeight="150dp"
+            android:orientation="vertical"
+            android:paddingStart="20dp"
+            android:paddingTop="18dp"
+            android:paddingEnd="20dp"
+            android:paddingBottom="14dp">
+
+            <TextView
+                android:id="@+id/tv_dialog_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/bg_story_nameplate"
+                android:paddingStart="16dp"
+                android:paddingTop="5dp"
+                android:paddingEnd="16dp"
+                android:paddingBottom="5dp"
+                android:textColor="?attr/edenColorOnPrimary"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:visibility="gone"
+                tools:text="三玖"
+                tools:visibility="visible" />
+
+            <TextView
+                android:id="@+id/tv_dialog_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="11dp"
+                android:textColor="?attr/edenColorTextPrimary"
+                android:textSize="17sp"
+                tools:text="……那个。你要不要，听一下？" />
+
+            <TextView
+                android:id="@+id/tv_dialog_next"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:alpha="0.7"
+                android:gravity="end"
+                android:text="▾"
+                android:textColor="?attr/edenColorAccent"
+                android:textSize="12sp"
+                android:visibility="invisible" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- ④ 控制栏 -->
+    <Button
+        android:id="@+id/btn_story_back"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_gravity="top|start"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/ic_back"
+        android:backgroundTint="@null"
+        android:contentDescription="@string/story_back_cd"
+        android:padding="0dp" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|end"
+        android:layout_marginTop="14dp"
+        android:layout_marginEnd="16dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/btn_story_auto"
+            android:layout_width="wrap_content"
+            android:layout_height="28dp"
+            android:background="@drawable/bg_story_control_chip"
+            android:gravity="center"
+            android:minWidth="56dp"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:text="@string/story_auto"
+            android:textColor="#FFFFFFFF"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/btn_story_skip"
+            android:layout_width="wrap_content"
+            android:layout_height="28dp"
+            android:layout_marginStart="10dp"
+            android:background="@drawable/bg_story_control_chip"
+            android:gravity="center"
+            android:minWidth="56dp"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:text="@string/story_skip"
+            android:textColor="#FFFFFFFF"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <!-- 章节标题演出卡（开始时可见，点「开始」后淡出） -->
+    <include
+        android:id="@+id/card_chapter_title"
+        layout="@layout/view_story_chapter_title" />
+
+</FrameLayout>

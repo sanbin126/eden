@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 每日签到确认弹窗：居中弹出，宽度由代码设为屏幕 85%，高度自适应，风格对齐角色详情 -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_character_detail"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <!-- 顶部身份区：小头像 + 标题 + 连续签到天数 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <FrameLayout
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:background="@drawable/bg_circle_pink">
+
+            <ImageView
+                android:id="@+id/ds_avatar"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:contentDescription="@string/common_avatar_miku"
+                android:scaleType="centerCrop"
+                android:src="?attr/edenCharChibi" />
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="14dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/daily_sign_title"
+                android:textColor="?attr/edenColorTextPrimary"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/ds_days"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:text="@string/daily_sign_streak"
+                android:textColor="#B08FA0"
+                android:textSize="12sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- 今日暖心话 -->
+    <TextView
+        android:id="@+id/ds_line"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/bg_game_card"
+        android:lineSpacingExtra="3dp"
+        android:padding="14dp"
+        android:text="@string/daily_sign_quote"
+        android:textColor="#555555"
+        android:textSize="14sp" />
+
+    <!-- 签到提示 -->
+    <TextView
+        android:id="@+id/ds_hint"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="@string/daily_sign_prompt"
+        android:textColor="?attr/edenColorTextTertiary"
+        android:textSize="12sp" />
+
+    <!-- 底部操作：取消 / 签到 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/ds_btn_cancel"
+            android:layout_width="0dp"
+            android:layout_height="42dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_game_card"
+            android:gravity="center"
+            android:text="@string/common_cancel"
+            android:textColor="?attr/edenColorAccent"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/ds_btn_sign"
+            android:layout_width="0dp"
+            android:layout_height="42dp"
+            android:layout_marginStart="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_btn_primary"
+            android:gravity="center"
+            android:text="@string/daily_sign_confirm"
+            android:textColor="?attr/edenColorOnPrimary"
+            android:textSize="14sp" />
+    </LinearLayout>
+</LinearLayout>

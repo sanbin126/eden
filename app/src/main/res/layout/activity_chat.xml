@@ -27,16 +27,31 @@
             android:padding="0dp"
             android:backgroundTint="@null" />
 
-        <TextView
-            android:id="@+id/tv_character_name"
+        <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_weight="1"
-            android:text="中野 三玖"
-            android:textColor="#FFFFFF"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_character_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/chat_character_name"
+                android:textColor="?attr/edenColorOnPrimary"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <!-- 状态栏：默认显示在线/好感度状态，AI 思考时显示「对方正在输入...」 -->
+            <TextView
+                android:id="@+id/tv_character_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/chat_online"
+                android:textColor="#FFC0CB"
+                android:textSize="11sp" />
+        </LinearLayout>
 
         <ImageView
             android:id="@+id/btn_menu"
@@ -44,7 +59,7 @@
             android:layout_height="24dp"
             android:layout_marginEnd="8dp"
             android:src="@drawable/ic_more"
-            app:tint="#FFFFFF" />
+            app:tint="?attr/edenColorOnPrimary" />
     </LinearLayout>
 
     <!-- 聊天消息列表 -->
@@ -52,11 +67,46 @@
         android:id="@+id/rv_chat"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/bottom_input"
+        android:layout_above="@+id/bottom_actions"
         android:layout_below="@+id/top_bar"
         android:clipToPadding="false"
         android:paddingTop="8dp"
         android:paddingBottom="8dp" />
+
+    <!-- 循环轻入口：把用户从聊天引向「专注 / 投喂」 -->
+    <LinearLayout
+        android:id="@+id/bottom_actions"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/bottom_input"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingHorizontal="12dp"
+        android:paddingVertical="6dp">
+
+        <TextView
+            android:id="@+id/btn_go_focus"
+            android:layout_width="wrap_content"
+            android:layout_height="32dp"
+            android:background="@drawable/bg_chip"
+            android:gravity="center"
+            android:paddingHorizontal="14dp"
+            android:text="@string/chat_action_focus"
+            android:textColor="?attr/edenColorTextPrimary"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/btn_go_feed"
+            android:layout_width="wrap_content"
+            android:layout_height="32dp"
+            android:layout_marginStart="10dp"
+            android:background="@drawable/bg_chip"
+            android:gravity="center"
+            android:paddingHorizontal="14dp"
+            android:text="@string/chat_action_feed"
+            android:textColor="?attr/edenColorTextPrimary"
+            android:textSize="13sp" />
+    </LinearLayout>
 
     <!-- 底部输入区域 -->
     <LinearLayout
@@ -64,7 +114,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="#88000000"
+        android:background="?attr/edenColorScrim"
         android:gravity="center_vertical"
         android:orientation="horizontal"
         android:padding="8dp">
@@ -75,11 +125,14 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@drawable/bg_input_box"
-            android:hint="输入消息..."
+            android:gravity="center_vertical"
+            android:hint="@string/chat_input_hint"
             android:imeOptions="actionSend"
-            android:maxLines="3"
+            android:inputType="textMultiLine|textCapSentences"
+            android:maxLines="5"
+            android:minLines="1"
             android:padding="12dp"
-            android:textColor="#FFFFFF"
+            android:textColor="?attr/edenColorOnPrimary"
             android:textColorHint="#AAAAAA" />
 
         <Button
@@ -88,9 +141,9 @@
             android:layout_height="40dp"
             android:layout_marginStart="8dp"
             android:background="@drawable/bg_send_button"
-            android:text="发送"
+            android:text="@string/chat_send"
             android:textAllCaps="false"
-            android:textColor="#FFFFFF"
+            android:textColor="?attr/edenColorOnPrimary"
             android:enabled="false" />
     </LinearLayout>
 

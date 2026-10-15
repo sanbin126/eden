@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--
+         语义主题属性（换肤开关）
+
+         界面布局 / drawable 只引用这里的 ?attr/edenColorXxx，
+         具体色值交给当前主题（themes.xml）决定。
+         换肤 = 换一个主题；换色 = 改 colors.xml。
+    -->
+
+    <!-- 品牌主色 -->
+    <attr name="edenColorPrimary" format="color" />
+    <attr name="edenColorPrimaryPressed" format="color" />
+    <attr name="edenColorPrimaryDeep" format="color" />
+    <attr name="edenColorPrimaryLight" format="color" />
+    <attr name="edenColorAccent" format="color" />
+    <attr name="edenColorAccentLight" format="color" />
+
+    <!-- 背景渐变 -->
+    <attr name="edenColorGradientStart" format="color" />
+    <attr name="edenColorGradientEnd" format="color" />
+
+    <!-- 表面 / 卡片 / 描边 -->
+    <attr name="edenColorSurface" format="color" />
+    <attr name="edenColorSurfaceTint" format="color" />
+    <attr name="edenColorChipBg" format="color" />
+    <attr name="edenColorBorder" format="color" />
+
+    <!-- 文字 -->
+    <attr name="edenColorTextPrimary" format="color" />
+    <attr name="edenColorTextSecondary" format="color" />
+    <attr name="edenColorTextTertiary" format="color" />
+    <attr name="edenColorTextHint" format="color" />
+    <attr name="edenColorOnPrimary" format="color" />
+
+    <!-- 图标 -->
+    <attr name="edenColorIcon" format="color" />
+    <attr name="edenColorIconDisabled" format="color" />
+
+    <!-- 中性底 / 分隔线 -->
+    <attr name="edenColorNeutralBg" format="color" />
+    <attr name="edenColorNeutralBgAlt" format="color" />
+    <attr name="edenColorDivider" format="color" />
+    <attr name="edenColorDividerAlt" format="color" />
+    <attr name="edenColorBorderNeutral" format="color" />
+
+    <!-- 状态色 -->
+    <attr name="edenColorDanger" format="color" />
+    <attr name="edenColorSuccess" format="color" />
+
+    <!-- 遮罩 -->
+    <attr name="edenColorScrim" format="color" />
+    <attr name="edenColorScrimLight" format="color" />
+
+    <!-- 角色资源（换角色开关）：主题指向当前角色的立绘 / Q 版图 -->
+    <attr name="edenCharPortrait" format="reference" />
+    <attr name="edenCharChibi" format="reference" />
+
+    <!-- 圆形头像控件（CircleImageView）自定义属性 -->
+    <declare-styleable name="CircleImageView">
+        <attr name="circleRingWidth" format="dimension" />
+        <attr name="circleRingColor" format="color" />
+    </declare-styleable>
+</resources>

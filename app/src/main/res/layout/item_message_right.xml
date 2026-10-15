@@ -8,10 +8,15 @@
     android:paddingEnd="12dp"
     android:gravity="end">
 
-    <!-- 消息气泡和时间 -->
+    <!--
+        气泡容器：layout_width=0dp + layout_weight=1 会在测量阶段先扣掉右侧头像（40dp + 8dp）的宽度，
+        保证长消息气泡最宽只占「内容区 - 头像宽度」，不会把根布局的 paddingStart 撑破。
+        否则气泡会侵入 64dp 的左侧 padding，被根布局默认的 clipToPadding 裁掉左侧圆角与每行首字（显示不全）。
+    -->
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_weight="1"
         android:orientation="vertical"
         android:gravity="end">
 
@@ -22,7 +27,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/bg_bubble_right"
             android:padding="12dp"
-            android:textColor="#FFFFFF"
+            android:textColor="?attr/edenColorOnPrimary"
             android:textSize="16sp" />
 
         <!-- 时间戳 -->
@@ -31,7 +36,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="2dp"
-            android:text="12:00"
+            android:text="@string/common_time_placeholder"
             android:textColor="#AAAAAA"
             android:textSize="12sp" />
     </LinearLayout>

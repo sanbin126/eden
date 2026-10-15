@@ -13,3 +13,17 @@
 .externalNativeBuild
 .cxx
 local.properties
+
+# 后端本地配置（含邮箱 SMTP 授权码、大模型 API Key 等敏感信息）
+.env
+server/.env
+
+# 后端虚拟环境
+.venv/
+venv/
+
+# 后端本地数据库与 JWT 密钥（运行时自动生成，不入库）
+server/eden.db
+server/eden.db-*
+server/.jwt_secret
+__pycache__/

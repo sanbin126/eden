@@ -19,13 +19,12 @@ class HeartParticleView @JvmOverloads constructor(
     private var animator: ValueAnimator? = null
     private val paint = Paint(Paint.ANTI_ALIAS_FLAG)
 
-    private val colors = listOf(
-        0xFFFF69B4.toInt(),
-        0xFFFF1493.toInt(),
-        0xFFFFB6C1.toInt(),
-        0xFFFF85A2.toInt(),
-        0xFFFF4081.toInt()
-    )
+    private val colors: IntArray =
+        getContext().resources.obtainTypedArray(R.array.eden_greeting_colors).let { ta ->
+            val arr = IntArray(ta.length()) { ta.getColor(it, 0) }
+            ta.recycle()
+            arr
+        }
 
     data class Particle(
         var x: Float,

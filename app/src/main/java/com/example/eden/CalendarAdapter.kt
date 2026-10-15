@@ -1,11 +1,11 @@
 package com.example.eden
 
 import android.content.Context
+import android.graphics.Typeface
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
-import android.widget.ImageView
 import android.widget.TextView
 import java.text.SimpleDateFormat
 import java.util.*
@@ -27,47 +27,58 @@ class CalendarAdapter(
             .inflate(R.layout.item_calendar_day, parent, false)
 
         val tvDay = view.findViewById<TextView>(R.id.tv_day)
-        val ivHeart = view.findViewById<ImageView>(R.id.iv_heart_mark)
 
         val date = days[position]
         if (date == null) {
             // 空白占位
             tvDay.text = ""
-            ivHeart.visibility = View.GONE
+            tvDay.setBackgroundResource(0)
+            tvDay.setTextColor(context.edenColor(R.attr.edenColorTextHint, R.color.eden_text_hint))
+            tvDay.textSize = 14f
+            tvDay.typeface = Typeface.DEFAULT
             view.setOnClickListener(null)
             view.alpha = 0.3f
-        } else {
-            val sdf = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
-            val dateStr = sdf.format(date)
-            val dayOfMonth = SimpleDateFormat("d", Locale.getDefault()).format(date)
-            tvDay.text = dayOfMonth
+            return view
+        }
 
-            val isToday = dateStr == todayStr
-            val isSigned = signedDates.contains(dateStr)
+        view.alpha = 1f  // convertView 复用：重置空白单元格留下的透明度
+        val dateStr = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(date)
+        val dayOfMonth = SimpleDateFormat("d", Locale.getDefault()).format(date)
+        val isToday = dateStr == todayStr
+        val isSigned = signedDates.contains(dateStr)
 
-            // 默认样式
-            tvDay.setTextColor(0xFF666666.toInt())
-            tvDay.textSize = 14f
-            ivHeart.visibility = View.GONE
+        tvDay.text = dayOfMonth
 
-            if (isSigned) {
-                // 已签到：显示粉色爱心
-                ivHeart.visibility = View.VISIBLE
+        when {
+            isToday -> {
+                // 今天：实心粉色圆 + 白字加粗
+                tvDay.setBackgroundResource(R.drawable.bg_day_today)
+                tvDay.setTextColor(context.edenColor(R.attr.edenColorOnPrimary, R.color.eden_on_primary))
+                tvDay.textSize = 15f
+                tvDay.typeface = Typeface.DEFAULT_BOLD
             }
-
-            if (isToday) {
-                // 今日：红色加粗数字
-                tvDay.setTextColor(0xFFE91E63.toInt())  // 粉色红
-                tvDay.textSize = 16f
+            isSigned -> {
+                // 已签到：浅粉圆底 + 粉字加粗
+                tvDay.setBackgroundResource(R.drawable.bg_day_signed)
+                tvDay.setTextColor(context.edenColor(R.attr.edenColorAccent, R.color.eden_accent))
+                tvDay.textSize = 14f
+                tvDay.typeface = Typeface.DEFAULT_BOLD
             }
-
-            // 点击事件：仅今天且未签到可点击
-            view.setOnClickListener {
-                if (isToday && !isSigned) {
-                    onDateClicked(dateStr)
-                }
+            else -> {
+                // 普通日期：灰字
+                tvDay.setBackgroundResource(0)
+                tvDay.setTextColor(context.edenColor(R.attr.edenColorTextHint, R.color.eden_text_hint))
+                tvDay.textSize = 14f
+                tvDay.typeface = Typeface.DEFAULT
             }
         }
+
+        // 点击事件：仅今天且未签到可点击（不支持补签），回调严格按日期判断
+        view.setOnClickListener(if (isToday && !isSigned) {
+            View.OnClickListener { onDateClicked(dateStr) }
+        } else {
+            null
+        })
         return view
     }
 }

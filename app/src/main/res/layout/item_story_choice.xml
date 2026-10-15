@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 剧情选项卡单项：左侧圆点 + 左对齐文字；首次点击选中（粉底白字），再次点击确认 -->
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/tv_choice"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="10dp"
+    android:background="@drawable/bg_story_choice"
+    android:clickable="true"
+    android:focusable="true"
+    android:gravity="center_vertical|start"
+    android:letterSpacing="0.02"
+    android:lineSpacingExtra="3dp"
+    android:minHeight="48dp"
+    android:paddingStart="38dp"
+    android:paddingTop="13dp"
+    android:paddingEnd="18dp"
+    android:paddingBottom="13dp"
+    android:textColor="@color/story_choice_text"
+    android:textSize="15sp"
+    tools:text="那本是……《信长公记》？" />

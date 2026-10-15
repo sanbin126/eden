@@ -1,0 +1,8 @@
+# Eden AI 代理后端依赖清单（部署构建时由 Dockerfile 安装）
+# 其余能力（SQLite / smtplib / JWT / base64 / hmac 等）均使用 Python 标准库，无需额外安装。
+
+fastapi==0.115.6
+uvicorn[standard]==0.34.0
+httpx==0.28.1
+python-dotenv==1.0.1
+pydantic==2.10.4

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 游戏卡片左侧圆形图标底：粉色径向渐变 -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval">
+    <gradient
+        android:endColor="#F48FB1"
+        android:gradientRadius="24dp"
+        android:startColor="#F8BBD0"
+        android:type="radial" />
+</shape>

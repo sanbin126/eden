@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_main_gradient"
-    tools:context="com.exampke.eden.MainActivity">
+    tools:context="com.example.eden.MainActivity">
 
     <!-- 顶部状态栏区域（沉浸式） -->
     <LinearLayout
@@ -39,7 +39,7 @@
             android:id="@+id/tv_current_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="12:00"
+            android:text="@string/main_time_placeholder"
             android:textColor="@android:color/white"
             android:textSize="14sp" />
 
@@ -89,10 +89,27 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="4dp"
-                    android:text="100/100"
-                    android:textColor="#FF4081"
+                    android:text="@string/main_intimacy_placeholder"
+                    android:textColor="?attr/edenColorAccent"
                     android:textSize="14sp"
                     android:textStyle="bold" />
+
+                <!-- 好感度旁的小红点：仅在有新剧情时可见，只做提示、不是独立入口。
+                     用 28dp 容器包裹 8dp 圆点，保证视觉位置安稳；点击穿透到整张角色卡打开详情。 -->
+                <FrameLayout
+                    android:id="@+id/btn_affection_entry"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:layout_marginStart="2dp"
+                    android:visibility="gone">
+
+                    <View
+                        android:id="@+id/view_affection_dot"
+                        android:layout_width="8dp"
+                        android:layout_height="8dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/bg_circle_pink" />
+                </FrameLayout>
             </LinearLayout>
 
             <!-- 角色名 -->
@@ -101,7 +118,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                android:text="中野三玖"
+                android:text="@string/main_character_name"
                 android:textColor="@android:color/black"
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -112,8 +129,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
-                android:text=" 迷糊玖"
-                android:textColor="#666666"
+                android:text="@string/main_nickname_placeholder"
+                android:textColor="?attr/edenColorIcon"
                 android:textSize="12sp" />
 
             <!-- 在线时长 -->
@@ -122,9 +139,186 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                android:text="今日陪伴：1.5小时"
-                android:textColor="#888888"
+                android:text="@string/main_today_company"
+                android:textColor="?attr/edenColorTextSecondary"
                 android:textSize="11sp" />
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- 签到入口（与默认竖屏布局保持一致，避免横屏下功能缺失） -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_sign_in"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:alpha="0.9"
+        app:cardBackgroundColor="#80FFFFFF"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="4dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/card_character_info">
+
+        <LinearLayout
+            android:id="@+id/btn_sign_in_entry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="8dp">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_heart" />
+
+            <TextView
+                android:id="@+id/tv_sign_in_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:text="@string/main_sign_in"
+                android:textColor="?attr/edenColorAccent"
+                android:textSize="13sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- 纪念日入口卡片（紧贴签到卡片下方） -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_anniversary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:alpha="0.9"
+        app:cardBackgroundColor="#80FFFFFF"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="4dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/card_sign_in">
+
+        <LinearLayout
+            android:id="@+id/btn_anniversary_entry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="8dp">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_heart" />
+
+            <TextView
+                android:id="@+id/tv_anniversary_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:text="@string/main_together"
+                android:textColor="?attr/edenColorAccent"
+                android:textSize="13sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- 礼物 / 投喂入口卡片（紧贴纪念日卡片下方） -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_gift"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:alpha="0.9"
+        app:cardBackgroundColor="#80FFFFFF"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="4dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/card_anniversary">
+
+        <LinearLayout
+            android:id="@+id/btn_gift_entry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="8dp">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_gift" />
+
+            <TextView
+                android:id="@+id/tv_yen"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:text="@string/main_wallet_placeholder"
+                android:textColor="?attr/edenColorAccent"
+                android:textSize="13sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- 每日任务入口（紧贴投喂卡片下方）：图标 + 「每日任务 n/6」小字，点开看当天 6 项任务 -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_daily_task"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:alpha="0.9"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?attr/selectableItemBackground"
+        app:cardBackgroundColor="#80FFFFFF"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="4dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/card_gift">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="7dp">
+
+            <ImageView
+                android:layout_width="14dp"
+                android:layout_height="14dp"
+                android:contentDescription="@string/main_daily_task"
+                android:src="@drawable/ic_task" />
+
+            <TextView
+                android:id="@+id/tv_daily_task_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:text="@string/main_daily_task"
+                android:textColor="?attr/edenColorTextSecondary"
+                android:textSize="11sp" />
+
+            <View
+                android:id="@+id/dot_daily_task_reward"
+                android:layout_width="6dp"
+                android:layout_height="6dp"
+                android:layout_marginStart="5dp"
+                android:background="@drawable/bg_dot_red"
+                android:visibility="gone" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
@@ -158,7 +352,7 @@
             android:layout_gravity="center"
             android:scaleType="fitCenter"
             android:adjustViewBounds="true"
-            android:src="@drawable/miku" />
+            android:src="?attr/edenCharPortrait" />
 
         <!-- 光晕效果-->
         <ImageView
@@ -190,7 +384,7 @@
             android:layout_height="120dp"
             android:background="@drawable/btn_chat_selector"
             android:gravity="center"
-            android:text="聊天"
+            android:text="@string/main_tab_chat"
             android:textAllCaps="false"
             android:textColor="@android:color/white"
             android:textSize="26sp"
@@ -204,44 +398,54 @@
             android:orientation="horizontal"
             android:gravity="center">
 
-            <!-- 日历 -->
+            <!-- 游戏 -->
             <ImageButton
-                android:id="@+id/btn_calendar"
+                android:id="@+id/btn_game"
                 android:layout_width="56dp"
                 android:layout_height="56dp"
                 android:background="@drawable/bg_round_small_button"
-                android:src="@drawable/ic_calendar"
-                android:contentDescription="日历" />
+                android:src="@drawable/ic_game"
+                android:contentDescription="@string/main_cd_games" />
 
             <!-- 日志 -->
             <ImageButton
                 android:id="@+id/btn_diary"
                 android:layout_width="56dp"
                 android:layout_height="56dp"
-                android:layout_marginStart="24dp"
+                android:layout_marginStart="16dp"
                 android:background="@drawable/bg_round_small_button"
                 android:src="@drawable/ic_diary"
-                android:contentDescription="日志" />
+                android:contentDescription="@string/main_cd_diary" />
 
             <!-- 计时器 -->
             <ImageButton
                 android:id="@+id/btn_timer"
                 android:layout_width="56dp"
                 android:layout_height="56dp"
-                android:layout_marginStart="24dp"
+                android:layout_marginStart="16dp"
                 android:background="@drawable/bg_round_small_button"
                 android:src="@drawable/ic_timer"
-                android:contentDescription="计时器" />
+                android:contentDescription="@string/main_cd_timer" />
 
             <!-- 音乐 -->
             <ImageButton
                 android:id="@+id/btn_music"
                 android:layout_width="56dp"
                 android:layout_height="56dp"
-                android:layout_marginStart="24dp"
+                android:layout_marginStart="16dp"
                 android:background="@drawable/bg_round_small_button"
                 android:src="@drawable/ic_music"
-                android:contentDescription="音乐" />
+                android:contentDescription="@string/main_cd_music" />
+
+            <!-- 剧情 -->
+            <ImageButton
+                android:id="@+id/btn_story"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:layout_marginStart="16dp"
+                android:background="@drawable/bg_round_small_button"
+                android:src="@drawable/ic_story"
+                android:contentDescription="@string/main_cd_story" />
         </LinearLayout>
     </LinearLayout>
 
@@ -251,6 +455,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@android:color/white"
+        android:theme="@style/ThemeOverlay.Eden.MaterialComponent"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

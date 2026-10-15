@@ -1,0 +1,28 @@
+# 构建镜像时忽略的文件/目录：减小上传体积、避免把密钥与本地数据打进镜像
+.venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# 日志
+*.log
+logs/
+
+# 本地运行数据与密钥（切勿打进镜像）
+.env
+*.db
+*.db-shm
+*.db-wal
+.jwt_secret
+
+# 版本控制 / 编辑器
+.git/
+.gitignore
+.idea/
+.vscode/
+
+# 文档
+README.md
+*.md

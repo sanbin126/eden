@@ -1,3 +1,388 @@
 <resources>
     <string name="app_name">Eden</string>
+
+    <!-- 通用 -->
+    <string name="common_back">返回</string>
+    <string name="common_cancel">取消</string>
+    <string name="common_confirm">确定</string>
+    <string name="common_save">保存</string>
+    <string name="common_settings">设置</string>
+    <string name="common_not_set">未设置</string>
+    <string name="common_close">✕</string>
+    <string name="common_dash">—</string>
+    <string name="common_avatar_miku">三玖头像</string>
+    <string name="common_hint">提示</string>
+    <string name="common_difficulty_easy">简单</string>
+    <string name="common_difficulty_medium">中等</string>
+    <string name="common_difficulty_hard">困难</string>
+    <string name="common_status_emoji">🙂</string>
+    <string name="common_time_placeholder">12:00</string>
+    <string name="common_coming_soon">敬请期待</string>
+    <string name="common_icon_sparkle">✨</string>
+    <string name="gift_icon">🎁</string>
+
+    <!-- 小游戏名称 -->
+    <string name="game_name_minesweeper">扫雷</string>
+    <string name="game_name_gomoku">五子棋</string>
+    <string name="game_name_xiangqi">象棋</string>
+
+    <!-- 修改密码 -->
+    <string name="change_password_title">修改密码</string>
+    <string name="change_password_current_hint">请输入当前密码</string>
+    <string name="change_password_new_hint">请输入新密码（至少 6 位）</string>
+    <string name="change_password_confirm_hint">请再次输入新密码</string>
+    <string name="change_password_submit">确认修改</string>
+
+    <!-- 聊天 -->
+    <string name="chat_character_name">中野 三玖</string>
+    <string name="chat_online">在线</string>
+    <string name="chat_input_hint">输入消息...</string>
+    <string name="chat_send">发送</string>
+    <string name="chat_action_focus">去专注</string>
+    <string name="chat_action_feed">投喂</string>
+
+    <!-- 裁剪图片 -->
+    <string name="crop_cd">裁剪图片</string>
+    <string name="crop_title">裁剪头像</string>
+    <string name="crop_hint">拖动调整位置，双指缩放</string>
+    <string name="crop_failed">图片读取失败</string>
+
+    <!-- 个人资料 -->
+    <string name="profile_edit_title">编辑资料</string>
+    <string name="profile_avatar_cd">头像</string>
+    <string name="profile_avatar_hint">点击更换头像</string>
+    <string name="profile_avatar_updated">头像已更新</string>
+    <string name="profile_nickname_label">昵称</string>
+    <string name="profile_nickname_hint">请输入昵称</string>
+    <string name="profile_nickname_required">昵称不能为空</string>
+    <string name="profile_signature_label">个性签名</string>
+    <string name="profile_signature_hint">介绍一下自己吧～</string>
+    <string name="profile_signature_empty">这个人很懒，什么都没留下</string>
+    <string name="profile_save">保存</string>
+    <string name="profile_saved">资料已保存</string>
+
+    <!-- 心情日记 -->
+    <string name="diary_title">心情日记</string>
+    <string name="diary_date_today">9月30日 周三</string>
+    <string name="diary_listening">三玖在听…</string>
+    <string name="diary_listening_sub">写下的内容她会记在心里，等下主动找你聊聊</string>
+    <string name="diary_mood_title">今天的心情</string>
+    <string name="diary_write_title">写下今天</string>
+    <string name="diary_write_hint">今天发生了什么…想跟三玖说点什么</string>
+    <string name="diary_tags_title">相关标签</string>
+    <string name="diary_submit">写下今天 →</string>
+    <string name="diary_history_title">过往日记</string>
+    <string name="diary_empty">还没有写过日记\n写下今天，让三玖更懂你</string>
+
+    <!-- 专注陪伴 -->
+    <string name="focus_title">专注陪伴</string>
+    <string name="focus_today_company">今日陪伴 0分钟</string>
+    <string name="focus_with_miku">三玖陪你专注</string>
+    <string name="focus_sub">专注时长会一起计入今日陪伴</string>
+    <string name="focus_ready">准备开始</string>
+    <string name="focus_no_task">未选择任务</string>
+    <string name="focus_abandon">放弃</string>
+    <string name="focus_start">开始专注</string>
+    <string name="focus_task_section">专注任务</string>
+    <string name="focus_new_task">+ 新建</string>
+    <string name="focus_task_empty">还没有任务\n新建一个，专注时目标更清晰</string>
+    <string name="focus_stats">专注统计</string>
+    <string name="focus_stats_today">今日：0 个番茄 · 0 分钟</string>
+    <string name="focus_stats_total">累计：0 个番茄 · 0 分钟</string>
+
+    <!-- 五子棋 -->
+    <string name="gomoku_status_black">你执黑 · 轮到你</string>
+
+    <!-- 登录 -->
+    <string name="login_slogan">和你的专属陪伴，从这里开始</string>
+    <string name="login_tab_password">密码登录</string>
+    <string name="login_tab_code">验证码登录</string>
+    <string name="login_email_hint">请输入邮箱</string>
+    <string name="login_code_hint">请输入验证码</string>
+    <string name="login_get_code">获取验证码</string>
+    <string name="login_password_hint">请输入密码</string>
+    <string name="login_confirm_password_hint">请再次输入密码</string>
+    <string name="login_forgot">忘记密码？</string>
+    <string name="login_submit">登录</string>
+    <string name="login_register">还没有账号？立即注册</string>
+
+    <!-- 主界面 -->
+    <string name="main_time_placeholder">12:00</string>
+    <string name="main_intimacy_placeholder">100/100</string>
+    <string name="main_character_name">中野三玖</string>
+    <string name="main_nickname_placeholder">迷糊玖</string>
+    <string name="main_today_company">今日陪伴：1.5小时</string>
+    <string name="main_wallet_placeholder">礼物 · 0 円</string>
+    <string name="main_sign_in">签到</string>
+    <string name="main_together">在一起</string>
+    <string name="main_tab_chat">聊天</string>
+    <string name="main_cd_games">游戏</string>
+    <string name="main_cd_diary">日志</string>
+    <string name="main_cd_timer">计时器</string>
+    <string name="main_cd_music">音乐</string>
+
+    <!-- 好感度小剧场列表 -->
+    <string name="milestone_list_title">好感度小剧场</string>
+    <string name="milestone_list_empty">还没有解锁的小剧场\n和三玖多聊聊天，提升亲密度吧～</string>
+
+    <!-- 好感度小剧场详情 -->
+    <string name="milestone_story_title">小剧场</string>
+    <string name="milestone_story_intimacy">好感度 10</string>
+
+    <!-- 扫雷 -->
+    <string name="minesweeper_mines">💣 10</string>
+    <string name="minesweeper_timer">⏱ 0</string>
+
+    <!-- 设置 -->
+    <string name="settings_title">设置</string>
+    <string name="settings_not_logged_in">未登录</string>
+    <string name="settings_change_password">修改密码</string>
+    <string name="settings_my_name">我的名字</string>
+    <string name="settings_intimate_name">亲密称呼</string>
+    <string name="settings_anniversary">纪念日</string>
+    <string name="settings_my_birthday">我的生日</string>
+    <string name="settings_notify">消息通知</string>
+    <string name="settings_proactive_greeting">主动问候</string>
+    <string name="settings_run_mode">运行模式</string>
+    <string name="settings_detecting">检测中…</string>
+    <string name="settings_clear_cache">清除缓存</string>
+    <string name="settings_about">关于 Eden</string>
+    <string name="settings_growth">成长说明</string>
+    <string name="settings_logout">退出登录</string>
+
+    <!-- 成长说明 -->
+    <string name="growth_title">成长说明</string>
+    <string name="growth_section_yen">「円」的来源</string>
+    <string name="growth_section_affection">「好感度」的来源</string>
+    <string name="growth_yen_open_label">每日见面</string>
+    <string name="growth_yen_open_value">+5（每天首次进入）</string>
+    <string name="growth_yen_signin_label">每日签到</string>
+    <string name="growth_yen_signin_value">+20 起，连续每天 +5，单次封顶 40</string>
+    <string name="growth_yen_touch_label">摸摸</string>
+    <string name="growth_yen_touch_value">每次 +1 · 每日上限 10</string>
+    <string name="growth_yen_chat_label">聊天</string>
+    <string name="growth_yen_chat_value">每条 +2 · 每日上限 30</string>
+    <string name="growth_yen_focus_label">专注</string>
+    <string name="growth_yen_focus_value">每段 +10 · 每日上限 60</string>
+    <string name="growth_yen_game_label">小游戏</string>
+    <string name="growth_yen_game_value">胜 +10 / 负 +5 · 每日上限 50</string>
+    <string name="growth_aff_touch_label">首次摸摸</string>
+    <string name="growth_aff_touch_value">+1 · 每天一次</string>
+    <string name="growth_aff_chat_label">聊天</string>
+    <string name="growth_aff_chat_value">每 3 条消息 +1 · 每日上限 5</string>
+    <string name="growth_aff_focus_label">专注</string>
+    <string name="growth_aff_focus_value">每段 +1 · 每日上限 4</string>
+    <string name="growth_aff_game_label">小游戏</string>
+    <string name="growth_aff_game_value">每天首次结算 +3（输赢都一样）</string>
+    <string name="growth_aff_gift_label">投喂 / 送礼</string>
+    <string name="growth_aff_gift_value">按物品加成，各有日 / 周限次</string>
+    <string name="growth_footnote">每天都会重置。好感度攒够，会解锁属于你们的小剧场。</string>
+
+    <!-- 象棋 -->
+    <string name="xiangqi_status_red">你执红 · 轮到你</string>
+
+    <!-- 环境音选择 -->
+    <string name="ambient_cd">环境音</string>
+    <string name="ambient_title">环境音</string>
+    <string name="ambient_sub">选一个喜欢的氛围吧～</string>
+    <string name="ambient_icon_headphone">🎧</string>
+    <string name="ambient_default">默认</string>
+    <string name="ambient_follow">跟随天气时间</string>
+    <string name="ambient_icon_sun">☀️</string>
+    <string name="ambient_sunny">晴天</string>
+    <string name="ambient_sunny_sub">明亮鸟鸣</string>
+    <string name="ambient_icon_rain">🌧</string>
+    <string name="ambient_rain">雨天</string>
+    <string name="ambient_rain_sub">雨声轻响</string>
+    <string name="ambient_icon_snow">❄️</string>
+    <string name="ambient_snow">雪天</string>
+    <string name="ambient_snow_sub">风雪呼啸</string>
+    <string name="ambient_icon_night">🌙</string>
+    <string name="ambient_night">夜晚</string>
+    <string name="ambient_night_sub">夜虫轻鸣</string>
+    <string name="ambient_coming">敬请期待</string>
+    <string name="ambient_coming_sub">更多氛围筹备中</string>
+
+    <!-- 纪念日 -->
+    <string name="anniversary_title">纪念日</string>
+    <string name="anniversary_together_days">在一起 1 天</string>
+    <string name="anniversary_days_value">0</string>
+    <string name="anniversary_unit_day">天</string>
+    <string name="anniversary_caption">我们相遇以来的每一天</string>
+    <string name="anniversary_current">♡ 今天是 milestone 纪念日 ♡</string>
+    <string name="anniversary_next">距离下个里程碑还有 100 天</string>
+    <string name="anniversary_start_label">纪念日起点</string>
+    <string name="anniversary_birthday_label">我的生日</string>
+    <string name="anniversary_edit_anniversary">编辑纪念日</string>
+    <string name="anniversary_edit_birthday">编辑生日</string>
+
+    <!-- 角色详情 -->
+    <string name="character_detail_name">中野 三玖</string>
+    <string name="character_detail_nickname">迷糊玖</string>
+    <string name="character_detail_together">在一起 1 天</string>
+    <string name="character_detail_icon_flower">🌸</string>
+    <string name="character_detail_mood">今日心情 · 心情不错</string>
+    <string name="character_detail_refresh">换一句 ↻</string>
+    <string name="character_detail_quote">……今天很安静，历史也读得很顺。</string>
+    <string name="character_detail_intimacy">好感度</string>
+    <string name="character_detail_intimacy_value">0/100</string>
+    <string name="character_detail_next_milestone">距离下一个里程碑还差 10 点</string>
+    <string name="character_detail_story">好感小剧场</string>
+    <string name="character_detail_minutes">0分钟</string>
+    <string name="character_detail_today_company">今日陪伴</string>
+    <string name="character_detail_days">0 天</string>
+    <string name="character_detail_sign_streak">连续签到</string>
+    <string name="character_detail_first_meet">初次相遇</string>
+    <string name="character_detail_go_chat">去聊天</string>
+    <string name="character_detail_go_diary">去日记</string>
+
+    <!-- 聊天设置 -->
+    <string name="chat_settings_cd">聊天设置</string>
+    <string name="chat_settings_sub">把这里改成你想要的样子～</string>
+    <string name="chat_settings_clear_cd">清空聊天记录</string>
+    <string name="chat_settings_clear">清空聊天记录</string>
+
+    <!-- 每日签到 -->
+    <string name="daily_sign_title">每日签到</string>
+    <string name="daily_sign_streak">连续签到 0 天</string>
+    <string name="daily_sign_quote">……你今天也来了。</string>
+    <string name="daily_sign_prompt">今天还没签到哦，要签到吗？</string>
+    <string name="daily_sign_confirm">签到</string>
+
+    <!-- 新建专注任务 -->
+    <string name="focus_task_title">新建专注任务</string>
+    <string name="focus_task_hint">这次要专注做什么？</string>
+    <string name="focus_task_pomodoro_hint">计划番茄数</string>
+    <string name="focus_task_pomodoro_default">1</string>
+    <string name="focus_task_add">添加</string>
+
+    <!-- 小游戏选择 -->
+    <string name="game_picker_cd">小游戏</string>
+    <string name="game_picker_title">小游戏</string>
+    <string name="game_picker_sub">选一个，和三玖一起玩吧～</string>
+    <string name="game_picker_mine_icon">💣</string>
+    <string name="game_picker_mine_sub">排雷推理</string>
+    <string name="game_picker_gomoku_icon">⚪</string>
+    <string name="game_picker_gomoku_sub">连成五子</string>
+    <string name="game_picker_xiangqi_icon">🀄</string>
+    <string name="game_picker_xiangqi_sub">楚河汉界</string>
+    <string name="game_picker_coming_sub">更多玩法筹备中</string>
+
+    <!-- 投喂 / 送礼 -->
+    <string name="gift_picker_title">给她带点什么</string>
+    <string name="gift_picker_sub">投喂饮料 / 食物，或送上一份礼物</string>
+    <string name="gift_picker_balance">持有：0 円</string>
+
+    <!-- 亲密称呼 -->
+    <string name="intimate_picker_cd">亲密称呼</string>
+    <string name="intimate_picker_title">亲密称呼</string>
+    <string name="intimate_picker_sub">选一个三玖平时叫你的称呼吧～</string>
+
+    <!-- 消息操作 -->
+    <string name="message_options_cd">消息操作</string>
+    <string name="message_options_title">消息操作</string>
+    <string name="message_options_sub">对这一条消息做点什么～</string>
+    <string name="message_options_copy">复制</string>
+    <string name="message_options_regenerate">重新生成</string>
+    <string name="message_options_delete">删除</string>
+
+    <!-- 背景音乐 -->
+    <string name="music_picker_cd">背景音乐</string>
+    <string name="music_picker_title">背景音乐</string>
+    <string name="music_picker_sub">给此刻配一点声音吧～</string>
+    <string name="music_picker_builtin_cd">播放内置环境音</string>
+    <string name="music_picker_builtin">播放内置环境音</string>
+    <string name="music_picker_local_cd">选择本地音乐</string>
+    <string name="music_picker_local">选择本地音乐</string>
+    <string name="music_picker_stop_cd">停止播放</string>
+    <string name="music_picker_stop">停止播放</string>
+
+    <!-- 我的名字 -->
+    <string name="my_name_cd">我的名字</string>
+    <string name="my_name_title">我的名字</string>
+    <string name="my_name_sub">留空则使用默认称呼「你」</string>
+    <string name="my_name_full_label">全名</string>
+    <string name="my_name_full_hint">郑重、撒娇或情绪强烈时才用</string>
+    <string name="my_name_short_label">小名</string>
+    <string name="my_name_short_hint">三玖平时这样叫你</string>
+
+    <!-- 日签日历 -->
+    <string name="sign_calendar_title">我的日签卡</string>
+    <string name="sign_calendar_streak_sub">一共连续打卡0天~</string>
+    <string name="sign_calendar_streak_value">0</string>
+    <string name="sign_calendar_streak_label">连续打卡</string>
+    <string name="sign_calendar_total_value">1</string>
+    <string name="sign_calendar_total_label">总打卡天数</string>
+    <string name="sign_calendar_prev_cd">上个月</string>
+    <string name="sign_calendar_month">06月</string>
+    <string name="sign_calendar_next_cd">下个月</string>
+    <string name="sign_calendar_action">立即签到</string>
+    <string name="sign_calendar_weekday_sun">日</string>
+    <string name="sign_calendar_weekday_mon">一</string>
+    <string name="sign_calendar_weekday_tue">二</string>
+    <string name="sign_calendar_weekday_wed">三</string>
+    <string name="sign_calendar_weekday_thu">四</string>
+    <string name="sign_calendar_weekday_fri">五</string>
+    <string name="sign_calendar_weekday_sat">六</string>
+    <string-array name="sign_calendar_weekdays">
+        <item>日</item>
+        <item>一</item>
+        <item>二</item>
+        <item>三</item>
+        <item>四</item>
+        <item>五</item>
+        <item>六</item>
+    </string-array>
+
+    <!-- 列表项 -->
+    <string name="item_chat_divider_text">—— 6月11日 ——</string>
+    <string name="item_diary_emoji">😊</string>
+    <string name="item_diary_date">9月30日 14:30</string>
+    <string name="item_diary_tags">工作 · 学习</string>
+    <string name="item_diary_content">今天加班到很晚，但项目终于上线了...</string>
+    <string name="item_focus_dot_cd">选中标记</string>
+    <string name="item_focus_title">复习英语单词</string>
+    <string name="item_focus_progress">0 / 4 番茄</string>
+    <string name="item_focus_delete_cd">删除任务</string>
+    <string name="item_gift_emoji">🎁</string>
+    <string name="item_gift_name">物品</string>
+    <string name="item_gift_sub">好感 +0 · 不限量</string>
+    <string name="item_gift_cost">0 円</string>
+    <string name="item_message_error">回复失败，点击重试</string>
+    <string name="item_milestone_title">分你一只耳机</string>
+    <string name="item_milestone_intimacy">好感度 10</string>
+
+    <!-- 剧情板块 -->
+    <string name="main_cd_story">剧情</string>
+    <string name="story_home_title">剧情</string>
+    <string name="story_resume_label">继续阅读</string>
+    <string name="story_resume_hint">上次读到</string>
+    <string name="story_section_chapters">章节</string>
+    <string name="story_home_empty">这一线路还没有可看的剧情。</string>
+    <string name="story_chapter_done">已通关</string>
+    <string name="story_chapter_progress">进行中</string>
+    <string name="story_item_meta">%1$s · %2$d 场</string>
+    <string name="story_start">开始</string>
+    <string name="story_skip">跳过</string>
+    <string name="story_auto">自动</string>
+    <string name="story_quit">返回</string>
+    <string name="story_back_cd">返回</string>
+    <string name="story_reward_toast">好感度 +%1$d</string>
+    <string name="story_affection_toast">好感度 %1$s%2$d</string>
+    <string name="story_chapter_end">本章完</string>
+
+    <!-- 每日任务 -->
+    <string name="main_daily_task">每日任务</string>
+    <string name="main_daily_task_progress">每日任务 %1$d/%2$d</string>
+    <string name="daily_task_title">每日任务</string>
+    <string name="daily_task_progress">今日进度 %1$d/%2$d</string>
+    <string name="daily_task_hint_todo">完成全部 %1$d 项任务，可领取 %2$d 円</string>
+    <string name="daily_task_hint_ready">任务已全部完成，快领取奖励吧</string>
+    <string name="daily_task_hint_claimed">今天的奖励已经领过了，明天再来</string>
+    <string name="daily_task_state_done">已完成</string>
+    <string name="daily_task_state_todo">未完成</string>
+    <string name="daily_task_claim">领取 %1$d 円</string>
+    <string name="daily_task_claim_locked">全部完成后可领 %1$d 円</string>
+    <string name="daily_task_claimed">今日奖励已领取</string>
+    <string name="daily_task_claimed_toast">每日任务全部完成，收到 %1$d 円</string>
 </resources>

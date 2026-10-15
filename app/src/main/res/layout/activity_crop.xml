@@ -1,51 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/crop_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#000000">
+    android:background="#000000"
+    tools:context=".CropActivity">
 
-    <!-- 图片区域，可缩放拖动 -->
+    <!-- 待裁剪图片：matrix 变换由 CropActivity 计算 -->
     <ImageView
         android:id="@+id/crop_image"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="matrix"
-        android:contentDescription="裁剪图片" />
+        android:contentDescription="@string/crop_cd"
+        android:scaleType="matrix" />
 
-    <!-- 圆形遮罩层：中间透明，四周半透明黑色 -->
-    <View
+    <!-- 圆形取景遮罩（圆形外压暗 + 白色描边），不消费触摸 -->
+    <com.example.eden.CropOverlayView
         android:id="@+id/crop_overlay"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/circle_overlay" />
+        android:layout_height="match_parent" />
 
-    <!-- 底部按钮 -->
+    <!-- 顶部标题 -->
+    <TextView
+        android:id="@+id/tv_crop_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|center_horizontal"
+        android:layout_marginTop="32dp"
+        android:text="@string/crop_title"
+        android:textColor="#FFFFFF"
+        android:textSize="17sp"
+        android:textStyle="bold" />
+
+    <!-- 底部操作区 -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:orientation="horizontal"
-        android:padding="16dp"
-        android:gravity="center">
+        android:orientation="vertical"
+        android:padding="16dp">
 
-        <Button
-            android:id="@+id/btn_cancel"
-            android:layout_width="0dp"
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_marginEnd="8dp"
-            android:text="取消"
-            android:textColor="#FFFFFF"
-            android:background="@drawable/bg_round_button" />
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="16dp"
+            android:text="@string/crop_hint"
+            android:textColor="#B3FFFFFF"
+            android:textSize="13sp" />
 
-        <Button
-            android:id="@+id/btn_confirm"
-            android:layout_width="0dp"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_marginStart="8dp"
-            android:text="确定"
-            android:textColor="#FFFFFF"
-            android:background="@drawable/bg_round_button" />
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_cancel"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_round_button"
+                android:text="@string/common_cancel"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp" />
+
+            <Button
+                android:id="@+id/btn_confirm"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_send_button"
+                android:backgroundTint="@null"
+                android:text="@string/common_confirm"
+                android:textAllCaps="false"
+                android:textColor="?attr/edenColorOnPrimary"
+                android:textSize="16sp" />
+        </LinearLayout>
     </LinearLayout>
 </FrameLayout>

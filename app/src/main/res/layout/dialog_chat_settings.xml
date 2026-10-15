@@ -1,94 +1,99 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- 聊天设置面板：粉色卡片式，样式对齐小游戏 / 环境音选择面板 -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/chatSettingsSheetRoot"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@drawable/bg_game_sheet"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:paddingStart="20dp"
+    android:paddingTop="12dp"
+    android:paddingEnd="20dp"
+    android:paddingBottom="24dp">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="设置"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:paddingBottom="12dp"/>
+    <!-- 顶部拖动条 -->
+    <View
+        android:layout_width="40dp"
+        android:layout_height="4dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/bg_game_handle" />
 
+    <!-- 标题区 -->
     <LinearLayout
-        android:id="@+id/item_change_miku_avatar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:paddingVertical="12dp"
-        android:clickable="true"
-        android:focusable="true"
-        android:background="?attr/selectableItemBackground">
+        android:layout_marginTop="16dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
 
         <ImageView
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_marginEnd="16dp"
-            android:src="@drawable/ic_heart"/>
-        <TextView
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:background="@drawable/bg_game_icon"
+            android:contentDescription="@string/chat_settings_cd"
+            android:padding="11dp"
+            android:src="@drawable/ic_settings" />
+
+        <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
             android:layout_weight="1"
-            android:text="更换三玖头像"
-            android:textSize="16sp"/>
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/common_settings"
+                android:textColor="?attr/edenColorAccent"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="@string/chat_settings_sub"
+                android:textColor="#B08FA0"
+                android:textSize="12sp" />
+        </LinearLayout>
     </LinearLayout>
 
-    <View android:layout_width="match_parent" android:layout_height="0.5dp" android:background="#DDDDDD"/>
-
-    <LinearLayout
-        android:id="@+id/item_change_my_avatar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:paddingVertical="12dp"
-        android:clickable="true"
-        android:focusable="true"
-        android:background="?attr/selectableItemBackground">
-
-        <ImageView
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_marginEnd="16dp"
-            android:src="@drawable/ic_user_avatar"/>
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="更换我的头像"
-            android:textSize="16sp"/>
-    </LinearLayout>
-
-    <View android:layout_width="match_parent" android:layout_height="0.5dp" android:background="#DDDDDD"/>
-
-    <!-- 新增：清空聊天记录 -->
+    <!-- 清空聊天记录 -->
     <LinearLayout
         android:id="@+id/item_clear_chat"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:paddingVertical="12dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/bg_game_card"
         android:clickable="true"
         android:focusable="true"
-        android:background="?attr/selectableItemBackground">
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="14dp">
 
         <ImageView
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_marginEnd="16dp"
-            android:src="@drawable/ic_back"
-            app:tint="#FF0000" />
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:background="@drawable/bg_game_icon"
+            android:contentDescription="@string/chat_settings_clear_cd"
+            android:padding="9dp"
+            android:src="@drawable/ic_delete"
+            app:tint="?attr/edenColorPrimaryPressed" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
             android:layout_weight="1"
-            android:text="清空聊天记录"
-            android:textColor="#FF0000"
-            android:textSize="16sp"/>
+            android:text="@string/chat_settings_clear"
+            android:textColor="?attr/edenColorPrimaryPressed"
+            android:textSize="15sp" />
+
+        <ImageView
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:src="@drawable/ic_chevron_right" />
     </LinearLayout>
 </LinearLayout>
-

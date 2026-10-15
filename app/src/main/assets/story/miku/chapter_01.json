@@ -1,0 +1,218 @@
+{
+  "id": "miku_chapter_01",
+  "index": 1,
+  "chapterLabel": "第一章",
+  "title": "那个屋檐下，耳机女孩",
+  "synopsis": "你接下了中野家的委托，成为五胞胎姐妹的家庭教师。屋檐下，你第一个想走近的人，是那个戴着耳机的三女。",
+  "unlock": { "prevChapter": 0, "affection": 0 },
+  "reward": { "affection": 5 },
+  "bgm": "daily_piano",
+  "casts": {
+    "ichika":  { "name": "一花", "slot": "left" },
+    "nino":    { "name": "二乃", "slot": "left" },
+    "miku":    { "name": "三玖", "slot": "center" },
+    "yotsuba": { "name": "四叶", "slot": "right" },
+    "itsuki":  { "name": "五月", "slot": "right" }
+  },
+  "backgrounds": {
+    "apartment_living":   { "label": "中野家 · 客厅 · 放学后", "top": "#FBE3EE", "bottom": "#CDBBDE" },
+    "apartment_corridor": { "label": "中野家 · 楼梯 · 通往天台", "top": "#E7E2EA", "bottom": "#B9B2C4" },
+    "rooftop_dusk":       { "label": "天台 · 黄昏", "top": "#FCD9B8", "bottom": "#8E7BB5" },
+    "kitchen_evening":    { "label": "中野家 · 厨房 · 傍晚", "top": "#F7DCC4", "bottom": "#C79A82" },
+    "apartment_night":    { "label": "中野家 · 客厅 · 夜晚", "top": "#2E2B44", "bottom": "#15131F" }
+  },
+  "scenes": [
+    {
+      "id": "scene_living",
+      "background": "apartment_living",
+      "steps": [
+        { "type": "narrate", "text": "你站在中野家公寓门口，手里攥着一张写有地址的纸条。" },
+        { "type": "narrate", "text": "你接下了中野家的委托——成为五胞胎姐妹的家庭教师。原因由你决定：也许是为了报酬，也许是受人所托，也许只是某种说不清的契机。" },
+        { "type": "narrate", "text": "门开了。客厅里，五张一模一样的脸同时看向你。" },
+        { "type": "say", "who": "ichika", "text": "哦？就是你吗，我们的新家庭教师？" },
+        { "type": "narrate", "focus": "ichika", "text": "一花翘着腿，嘴角挂着从容的笑意，像是在打量一件有趣的玩具。" },
+        { "type": "say", "who": "nino", "text": "哼，我不需要什么家教。你别以为来了就能对我们指手画脚。" },
+        { "type": "narrate", "focus": "nino", "text": "二乃双臂交叉，视线锐利地刺过来。" },
+        { "type": "say", "who": "yotsuba", "text": "你好你好！我是四叶！多多指教哦！" },
+        { "type": "narrate", "focus": "yotsuba", "text": "四叶从沙发上弹起来，笑容灿烂得几乎让整个客厅都亮了几分。" },
+        { "type": "say", "who": "itsuki", "text": "……请多关照。" },
+        { "type": "narrate", "focus": "itsuki", "text": "五月端正地坐着，语气礼貌但带着距离，低头翻着手中的笔记本。" },
+        { "type": "narrate", "focus": "miku", "text": "而在沙发最边缘的位置——一个女孩没有抬头。她脖子上挂着一副蓝色耳机，右眼被倾斜的长刘海遮住，整个人像是刻意缩进了角落的阴影里。她正低头看一本封面印着战国武将插画的书。" },
+        { "type": "say", "who": "miku", "slot": "right", "face": "school_normal", "text": "……" },
+        { "type": "narrate", "focus": "miku", "text": "她就是你此行的第一个目标。中野家的三女——中野三玖。" }
+      ]
+    },
+    {
+      "id": "scene_corridor",
+      "background": "apartment_corridor",
+      "steps": [
+        { "type": "narrate", "text": "五姐妹各自散去，没有人打算配合你。" },
+        { "type": "narrate", "text": "你在公寓里寻找能单独交谈的对象，走上楼梯时，发现通往天台的门虚掩着。" },
+        { "type": "bg", "id": "rooftop_dusk" },
+        { "type": "narrate", "focus": "miku", "text": "推开门，三玖正靠在栏杆边。耳机依然挂在脖子上，手中的书已经合上。风吹动她遮住右眼的刘海，露出了一瞬间的侧脸。" },
+        {
+          "type": "choice",
+          "options": [
+            { "text": "在这里做什么？", "affection": 0, "goto": "scene_roof_calm" },
+            { "text": "那本是……《信长公记》？", "affection": 2, "goto": "scene_roof_history" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "scene_roof_calm",
+      "background": "rooftop_dusk",
+      "next": "scene_roof_ask",
+      "steps": [
+        { "type": "say", "who": "miku", "face": "school_normal", "text": "……看风景。" },
+        { "type": "narrate", "focus": "miku", "text": "她的回答只有三个字。目光没有从远处收回来。" },
+        { "type": "say", "who": "you", "text": "这里视野确实不错。不过风有点大。" },
+        { "type": "say", "who": "miku", "face": "school_normal", "text": "……" },
+        { "type": "narrate", "text": "沉默。像是投进湖里的石子，连涟漪都没有。" }
+      ]
+    },
+    {
+      "id": "scene_roof_history",
+      "background": "rooftop_dusk",
+      "next": "scene_roof_ask",
+      "steps": [
+        { "type": "narrate", "focus": "miku", "text": "你注意到她刚才合上的那本书的封面——是一本关于织田信长的历史读物。" },
+        { "type": "say", "who": "you", "text": "那本是……《信长公记》？" },
+        { "type": "narrate", "focus": "miku", "text": "三玖的手微微收紧，终于抬头看向你。被刘海遮住的右眼后面，是一双带着警惕、但也带着一丝意外兴趣的蓝色眼睛。" },
+        { "type": "say", "who": "miku", "face": "school_awake", "text": "……你知道？" },
+        { "type": "say", "who": "you", "text": "信长在本能寺之前给浓姬写的那封信，收在太田牛一的记录里。我读过。" },
+        { "type": "say", "who": "miku", "face": "school_awake", "text": "……你读过？" },
+        { "type": "narrate", "focus": "miku", "text": "她的声音比刚才大了一点。耳机在她脖颈上晃了晃。" }
+      ]
+    },
+    {
+      "id": "scene_roof_ask",
+      "background": "rooftop_dusk",
+      "steps": [
+        { "type": "narrate", "focus": "miku", "text": "无论如何，你成功让三玖开口了。这在这个家里算是一个小小的奇迹。" },
+        { "type": "say", "who": "miku", "face": "school_normal", "text": "你为什么要来当我们的家教？" },
+        { "type": "narrate", "focus": "miku", "text": "她问得很直接，眼神却飘向别处。" },
+        {
+          "type": "choice",
+          "options": [
+            { "text": "我需要这份工作。你们需要及格。仅此而已。", "affection": 0, "goto": "scene_why_a" },
+            { "text": "因为我想知道，你为什么不抬头看我。", "affection": 2, "goto": "scene_why_b" },
+            { "text": "受人所托。但既然来了，我会认真做。", "affection": 0, "goto": "scene_why_c" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "scene_why_a",
+      "background": "rooftop_dusk",
+      "next": "scene_kitchen",
+      "steps": [
+        { "type": "say", "who": "miku", "face": "school_normal", "text": "……仅此而已。" },
+        { "type": "narrate", "focus": "miku", "text": "她重复了一遍你的话，像是在咀嚼。然后她低下头，把耳机戴上——但没有播放音乐。" }
+      ]
+    },
+    {
+      "id": "scene_why_b",
+      "background": "rooftop_dusk",
+      "next": "scene_kitchen",
+      "steps": [
+        { "type": "narrate", "focus": "miku", "text": "三玖愣了一下。她似乎没料到你会这样回答。耳机线在她手指间轻轻绕了一圈。" },
+        { "type": "say", "who": "miku", "face": "school_blush", "text": "……你这个人，很奇怪。" },
+        { "type": "narrate", "focus": "miku", "text": "她偏过头，右眼被刘海重新遮住。但她的耳朵尖，微微红了。" }
+      ]
+    },
+    {
+      "id": "scene_why_c",
+      "background": "rooftop_dusk",
+      "steps": [
+        { "type": "say", "who": "miku", "face": "school_normal", "text": "……认真做。" },
+        { "type": "narrate", "focus": "miku", "text": "她重复了最后三个字，声音很轻。" },
+        { "type": "say", "who": "miku", "face": "school_normal", "text": "我成绩是五个人里最好的。不需要家教也可以。" },
+        { "type": "say", "who": "you", "text": "那为什么上次考试只有32分？" },
+        { "type": "narrate", "focus": "miku", "text": "三玖的肩膀僵了一下。" },
+        { "type": "say", "who": "miku", "face": "school_normal", "text": "……只是没认真而已。" },
+        { "type": "narrate", "focus": "miku", "text": "她说这话的时候，声音明显比之前小了。你知道她在撒谎——她在五姐妹中学习能力最突出，但缺乏的是面对考试的自信。遮住右眼的刘海、从不摘下的耳机，都是她把自己藏起来的方式。" },
+        {
+          "type": "choice",
+          "options": [
+            { "text": "那就证明给我看。下次考试，及格线以上。", "affection": 1, "goto": "scene_prove" },
+            { "text": "你不必证明给任何人看。但至少，证明给你自己。", "affection": 2, "goto": "scene_self" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "scene_prove",
+      "background": "rooftop_dusk",
+      "next": "scene_kitchen",
+      "steps": [
+        { "type": "say", "who": "miku", "face": "school_normal", "text": "……如果我做到了呢？" },
+        { "type": "say", "who": "you", "text": "那我就承认你不需要我。" },
+        { "type": "narrate", "focus": "miku", "text": "她看了你一眼，嘴角动了动——那个弧度太小了，你差点没有捕捉到。" },
+        { "type": "say", "who": "miku", "face": "school_normal", "text": "……好。" }
+      ]
+    },
+    {
+      "id": "scene_self",
+      "background": "rooftop_dusk",
+      "next": "scene_kitchen",
+      "steps": [
+        { "type": "narrate", "focus": "miku", "text": "三玖沉默了很久。风吹过天台，把她脖子上的耳机线吹得轻轻晃动。" },
+        { "type": "say", "who": "miku", "face": "school_blush", "text": "……你这个人，说话很奇怪。" },
+        { "type": "narrate", "focus": "miku", "text": "她偏过头。但她的耳朵尖，又一次微微红了。" },
+        { "type": "say", "who": "miku", "face": "school_blush", "text": "……我知道了。" }
+      ]
+    },
+    {
+      "id": "scene_kitchen",
+      "background": "kitchen_evening",
+      "steps": [
+        { "type": "narrate", "text": "你下楼时，厨房里传来一阵不大不小的骚动。" },
+        { "type": "say", "who": "nino", "text": "三玖你又进厨房了！上次你把酱油当成抹茶粉的事我还记得！" },
+        { "type": "say", "who": "miku", "face": "school_normal", "text": "……这次不一样。" },
+        { "type": "narrate", "focus": "miku", "text": "三玖站在灶台前，手里握着一盒抹茶粉，表情严肃得像是要上战场。锅里是……某种深绿色的、看不出原型的物体。" },
+        { "type": "say", "who": "yotsuba", "text": "闻起来……嗯……很健康！" },
+        { "type": "narrate", "focus": "yotsuba", "text": "四叶竖起大拇指，但表情出卖了她。" },
+        { "type": "narrate", "focus": "miku", "text": "三玖看了你一眼。只一眼。然后迅速把视线移回锅里，声音低得几乎听不见。" },
+        { "type": "say", "who": "miku", "face": "school_blush", "text": "……你要留下来吃饭吗。" },
+        {
+          "type": "choice",
+          "options": [
+            { "text": "好。我尝尝。", "affection": 2, "goto": "scene_stay" },
+            { "text": "下次吧。今天还要去找五月谈学习的事。", "affection": -1, "goto": "scene_leave" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "scene_stay",
+      "background": "kitchen_evening",
+      "next": "scene_ending",
+      "steps": [
+        { "type": "narrate", "focus": "miku", "text": "三玖的勺子停了一瞬。" },
+        { "type": "say", "who": "miku", "face": "school_normal", "text": "……嗯。" },
+        { "type": "narrate", "focus": "miku", "text": "她转身继续搅拌那锅绿色物体，但你注意到，她的肩膀明显放松了下来。" }
+      ]
+    },
+    {
+      "id": "scene_leave",
+      "background": "kitchen_evening",
+      "next": "scene_ending",
+      "steps": [
+        { "type": "say", "who": "miku", "face": "school_normal", "text": "……随便你。" },
+        { "type": "narrate", "focus": "miku", "text": "她的声音恢复了平静。但你离开厨房的时候，听到身后传来一声很轻的、几乎被锅铲声盖住的叹息。" }
+      ]
+    },
+    {
+      "id": "scene_ending",
+      "background": "apartment_night",
+      "steps": [
+        { "type": "narrate", "text": "夜幕降临。中野家的灯光一盏一盏亮起来。你坐在客厅的沙发上，翻开五姐妹的成绩单。三玖的名字旁边，是五个科目中唯一一个没有挂科的记录——社会。其余四科，全是红色。" },
+        { "type": "narrate", "text": "你合上成绩单，抬头看向走廊尽头。有一扇门紧闭着，门缝里透出微弱的灯光，隐约能听到耳机里漏出的音乐声。" },
+        { "type": "narrate", "text": "中野三玖。五姐妹中学习能力最强，却最不相信自己的人。" },
+        { "type": "narrate", "text": "明天，你还要来。" },
+        { "type": "end" }
+      ]
+    }
+  ]
+}

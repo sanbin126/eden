@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 章节卡片：已解锁白底粉色描边；未解锁灰底中性描边 -->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_enabled="false">
+        <shape android:shape="rectangle">
+            <solid android:color="?attr/edenColorNeutralBg" />
+            <corners android:radius="16dp" />
+            <stroke
+                android:width="1dp"
+                android:color="?attr/edenColorBorderNeutral" />
+        </shape>
+    </item>
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="?attr/edenColorSurface" />
+            <corners android:radius="16dp" />
+            <stroke
+                android:width="1dp"
+                android:color="?attr/edenColorBorder" />
+        </shape>
+    </item>
+</selector>

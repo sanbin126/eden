@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 新建专注任务弹窗：粉色卡片 + 任务名 + 计划番茄数 -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_character_detail"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:padding="24dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/focus_task_title"
+        android:textColor="?attr/edenColorAccent"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/et_task_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:background="@drawable/bg_edit_box"
+        android:hint="@string/focus_task_hint"
+        android:inputType="text"
+        android:maxLines="1"
+        android:padding="14dp"
+        android:textColor="?attr/edenColorTextPrimary"
+        android:textColorHint="?attr/edenColorTextHint"
+        android:textSize="15sp" />
+
+    <EditText
+        android:id="@+id/et_task_target"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/bg_edit_box"
+        android:hint="@string/focus_task_pomodoro_hint"
+        android:inputType="number"
+        android:maxLength="2"
+        android:maxLines="1"
+        android:padding="14dp"
+        android:text="@string/focus_task_pomodoro_default"
+        android:textColor="?attr/edenColorTextPrimary"
+        android:textColorHint="?attr/edenColorTextHint"
+        android:textSize="15sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="22dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/dialog_task_cancel"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_game_card"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:text="@string/common_cancel"
+            android:textColor="#B08FA0"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/dialog_task_confirm"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="12dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_btn_primary"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:text="@string/focus_task_add"
+            android:textColor="?attr/edenColorOnPrimary"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+</LinearLayout>

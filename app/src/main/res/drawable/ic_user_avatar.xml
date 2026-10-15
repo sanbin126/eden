@@ -6,12 +6,12 @@
 
     <!-- 这是背景圆圈 -->
     <path
-        android:fillColor="#4CAF50"
+        android:fillColor="?attr/edenColorSuccess"
         android:pathData="M20,20 m-20,0 a20,20 0 1,0 40,0 a20,20 0 1,0 -40,0" />
 
     <!-- 这是白色的图案 -->
     <path
-        android:fillColor="#FFFFFF"
+        android:fillColor="?attr/edenColorOnPrimary"
         android:pathData="M20,12a8,8 0,1,0 0,16a8,8 0,1,0 0,-16z" />
 
 </vector>

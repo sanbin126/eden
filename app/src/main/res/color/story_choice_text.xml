@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 选项文字：常态深色，选中（品牌粉实底）后转白 -->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:color="?attr/edenColorOnPrimary"
+        android:state_selected="true" />
+    <item android:color="?attr/edenColorTextPrimary" />
+</selector>

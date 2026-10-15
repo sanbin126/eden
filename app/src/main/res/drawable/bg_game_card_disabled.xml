@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 预留位卡片背景：更淡的粉灰，表示占位/敬请期待 -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <solid android:color="#F9F3F6" />
+    <corners android:radius="20dp" />
+    <stroke
+        android:width="1dp"
+        android:color="#EFDDE6"
+        android:dashWidth="4dp"
+        android:dashGap="4dp" />
+</shape>

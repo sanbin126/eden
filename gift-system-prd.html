@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>礼物 / 互动系统 PRD — Eden</title>
+<style>
+  :root{
+    --bg:#FDF7F9;
+    --surface:#FFFFFF;
+    --surface-muted:#F7EEF2;
+    --text:#2B1F26;
+    --text-muted:#8A7680;
+    --border:#EEDDE4;
+    --brand:#E0526F;
+    --brand-soft:#FDEBF0;
+    --brand-text:#8E1F38;
+    --ok:#1D9E6E;
+    --warn:#C98A0B;
+    --danger:#D63B45;
+    --radius:10px;
+    --radius-card:14px;
+    --shadow:0 1px 2px rgba(43,31,38,.05), 0 8px 24px rgba(43,31,38,.05);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:"PingFang SC","SF Pro Text",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+    font-size:15px;
+    line-height:1.75;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1180px;margin:0 auto;padding:0 24px 96px}
+  /* cover */
+  header.cover{
+    background:linear-gradient(160deg,#FDEBF0 0%,#FDF7F9 60%);
+    border-bottom:1px solid var(--border);
+    padding:56px 0 40px;
+    margin-bottom:40px;
+  }
+  .cover .kicker{
+    display:inline-block;font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--brand-text);background:var(--brand-soft);border:1px solid var(--border);
+    padding:4px 12px;border-radius:999px;font-weight:600;
+  }
+  .cover h1{font-size:34px;line-height:1.25;margin:18px 0 10px;letter-spacing:-.01em}
+  .cover p.lead{margin:0;color:var(--text-muted);max-width:720px;font-size:15px}
+  .meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+  .meta .chip{
+    background:var(--surface);border:1px solid var(--border);border-radius:999px;
+    padding:5px 14px;font-size:12.5px;color:var(--text-muted);box-shadow:var(--shadow);
+  }
+  .meta .chip b{color:var(--text);font-weight:600}
+  /* layout */
+  .grid{display:grid;grid-template-columns:220px 1fr;gap:40px;align-items:start}
+  nav.toc{position:sticky;top:24px;font-size:13.5px}
+  nav.toc .t{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--text-muted);margin-bottom:12px}
+  nav.toc a{
+    display:block;padding:6px 12px;color:var(--text-muted);text-decoration:none;
+    border-left:2px solid transparent;border-radius:0 6px 6px 0;
+  }
+  nav.toc a:hover{background:var(--surface);color:var(--text)}
+  nav.toc a.active{color:var(--brand-text);border-left-color:var(--brand);background:var(--brand-soft);font-weight:600}
+  main{min-width:0}
+  section{margin-bottom:52px;scroll-margin-top:24px}
+  h2{
+    font-size:22px;margin:0 0 6px;letter-spacing:-.01em;
+    display:flex;align-items:baseline;gap:10px;
+  }
+  h2 .num{
+    font-size:12px;font-weight:700;color:#fff;background:var(--brand);
+    border-radius:6px;padding:2px 8px;transform:translateY(-2px);
+  }
+  h3{font-size:16.5px;margin:28px 0 10px}
+  h4{font-size:14.5px;margin:20px 0 8px;color:var(--brand-text)}
+  .sub{color:var(--text-muted);font-size:13.5px;margin:0 0 18px}
+  p{margin:10px 0}
+  ul,ol{margin:10px 0;padding-left:22px}
+  li{margin:5px 0}
+  code{
+    font-family:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;font-size:12.5px;
+    background:var(--surface-muted);border:1px solid var(--border);border-radius:5px;padding:1px 6px;
+  }
+  /* cards / tables */
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-card);padding:22px 24px;box-shadow:var(--shadow)}
+  .card + .card{margin-top:16px}
+  table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.5px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-card);overflow:hidden}
+  th,td{padding:10px 14px;text-align:left;border-bottom:1px solid var(--border);vertical-align:top}
+  th{background:var(--surface-muted);font-weight:600;font-size:12.5px;color:var(--text-muted);white-space:nowrap}
+  tr:last-child td{border-bottom:none}
+  td.num,th.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+  .tag{display:inline-block;font-size:11.5px;font-weight:600;padding:2px 9px;border-radius:999px;border:1px solid var(--border);background:var(--surface-muted);color:var(--text-muted);white-space:nowrap}
+  .tag.p0{background:var(--brand-soft);color:var(--brand-text);border-color:#F6CDDA}
+  .tag.p1{background:#F1F0FA;color:#4B3F8E;border-color:#E0DDF2}
+  .tag.ok{background:#E7F8F1;color:var(--ok);border-color:#C9EEDF}
+  .tag.tbd{background:#FDF3E0;color:var(--warn);border-color:#F5E3C0}
+  /* blocks */
+  .callout{border-left:3px solid var(--brand);background:var(--brand-soft);border-radius:0 var(--radius) var(--radius) 0;padding:14px 18px;margin:16px 0;font-size:13.5px}
+  .callout.warn{border-left-color:var(--warn);background:#FDF7EA}
+  .callout.danger{border-left-color:var(--danger);background:#FDEEEF}
+  .callout b{color:var(--brand-text)}
+  .callout.warn b{color:#8A5E07}
+  .callout.danger b{color:#A82833}
+  .kv{display:grid;grid-template-columns:132px 1fr;gap:6px 16px;font-size:13.5px;margin:8px 0}
+  .kv dt{color:var(--text-muted)}
+  .kv dd{margin:0}
+  .flow{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-card);padding:20px;box-shadow:var(--shadow);overflow-x:auto}
+  .flow svg{display:block;margin:0 auto;max-width:100%;height:auto}
+  .legend{display:flex;gap:18px;flex-wrap:wrap;font-size:12.5px;color:var(--text-muted);margin-top:12px;justify-content:center}
+  .legend i{display:inline-block;width:11px;height:11px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+  .l-brand{background:var(--brand-soft);border:1.5px solid var(--brand)}
+  .l-neutral{background:var(--surface-muted);border:1.5px solid var(--border)}
+  /* footer */
+  footer{border-top:1px solid var(--border);margin-top:20px;padding-top:24px;color:var(--text-muted);font-size:12.5px}
+  @media (max-width:860px){
+    .grid{grid-template-columns:1fr}
+    nav.toc{position:static;display:none}
+    .cover h1{font-size:26px}
+  }
+</style>
+</head>
+<body>
+
+<header class="cover">
+  <div class="wrap">
+    <span class="kicker">Product Requirements</span>
+    <h1>礼物 / 互动系统 PRD</h1>
+    <p class="lead">为 Eden 陪伴养成 App 引入以「yen（円）」为核心的经济闭环：通过签到、聊天、触碰、专注获取货币，用投喂与送礼消耗货币并提升好感度，好感里程碑解锁专属台词与称号。数据纳入现有云同步。</p>
+    <div class="meta">
+      <span class="chip">版本 <b>v0.1 草稿</b></span>
+      <span class="chip">状态 <b>待评审</b></span>
+      <span class="chip">日期 <b>2026-10-14</b></span>
+      <span class="chip">范围 <b>新模块</b></span>
+      <span class="chip">角色 <b>中野三玖（单角色）</b></span>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+<div class="grid">
+
+  <nav class="toc" id="toc">
+    <div class="t">目录</div>
+    <a href="#s1">1 · 背景与目标</a>
+    <a href="#s2">2 · 范围</a>
+    <a href="#s3">3 · 核心模型</a>
+    <a href="#s4">4 · 功能需求</a>
+    <a href="#s5">5 · 共享规则与异常</a>
+    <a href="#s6">6 · 多设备同步要求</a>
+    <a href="#s7">7 · 待定问题</a>
+  </nav>
+
+  <main>
+
+  <!-- ================= 1 ================= -->
+  <section id="s1">
+    <h2><span class="num">01</span>背景与目标</h2>
+    <p class="sub">从观察到的问题，推导出产品应答。</p>
+
+    <p>当前 App 的互动方式集中在「聊天」与「触碰立绘」，两者都是<b>即时、无累积</b>的反馈：用户发一条消息得到一句回复，互动结束后没有任何可留存、可收集的成果。好感度虽然存在（不设上限、可持续累积），但唯一稳定的增长来源是聊天，导致两个问题：</p>
+    <ul>
+      <li><b>好感度增长单一且廉价</b>——聊天即可涨分，缺少「投入」与「回报」的张力。</li>
+      <li><b>缺少长期目标</b>——好感度只能被动堆积，缺少可主动推进、可期待的内容（现有每日小剧场是唯一钩子）。</li>
+    </ul>
+
+    <p>产品应答：引入一套<b>「获取 → 消费 → 成长 → 解锁」</b>的经济闭环，把互动从一次性对话，变成可累积、可收集、可炫耀的养成过程。</p>
+
+    <div class="card">
+      <h4 style="margin-top:0">目标（以可观察行为表述）</h4>
+      <ul style="margin-bottom:0">
+        <li>用户能通过至少 4 种日常行为获得货币，并在同一天内完成至少一次投喂或送礼。</li>
+        <li>投喂 / 送礼成为好感度增长的主要来源；聊天不再是增长主力。</li>
+        <li>每当好感度跨过 10 的倍数，用户能获得一个新的可见成果（称号 / 台词 / 徽章），无需依赖后端或人工配置。</li>
+        <li>货币、背包、解锁进度在同一账号的不同设备间保持一致（允许已知降级，见第 6 节）。</li>
+      </ul>
+    </div>
+
+    <div class="callout">
+      <b>命名决定</b>：货币名称为 <b>yen</b>（显示写作 <code>円</code>，语音与文案读作「yen」）。图标与视觉沿用 App 内已有的音符元素。<span class="tag">已确认</span>
+    </div>
+  </section>
+
+  <!-- ================= 2 ================= -->
+  <section id="s2">
+    <h2><span class="num">02</span>范围</h2>
+    <p class="sub">最小完整闭环，而非功能清单。</p>
+
+    <table>
+      <thead><tr><th>维度</th><th>内容</th></tr></thead>
+      <tbody>
+        <tr><td>进入条件</td><td>用户已进入主界面（已登录，角色立绘可见）。</td></tr>
+        <tr><td>P0 完成动作</td><td>获得货币 → 打开互动面板 → 选择饮料 / 食物 → 投喂 → 看到角色回应气泡与好感度上升。</td></tr>
+        <tr><td>完成证据（用户可见）</td><td>面板与主界面余额数值变化、好感度数值变化、角色头顶气泡台词、好感里程碑解锁提示与称号。</td></tr>
+        <tr><td>主要失败与恢复</td><td>余额不足或已达限次：消费被阻止、给出明确提示、货币与好感均不变，用户可通过其他产出途径补齐后再试。</td></tr>
+        <tr><td>P1 支撑</td><td>礼品（高价礼物）与每周限购、小游戏产出、徽章墙展示。</td></tr>
+        <tr><td>明确不在本版</td><td>专属<b>语音</b>（TTS / 音频资源）与专属<b>立绘皮肤</b>（多套美术素材）。本版以「专属台词 + 称号 + 徽章」承载解锁价值。</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ================= 3 ================= -->
+  <section id="s3">
+    <h2><span class="num">03</span>核心模型</h2>
+    <p class="sub">一次交互的全链路。</p>
+
+    <div class="flow">
+      <svg viewBox="0 0 720 470" role="img" aria-label="核心闭环流程图">
+        <defs>
+          <marker id="a" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto">
+            <path d="M1 1 L7 4 L1 7 Z" fill="#8A7680"/>
+          </marker>
+        </defs>
+        <!-- row1 产出 -->
+        <g fill="#F7EEF2" stroke="#EEDDE4" stroke-width="1">
+          <rect x="40" y="24" width="150" height="52" rx="10"/>
+          <rect x="204" y="24" width="150" height="52" rx="10"/>
+          <rect x="368" y="24" width="150" height="52" rx="10"/>
+          <rect x="532" y="24" width="148" height="52" rx="10"/>
+        </g>
+        <g fill="#2B1F26" font-size="14" text-anchor="middle" font-family="PingFang SC,sans-serif">
+          <text x="115" y="55">签到</text>
+          <text x="279" y="55">聊天</text>
+          <text x="443" y="55">触碰</text>
+          <text x="606" y="55">专注</text>
+        </g>
+        <path d="M115 76 L115 104 L360 104 L360 122" fill="none" stroke="#8A7680" stroke-width="1.5" stroke-linecap="round"/>
+        <path d="M279 76 L279 104" fill="none" stroke="#8A7680" stroke-width="1.5" stroke-linecap="round"/>
+        <path d="M443 76 L443 104" fill="none" stroke="#8A7680" stroke-width="1.5" stroke-linecap="round"/>
+        <path d="M606 76 L606 104 L360 104" fill="none" stroke="#8A7680" stroke-width="1.5" stroke-linecap="round"/>
+        <path d="M360 104 L360 116" fill="none" stroke="#8A7680" stroke-width="1.5" marker-end="url(#a)"/>
+        <!-- 货币 -->
+        <g fill="#FDEBF0" stroke="#E0526F" stroke-width="1.5">
+          <rect x="240" y="122" width="240" height="58" rx="29"/>
+        </g>
+        <text x="360" y="148" text-anchor="middle" font-size="15" font-weight="600" fill="#8E1F38" font-family="PingFang SC,sans-serif">yen（円）钱包</text>
+        <text x="360" y="168" text-anchor="middle" font-size="12" fill="#8E1F38" font-family="PingFang SC,sans-serif">余额 · 不可为负</text>
+        <path d="M340 180 C340 216, 200 194, 200 230" fill="none" stroke="#8A7680" stroke-width="1.5" marker-end="url(#a)"/>
+        <path d="M380 180 C380 216, 520 194, 520 230" fill="none" stroke="#8A7680" stroke-width="1.5" marker-end="url(#a)"/>
+        <!-- 消费 -->
+        <g fill="#F7EEF2" stroke="#EEDDE4" stroke-width="1">
+          <rect x="70" y="230" width="260" height="56" rx="10"/>
+          <rect x="390" y="230" width="260" height="56" rx="10"/>
+        </g>
+        <text x="200" y="255" text-anchor="middle" font-size="14" fill="#2B1F26" font-family="PingFang SC,sans-serif">投喂 饮料 / 食物</text>
+        <text x="200" y="274" text-anchor="middle" font-size="12" fill="#8A7680" font-family="PingFang SC,sans-serif">12 / 30 yen · 每日限次</text>
+        <text x="520" y="255" text-anchor="middle" font-size="14" fill="#2B1F26" font-family="PingFang SC,sans-serif">赠送礼品</text>
+        <text x="520" y="274" text-anchor="middle" font-size="12" fill="#8A7680" font-family="PingFang SC,sans-serif">80–120 yen · 每周限购</text>
+        <path d="M200 286 C200 318, 300 300, 300 336" fill="none" stroke="#8A7680" stroke-width="1.5" marker-end="url(#a)"/>
+        <path d="M520 286 C520 318, 420 300, 420 336" fill="none" stroke="#8A7680" stroke-width="1.5" marker-end="url(#a)"/>
+        <!-- 好感 -->
+        <g fill="#F7EEF2" stroke="#EEDDE4" stroke-width="1">
+          <rect x="190" y="336" width="340" height="56" rx="10"/>
+        </g>
+        <text x="360" y="361" text-anchor="middle" font-size="14" fill="#2B1F26" font-family="PingFang SC,sans-serif">好感度 +2 ~ +10</text>
+        <text x="360" y="380" text-anchor="middle" font-size="12" fill="#8A7680" font-family="PingFang SC,sans-serif">角色气泡回应 + 立绘动作</text>
+        <path d="M360 392 L360 424" fill="none" stroke="#8A7680" stroke-width="1.5" marker-end="url(#a)"/>
+        <!-- 解锁 -->
+        <g fill="#FDEBF0" stroke="#E0526F" stroke-width="1.5">
+          <rect x="200" y="424" width="320" height="24" rx="12"/>
+        </g>
+        <text x="360" y="441" text-anchor="middle" font-size="13" font-weight="600" fill="#8E1F38" font-family="PingFang SC,sans-serif">里程碑解锁：台词 · 称号 · 徽章</text>
+      </svg>
+      <div class="legend">
+        <span><i class="l-brand"></i>经济核心 / 解锁成果</span>
+        <span><i class="l-neutral"></i>行为与中间节点</span>
+      </div>
+    </div>
+
+    <h3>共享对象</h3>
+    <table>
+      <thead><tr><th>对象</th><th>定义</th><th>归属</th></tr></thead>
+      <tbody>
+        <tr><td>钱包（yen 余额）</td><td>用户当前持有的货币数量，非负整数。</td><td>账号级</td></tr>
+        <tr><td>产出配额</td><td>每个产出途径在「自然日」内已使用的次数 / 已获得的货币量。</td><td>账号级</td></tr>
+        <tr><td>好感度</td><td>非负整数，<b>不设上限</b>，已有对象，本版新增消费类增长来源。</td><td>账号级（按角色）</td></tr>
+        <tr><td>消费记录</td><td>某物品在「自然日 / 自然周」内已投喂 / 赠送的次数。</td><td>账号级</td></tr>
+        <tr><td>里程碑解锁状态</td><td>好感度每跨过 10 的倍数所解锁的台词包 / 称号 / 徽章。</td><td>账号级（按角色）</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ================= 4 ================= -->
+  <section id="s4">
+    <h2><span class="num">04</span>功能需求</h2>
+    <p class="sub">本部分为文档主体，按模块组织。</p>
+
+    <!-- M1 -->
+    <h3 id="m1">M1 · 货币：yen 钱包 <span class="tag p0">P0</span></h3>
+    <div class="kv">
+      <dt>目的</dt><dd>提供唯一通用货币，让「互动行为」有可累积的成果与可消耗的代价。</dd>
+      <dt>展示位置</dt><dd>主界面可见余额；互动面板顶部固定展示余额。</dd>
+      <dt>数值规则</dt><dd>非负整数，最小值 0。任何消费都不允许使余额小于 0；余额不足以支付时消费被拒绝（见 F-EX-01）。</dd>
+      <dt>变更时机</dt><dd>每次产出或消费成功后即时更新并持久化，同步信号随之触发（见第 6 节）。</dd>
+      <dt>不变量</dt><dd>任何时刻「余额 = 累计产出 − 累计消费」，且恒 ≥ 0。</dd>
+    </div>
+
+    <!-- M2 -->
+    <h3 id="m2">M2 · 产出规则 <span class="tag p0">P0</span></h3>
+    <p>所有产出计入<b>自然日</b>配额（00:00 重置，见第 5 节）。下表为默认值，均为可配置项。</p>
+    <table>
+      <thead>
+        <tr><th>来源</th><th class="num">单次</th><th class="num">日上限</th><th>触发时机</th><th>去重 / 限制</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>签到</td><td class="num">+20</td><td class="num">一次 / 天</td><td>用户点击签到</td><td>连续签到第 N 天：<code>20 + min(N−1,4)×5</code>，封顶 <b>40</b>。断签重置连续计数，已获得货币不回收。</td></tr>
+        <tr><td>聊天</td><td class="num">+2 / 条</td><td class="num">30</td><td>用户发送一条消息后</td><td>按用户消息条数计，AI 消息不计。</td></tr>
+        <tr><td>触碰立绘</td><td class="num">+1</td><td class="num">10</td><td>用户点击立绘（头 / 耳机 / 胸 / 其他任一区域）</td><td>3 秒冷却，冷却期内重复点击不产出。</td></tr>
+        <tr><td>专注完成</td><td class="num">+10 / 段</td><td class="num">60</td><td>一段专注计时正常结束</td><td>中途放弃不计。</td></tr>
+        <tr><td>每日首次进入</td><td class="num">+5</td><td class="num">一次 / 天</td><td>当天首次进入主界面</td><td>—</td></tr>
+        <tr><td>生日 / 纪念日 / 节日</td><td class="num">+30</td><td class="num">每次事件一次</td><td>当天首次进入时结算</td><td>事件来源复用现有纪念日配置。</td></tr>
+        <tr><td>小游戏胜利</td><td class="num">+5</td><td class="num">[TBD]</td><td>小游戏胜利结算</td><td><span class="tag p1">P1</span> 依赖小游戏是否上线。</td></tr>
+      </tbody>
+    </table>
+    <div class="callout">
+      <b>设计意图</b>：日产出估算约 <b>55 ~ 125 yen</b>。目标是让「随手玩一天」足够买到 1–2 个食物，并在一周内攒出一个礼品，不制造强肝压力。
+    </div>
+
+    <!-- M3 -->
+    <h3 id="m3">M3 · 互动面板（商店 / 投喂） <span class="tag p0">P0</span></h3>
+    <h4>布局区域与职责</h4>
+    <table>
+      <thead><tr><th>区域</th><th>职责</th></tr></thead>
+      <tbody>
+        <tr><td>顶部栏</td><td>显示当前 yen 余额；提供关闭入口。</td></tr>
+        <tr><td>分类切换</td><td>饮料 / 食物 / 礼品 三个分类（礼品为 P1）。默认选中「食物」。</td></tr>
+        <tr><td>商品列表</td><td>每个商品卡片展示：图标、名称、价格、可获得好感度、当日 / 当周剩余次数。</td></tr>
+        <tr><td>底部提示区</td><td>显示当前选中商品的限次状态或操作反馈。</td></tr>
+      </tbody>
+    </table>
+    <h4>商品卡片状态</h4>
+    <table>
+      <thead><tr><th>状态</th><th>判定条件</th><th>表现</th></tr></thead>
+      <tbody>
+        <tr><td>可购买</td><td>余额 ≥ 价格 且 未达限次</td><td>卡片正常，可点击。</td></tr>
+        <tr><td>余额不足</td><td>余额 &lt; 价格</td><td>价格以弱化色显示，标注「yen 不足」；点击后提示，不扣款。</td></tr>
+        <tr><td>已达限次</td><td>当日 / 当周次数用尽</td><td>卡片变灰，标注「今日已投喂」/「本周已赠送」，不可点击。</td></tr>
+      </tbody>
+    </table>
+    <p class="sub">空状态：分类下无商品时展示占位文案（正常配置下不应出现）。</p>
+
+    <!-- M4 -->
+    <h3 id="m4">M4 · 投喂与送礼 <span class="tag p0">P0</span></h3>
+    <h4>链路</h4>
+    <p>点击商品 → 校验（余额 / 限次）→ 扣减余额 → 增加好感度 → 记录消费次数 → 返回角色回应 → 更新界面。</p>
+    <h4>处理规则</h4>
+    <ul>
+      <li>校验必须先于扣款；任一项不通过则整体不生效（原子性）。</li>
+      <li>好感度增加量按物品定义（见下表），<b>不设上限</b>，可无限累积。</li>
+      <li>好感度每跨过 10 的倍数时，同步登记里程碑解锁（红点 + 后续 AI 提示）。</li>
+    </ul>
+    <h4>物品与数值（默认表）</h4>
+    <table>
+      <thead><tr><th>类别</th><th class="num">单价</th><th class="num">好感</th><th>限次</th><th>定位</th></tr></thead>
+      <tbody>
+        <tr><td>饮料</td><td class="num">12 yen</td><td class="num">+2</td><td>每日 3 次</td><td>高频、低成本，维持日常手感。</td></tr>
+        <tr><td>食物</td><td class="num">30 yen</td><td class="num">+4</td><td>每日 2 次</td><td>中档主力。</td></tr>
+        <tr><td>礼品</td><td class="num">80–120 yen</td><td class="num">+6 ~ +10</td><td>每周限购 <span class="tag tbd">数量待定</span></td><td>贵重，制造仪式感与大额跳跃。<span class="tag p1">P1</span></td></tr>
+      </tbody>
+    </table>
+    <h4>结果与状态变化</h4>
+    <ul>
+      <li>余额减少、对应限次计数 +1、好感度上升（如未满）。</li>
+      <li>立绘播放一次动作（食物 / 饮料 → 轻快弹跳；礼品 → 害羞类动作）。</li>
+      <li>角色头顶气泡展示一句该物品的专属台词（见 M5）。</li>
+    </ul>
+
+    <!-- M5 -->
+    <h3 id="m5">M5 · 角色回应 <span class="tag p0">P0</span></h3>
+    <ul>
+      <li>每个物品配置 <b>≥ 2 条</b>专属台词，投喂时随机抽取一条，避免重复感。</li>
+      <li>展示形式复用现有立绘头顶气泡：单次展示约 <b>2.5 秒</b>后自动消失。</li>
+      <li>同一物品连续投喂仍会回应，台词在池内轮换。</li>
+      <li>气泡文案口吻与现有台词池一致（三玖语气：内敛、略带别扭、简短 1–2 句）。</li>
+      <li>示例：投喂咖啡 → 「唔…这个味道，谢谢。」；赠送耳机周边 → 「你、你怎么知道我想要这个…」</li>
+    </ul>
+    <div class="callout warn">
+      本版<b>不含语音</b>。回应仅为「文字气泡 + 立绘动作」，不引入语音合成或音频资源。
+    </div>
+
+    <!-- M6 -->
+    <h3 id="m6">M6 · 好感度体系重构 <span class="tag p0">P0</span></h3>
+    <p>投喂 / 送礼成为增长主引擎，聊天降权为陪伴型行为。</p>
+    <table>
+      <thead><tr><th>来源</th><th>调整前</th><th>调整后</th></tr></thead>
+      <tbody>
+        <tr><td>聊天</td><td>每条用户消息 +1，无上限</td><td><b>每 3 条 +1</b>，每日上限 +5</td></tr>
+        <tr><td>专注完成</td><td>每段 +1，无上限</td><td>每段 +1，每日上限 +4</td></tr>
+        <tr><td>投喂 / 送礼</td><td>—（新增）</td><td>每次 +2 ~ +10（见 M4）</td></tr>
+      </tbody>
+    </table>
+    <div class="callout">
+      <b>每日好感预算</b>：聊天 +5、专注 +4、投喂 / 送礼按限次叠加，合计约 <b>+20 / 天</b>。好感度不设上限，但每日产出有配额，成长仍需持续陪伴而非一次刷满。
+    </div>
+
+    <!-- M7 -->
+    <h3 id="m7">M7 · 里程碑解锁（台词 + 称号） <span class="tag p0">P0</span></h3>
+    <ul>
+      <li>沿用现有规则：好感度每跨过 10 的倍数（10 / 20 / 30 / …）解锁一个里程碑；好感度不设上限，里程碑可持续向下延伸。</li>
+      <li>每个里程碑产出：一个<b>称号</b> + 一组<b>专属台词</b> + 一个<b>徽章</b>（用于展示收集进度）。</li>
+      <li>解锁即时提示：主界面出现提示气泡或卡片，告知解锁内容。</li>
+      <li>未查看的解锁以<b>红点</b>标记，数字 = 已解锁数 − 已查看数（沿用现有红点语义）。</li>
+      <li>已解锁列表可查看，展示称号、台词包名称与徽章。</li>
+      <li>称号可选中并在主界面展示（设置一个当前佩戴称号）。</li>
+    </ul>
+    <table>
+      <thead><tr><th>里程碑</th><th>称号（示例，具体文案待定）</th><th>内容</th></tr></thead>
+      <tbody>
+        <tr><td>好感 10</td><td>[TBD]</td><td>称号 + 台词包 + 徽章</td></tr>
+        <tr><td>好感 20</td><td>[TBD]</td><td>同上</td></tr>
+        <tr><td>…</td><td>[TBD]</td><td>每 10 一档，共 10 档</td></tr>
+      </tbody>
+    </table>
+    <div class="callout warn">
+      <b>能力边界</b>：本版解锁成果接受「<b>台词 + 称号 + 徽章</b>」三种形态。专属<b>语音</b>与专属<b>立绘皮肤</b>不在本版范围，作为后续版本预留（详见第 7 节）。
+    </div>
+
+    <!-- M8 -->
+    <h3 id="m8">M8 · 限次与每日重置 <span class="tag p0">P0</span></h3>
+    <ul>
+      <li>所有「每日」限次按用户设备的<b>本地自然日</b>（00:00）重置。</li>
+      <li>「每周」限次按本地自然周（周一 00:00）重置。</li>
+      <li>重置采用惰性触发：用户当天首次触发相关行为时才结算并刷新计数器，无需后台定时任务。</li>
+      <li>设备时区或系统时间大幅回拨时，以「不重复发放」为优先：已发放的当天配额不因回拨而二次发放。</li>
+    </ul>
+  </section>
+
+  <!-- ================= 5 ================= -->
+  <section id="s5">
+    <h2><span class="num">05</span>共享规则与异常</h2>
+    <p class="sub">跨模块统一口径，各功能模块引用本节而非重复定义。</p>
+
+    <h3>5.1 计算与取整</h3>
+    <ul>
+      <li>货币与好感度均为整数；好感度<b>不设上限</b>，可持续累积。</li>
+      <li>连续签到奖励：<code>20 + min(连续天数 − 1, 4) × 5</code>，取值 20 / 25 / 30 / 35 / 40。</li>
+      <li>聊天好感：累计用户消息数每达到 3 条计 1 点，日内计入上限 +5 后不再增长。</li>
+    </ul>
+
+    <h3>5.2 异常与边界</h3>
+    <table>
+      <thead><tr><th>ID</th><th>场景</th><th>预期行为</th></tr></thead>
+      <tbody>
+        <tr><td>F-EX-01</td><td>余额不足时投喂 / 送礼</td><td>不扣款、不加好感、记录不变；提示「yen 不足」。</td></tr>
+        <tr><td>F-EX-02</td><td>已达当日 / 当周限次</td><td>不扣款、不加好感；提示「今日已投喂」/「本周已赠送」。</td></tr>
+        <tr><td>F-EX-03</td><td>投喂跨过 10 的倍数里程碑</td><td>扣款与回应正常，同步登记里程碑解锁（红点提示）。</td></tr>
+        <tr><td>F-EX-04</td><td>余额显示与本地记录不一致</td><td>以本地持久化记录为准刷新界面，不出现负值。</td></tr>
+        <tr><td>F-EX-05</td><td>同步失败（网络异常）</td><td>本地数据保留并待下次重试，用户当前操作不被打断（见第 6 节）。</td></tr>
+        <tr><td>F-EX-06</td><td>系统时间回拨 / 跨天</td><td>按 M8 惰性重置规则处理，不重复发放。</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ================= 6 ================= -->
+  <section id="s6">
+    <h2><span class="num">06</span>多设备同步要求</h2>
+    <p class="sub">以产品行为描述，具体实现由技术方案决定。</p>
+
+    <p>钱包余额、产出配额、消费记录、里程碑解锁状态<b>必须纳入现有云同步</b>，与聊天、日记、好感度等数据同级，保证同一账号在换设备 / 重装后不丢失进度。</p>
+
+    <div class="callout danger">
+      <b>已知风险</b>：现有同步策略为「最后写入者胜出」（以时间戳较新的一侧覆盖）。货币与配额属于<b>累加型数据</b>，若两台设备离线期间各自产生进度，合并时可能丢失其中一方成果（表现为「币变少」或「次数被重置」）。
+      <br><br>
+      <b>本版处理</b>：MVP 接受该降级，但需满足——(1) 冲突合并后余额<b>永不为负</b>；(2) 好感度不设上限，合并后<b>只增不减</b>；（3）不因合并导致解锁内容倒退（已解锁里程碑不回退）。
+    </div>
+
+    <p>后续增强（<span class="tag p1">P1</span>）：将「每日产出」改为按<b>日期维度</b>记录，合并时对同一天取并集（与现有签到「只增不减」的合并思路一致），从而消除丢币问题。</p>
+  </section>
+
+  <!-- ================= 7 ================= -->
+  <section id="s7">
+    <h2><span class="num">07</span>待定问题</h2>
+    <p class="sub">仅保留会影响权限、数值、核心流程或不可逆结果的未决项。</p>
+    <table>
+      <thead><tr><th>#</th><th>问题</th><th>影响</th><th>建议</th></tr></thead>
+      <tbody>
+        <tr><td>Q1</td><td>货币显示名确认为「yen / 円」？图标形态？</td><td>全量文案与视觉</td><td>按本次确认执行，图标沿用音符元素。</td></tr>
+        <tr><td>Q2</td><td>各物品的具体清单、命名与好感数值（尤其三玖的偏好物）</td><td>内容与数值平衡</td><td>先按 饮料 12 / 食物 30 落地，清单随美术与文案补齐。</td></tr>
+        <tr><td>Q3</td><td>好感度不设上限后，里程碑（每 10 点）的称号 / 台词内容如何持续供给？</td><td>长期内容量与维护成本</td><td>先落地前若干档，后续按需补充；不阻塞 MVP。</td></tr>
+        <tr><td>Q4</td><td>礼品每周限购数量</td><td>经济平衡</td><td>建议每周 2–3 件。</td></tr>
+        <tr><td>Q5</td><td>是否上线小游戏产出</td><td>M2 产出项</td><td>P1，视小游戏进度。</td></tr>
+        <tr><td>Q6</td><td>称号与台词包的具体文案（10 档）</td><td>内容</td><td>由文案补齐，不阻塞 MVP。</td></tr>
+        <tr><td>Q7</td><td>专属语音 / 立绘皮肤是否进入下一版本</td><td>能力建设与美术资源</td><td>本版不做；预留里程碑成果位。</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <footer>
+    Eden · 礼物 / 互动系统 PRD · v0.1 草稿 · 2026-10-14 · 本文档为产品需求文档，不含实现细节。
+  </footer>
+
+  </main>
+</div>
+</div>
+
+<script>
+(function(){
+  var links = Array.prototype.slice.call(document.querySelectorAll('nav.toc a'));
+  var sections = links.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  function onScroll(){
+    var pos = window.scrollY + 90, idx = 0;
+    sections.forEach(function(s,i){ if(s && s.offsetTop <= pos) idx = i; });
+    links.forEach(function(a,i){ a.classList.toggle('active', i === idx); });
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+})();
+</script>
+</body>
+</html>
