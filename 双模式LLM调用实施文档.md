@@ -687,7 +687,7 @@ cd c:\Users\suwei\Desktop\eden
 1. 启动后端：`cd backend` → 按 README/`requirements.txt` 起 FastAPI（默认 8001）。
 2. 确认 `local.properties` 未配 `EDEN_LLM_DIRECT_API_KEY`（或设置页开关关闭）。
 3. 进设置页 → "LLM 调用模式" 应为**关闭**，副标题显示"后端代理（推荐）"。
-4. 发一条消息：应正常流式回复；记忆压缩（连续聊够 40 条触发）也走后端。
+4. 发一条消息：应正常流式回复；记忆压缩（未摘要消息攒够 80 条触发）也走后端。
 5. 关掉后端再发消息：应报"无法连接服务器"类错误 —— 证明请求确实走了后端。
 
 ### 5.3 direct 模式
@@ -719,7 +719,7 @@ cd c:\Users\suwei\Desktop\eden
 | --- | --- | --- |
 | 1. 超时调大 | `DirectClient` read 90s / call 120s | 长回复不中断 |
 | 2. 指数退避重试 3 次 | `DirectRetryInterceptor` | 让上游返回 500，日志可见 1s/2s/4s 重试 |
-| 3. 裁剪上下文 | 复用现有 `ChatSession.MAX_HISTORY=24` | 历史消息不会无限增长 |
+| 3. 裁剪上下文 | 复用现有 `ChatSession.MAX_HISTORY=50` | 历史消息不会无限增长 |
 | 4. 换轻量模型 | `EDEN_LLM_DIRECT_MODEL` 可配 | 设为 flash 版对比延迟 |
 | 5. 检查网络/DNS | 现有 `authErrorMessage` | 断网/改错误域名验证提示 |
 | 6. 打印请求体/响应/耗时 | `DirectLoggingInterceptor`（仅 debug） | logcat 过滤 `LLM-DIRECT` |

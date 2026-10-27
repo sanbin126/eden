@@ -15,11 +15,12 @@
     "itsuki":  { "name": "五月", "slot": "right" }
   },
   "backgrounds": {
-    "apartment_living":   { "label": "中野家 · 客厅 · 放学后", "top": "#FBE3EE", "bottom": "#CDBBDE" },
-    "apartment_corridor": { "label": "中野家 · 楼梯 · 通往天台", "top": "#E7E2EA", "bottom": "#B9B2C4" },
-    "rooftop_dusk":       { "label": "天台 · 黄昏", "top": "#FCD9B8", "bottom": "#8E7BB5" },
-    "kitchen_evening":    { "label": "中野家 · 厨房 · 傍晚", "top": "#F7DCC4", "bottom": "#C79A82" },
-    "apartment_night":    { "label": "中野家 · 客厅 · 夜晚", "top": "#2E2B44", "bottom": "#15131F" }
+    "apartment_living":   { "label": "中野家 · 客厅 · 放学后", "top": "#FBE3EE", "bottom": "#CDBBDE", "image": "story_bg/bg_nakano_living_day.png" },
+    "apartment_corridor": { "label": "中野家 · 走廊 · 通往天台", "top": "#E7E2EA", "bottom": "#B9B2C4", "image": "story_bg/bg_nakano_hallway_night.png" },
+    "rooftop_dusk":       { "label": "天台", "top": "#FCD9B8", "bottom": "#8E7BB5", "image": "story_bg/bg_nakano_rooftop_day.png" },
+    "rooftop_first_meet_cg": { "label": "天台 · 黄昏", "top": "#FCD9B8", "bottom": "#8E7BB5", "image": "story_cg/cg_rooftop_first_meet.png" },
+    "kitchen_evening":    { "label": "中野家 · 厨房 · 傍晚", "top": "#F7DCC4", "bottom": "#C79A82", "image": "story_bg/bg_nakano_kitchen_evening.png" },
+    "apartment_night":    { "label": "中野家 · 客厅 · 夜晚", "top": "#2E2B44", "bottom": "#15131F", "image": "story_bg/bg_nakano_living_night.png" }
   },
   "scenes": [
     {
@@ -48,7 +49,7 @@
       "steps": [
         { "type": "narrate", "text": "五姐妹各自散去，没有人打算配合你。" },
         { "type": "narrate", "text": "你在公寓里寻找能单独交谈的对象，走上楼梯时，发现通往天台的门虚掩着。" },
-        { "type": "bg", "id": "rooftop_dusk" },
+        { "type": "bg", "id": "rooftop_first_meet_cg" },
         { "type": "narrate", "focus": "miku", "text": "推开门，三玖正靠在栏杆边。耳机依然挂在脖子上，手中的书已经合上。风吹动她遮住右眼的刘海，露出了一瞬间的侧脸。" },
         {
           "type": "choice",
@@ -214,5 +215,12 @@
         { "type": "end" }
       ]
     }
-  ]
+  ],
+  "sideStory": {
+    "threshold": 3,
+    "routes": [
+      { "id": "a", "label": "支线A", "title": "天台的温度", "file": "side_01_a", "condition": "high" },
+      { "id": "b", "label": "支线B", "title": "没有说出口的话", "file": "side_01_b", "condition": "low" }
+    ]
+  }
 }

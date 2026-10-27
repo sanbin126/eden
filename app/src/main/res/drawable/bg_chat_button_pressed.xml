@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 蓝色绣球主题主聊天按钮（按下）：描边加深，玻璃芯泛淡紫 -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- 1. 外圈：加深的蓝紫渐变描边 -->
+    <item>
+        <shape android:shape="oval">
+            <gradient
+                android:angle="315"
+                android:endColor="#9A75D8"
+                android:startColor="#7B92DE"
+                android:type="linear" />
+        </shape>
+    </item>
+
+    <!-- 2. 玻璃白边 -->
+    <item
+        android:bottom="3dp"
+        android:left="3dp"
+        android:right="3dp"
+        android:top="3dp">
+        <shape android:shape="oval">
+            <solid android:color="#9FFFFFFF" />
+        </shape>
+    </item>
+
+    <!-- 3. 磨砂芯：整体偏淡紫，按压反馈更明显 -->
+    <item
+        android:bottom="5dp"
+        android:left="5dp"
+        android:right="5dp"
+        android:top="5dp">
+        <shape android:shape="oval">
+            <gradient
+                android:angle="270"
+                android:endColor="#D9DCD2FF"
+                android:startColor="#D9EFF0FF"
+                android:type="linear" />
+        </shape>
+    </item>
+
+    <!-- 4. 顶部柔光高光（按下时收敛一些） -->
+    <item
+        android:bottom="5dp"
+        android:left="5dp"
+        android:right="5dp"
+        android:top="5dp">
+        <shape android:shape="oval">
+            <gradient
+                android:centerX="0.5"
+                android:centerY="0.12"
+                android:endColor="#00FFFFFF"
+                android:gradientRadius="56dp"
+                android:startColor="#4DFFFFFF"
+                android:type="radial" />
+        </shape>
+    </item>
+
+    <!-- 5. 右下角玫瑰刻花：正片叠底 + 径向擦除，只保留右下主花 -->
+    <item android:drawable="@drawable/chat_engrave_layer" />
+</layer-list>

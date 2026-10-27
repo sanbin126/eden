@@ -1,0 +1,502 @@
+{
+  "id": "miku_chapter_02",
+  "index": 2,
+  "chapterLabel": "第二章",
+  "title": "图文书库的午后",
+  "synopsis": "一周过去，五姐妹依旧隔着你一层看不见的墙。午休的图书室里，借阅卡上反复出现的同一个名字，让你第一次真正走进了那个耳机女孩的世界。",
+  "unlock": { "prevChapter": 1, "affection": 0 },
+  "reward": { "affection": 5 },
+  "bgm": "daily_piano",
+  "casts": {
+    "ichika":  { "name": "一花", "slot": "left" },
+    "nino":    { "name": "二乃", "slot": "left" },
+    "miku":    { "name": "三玖", "slot": "center" },
+    "yotsuba": { "name": "四叶", "slot": "right" },
+    "itsuki":  { "name": "五月", "slot": "right" }
+  },
+  "backgrounds": {
+    "library":            { "label": "学校 · 图书室 · 午休", "top": "#F4E9D8", "bottom": "#B7A78D", "image": "story_bg/bg_school_library_noon.png" },
+    "school_corridor":    { "label": "学校 · 走廊 · 午休后半", "top": "#E9EFF3", "bottom": "#B4C2CD", "image": "story_bg/bg_school_hallway_noon.png" },
+    "courtyard_dusk":     { "label": "学校 · 中庭 · 长椅 · 放学后", "top": "#FBD9B4", "bottom": "#8F7FA8", "image": "story_bg/bg_school_courtyard_evening.png" },
+    "courtyard_bench_cg": { "label": "学校 · 中庭 · 长椅", "top": "#FBD9B4", "bottom": "#8F7FA8", "image": "story_cg/cg_courtyard_bench.png" },
+    "word_chain_cg":      { "label": "学校 · 中庭 · 长椅", "top": "#FBD9B4", "bottom": "#8F7FA8", "image": "story_cg/cg_word_chain.png" },
+    "kitchen_evening":    { "label": "中野家 · 厨房 · 傍晚", "top": "#F7DCC4", "bottom": "#C79A82", "image": "story_bg/bg_nakano_kitchen_evening.png" },
+    "dining_evening":     { "label": "中野家 · 餐桌 · 晚饭", "top": "#F3D9C2", "bottom": "#A8826C", "image": "story_bg/bg_nakano_dining_evening.png" },
+    "corridor_night":     { "label": "中野家 · 走廊 · 夜晚", "top": "#2E2B44", "bottom": "#15131F", "image": "story_bg/bg_nakano_hallway_night.png" },
+    "door_night_cg":      { "label": "中野家 · 走廊 · 夜晚", "top": "#2E2B44", "bottom": "#15131F", "image": "story_cg/cg_door_night.png" },
+    "apartment_exterior": { "label": "公寓外 · 夜风", "top": "#1F2233", "bottom": "#0C0E16", "image": "story_bg/bg_nakano_entrance_night.png" }
+  },
+  "scenes": [
+    {
+      "id": "scene_library",
+      "background": "library",
+      "steps": [
+        { "type": "narrate", "text": "距离你第一次踏进中野家，已经过去了一周。" },
+        { "type": "narrate", "text": "这一周里，你和五姐妹的交集几乎为零。一花总是在你开口之前就用笑容把话题引开，二乃干脆当你不存在，四叶虽然热情但永远在忙社团的事，五月礼貌而疏远地收下你整理的学习资料，然后一言不发地离开。" },
+        { "type": "narrate", "focus": "miku", "text": "至于三玖——她看到你走近就会起身。不慌不忙，不解释，只是合上书，戴上耳机，从你身边走过去。你甚至不确定她有没有意识到自己在躲你，还是说那已经成了她面对「不必要的人际关系」时的本能反应。" },
+        { "type": "narrate", "text": "今天午休，你没有去中野家。你去了学校图书室。" },
+        { "type": "narrate", "text": "书架上，历史区那一排关于战国时代的书，几乎每一本的借阅卡上都有同一个名字：中野三玖。" },
+        { "type": "narrate", "text": "她读得很杂——信长、秀吉、家康、武田信玄、上杉谦信，从通史到人物传记到轶闻集，甚至有一本《甲阳军鉴》的现代译注本，书脊已经被翻得起了毛边。" },
+        { "type": "narrate", "text": "你抽出一本《信长公记》的时候，听到身后传来极轻的脚步声，然后停住了。" },
+        { "type": "say", "who": "miku", "face": "school_awake", "text": "……" },
+        { "type": "narrate", "focus": "miku", "text": "她站在书架另一侧的通道口，看着你手里的书。那摞要归还的书抱在胸前，遮住了她半张脸，但你看到她的手指在书脊上收紧了一下。" },
+        {
+          "type": "choice",
+          "options": [
+            { "text": "这本我还没看完。你要先还的话，我过两天再借。", "affection": 0, "goto": "scene_library_a" },
+            { "text": "你借的这些都读完了？《甲阳军鉴》那本，我翻了十页就放下了。", "affection": 2, "goto": "scene_library_b" },
+            { "text": "不用躲。我只是来还书。", "affection": 1, "goto": "scene_library_c" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "scene_library_a",
+      "background": "library",
+      "next": "scene_bookshelf",
+      "steps": [
+        { "type": "say", "who": "miku", "face": "school_normal", "text": "……不用。你先看。" },
+        { "type": "narrate", "text": "她把那摞书放在还书台上，转身就要走。" },
+        { "type": "say", "who": "you", "text": "三玖。" },
+        { "type": "narrate", "focus": "miku", "text": "她停了一步。" },
+        { "type": "say", "who": "you", "text": "下周的辅导，你会来吗？" },
+        { "type": "narrate", "focus": "miku", "text": "她没有回头。" },
+        { "type": "say", "who": "miku", "face": "school_normal", "text": "……再说。" }
+      ]
+    },
+    {
+      "id": "scene_library_b",
+      "background": "library",
+      "next": "scene_bookshelf",
+      "steps": [
+        { "type": "narrate", "focus": "miku", "text": "三玖的脚步完全停住了。她抱着书，从书架边缘探出半个脑袋，被刘海遮住的右眼后面，那道视线第一次带上了「确认」的意味。" },
+        { "type": "say", "who": "miku", "face": "school_awake", "text": "……你翻了十页。" },
+        { "type": "say", "who": "you", "text": "甲州法度次第的条文太碎了，没有信长那个「天下布武」的印文来得直接。" },
+        { "type": "narrate", "focus": "miku", "text": "三玖眨了眨眼。然后她做了一件你没想到的事——她把那摞书放在旁边的阅览桌上，走过来，从你手中抽走了《信长公记》，翻到某一页，指给你看。" },
+        { "type": "say", "who": "miku", "face": "school_awake", "text": "这里。信长给浓姬的那封信，不是政治文书。是私信。" },
+        { "type": "say", "who": "you", "text": "我知道。『浓，岐阜之事，不必挂心。』" },
+        { "type": "say", "who": "miku", "face": "school_awake", "text": "……" },
+        { "type": "narrate", "focus": "miku", "text": "她抬起头看你。刘海从右眼上滑开了一瞬，你第一次看清了她两只眼睛的颜色——是同一种安静的深蓝。" }
+      ]
+    },
+    {
+      "id": "scene_library_c",
+      "background": "library",
+      "next": "scene_bookshelf",
+      "steps": [
+        { "type": "say", "who": "miku", "face": "school_awake", "text": "我没有躲。" },
+        { "type": "narrate", "text": "她说这话的时候，声音比平时稍微大了一点。" },
+        { "type": "say", "who": "you", "text": "那你为什么每次看到我就走？" },
+        { "type": "say", "who": "miku", "face": "school_normal", "text": "……因为不知道说什么。" },
+        { "type": "narrate", "focus": "miku", "text": "她把书放在还书台上，这次没有立刻离开，而是站在那里，像是不知道接下来该做什么。" }
+      ]
+    },
+    {
+      "id": "scene_bookshelf",
+      "background": "library",
+      "steps": [
+        { "type": "narrate", "text": "还书台后的图书委员不在。三玖把书摞好，犹豫了一下，开始一本一本地往书架上放。你走过去，拿起最上面那一本。" },
+        { "type": "say", "who": "miku", "face": "school_normal", "text": "……我自己可以。" },
+        { "type": "say", "who": "you", "text": "我知道你可以。但两个人快一点。" },
+        { "type": "narrate", "focus": "miku", "text": "她没有再说话。" },
+        { "type": "narrate", "text": "你们在书架之间安静地走了几个来回。她放书的位置很精确，每一本都回到它原本被取下的地方，像是她记得每一本书原来站在哪一格。" },
+        { "type": "narrate", "focus": "miku", "text": "最后一本，是那本《甲阳军鉴》。你伸手要放，她先一步按住了书脊。" },
+        { "type": "say", "who": "miku", "face": "school_normal", "text": "这本……放最上面。我够不到。" },
+        { "type": "narrate", "focus": "miku", "text": "她说得很自然，但你注意到，以她的身高，那个格子并不是够不到。" },
+        {
+          "type": "choice",
+          "options": [
+            { "text": "（什么也不说，把书放上去。）", "affection": 1, "goto": "scene_shelf_a" },
+            { "text": "你其实够得到吧。", "affection": 1, "goto": "scene_shelf_b" },
+            { "text": "下次够不到的时候，叫我。", "affection": 2, "goto": "scene_shelf_c" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "scene_shelf_a",
+      "background": "library",
+      "next": "scene_courtyard",
+      "steps": [
+        { "type": "narrate", "text": "你把书推进书架最上层。三玖低声说了一句「谢谢」，声音轻得几乎被书页的回弹声吞掉。" }
+      ]
+    },
+    {
+      "id": "scene_shelf_b",
+      "background": "library",
+      "next": "scene_courtyard",
+      "steps": [
+        { "type": "say", "who": "miku", "face": "school_normal", "text": "……多嘴。" },
+        { "type": "narrate", "focus": "miku", "text": "她转过身，朝走廊走去。但你看到她的耳朵尖在光线里泛了一点粉色。" }
+      ]
+    },
+    {
+      "id": "scene_shelf_c",
+      "background": "library",
+      "next": "scene_courtyard",
+      "steps": [
+        { "type": "narrate", "focus": "miku", "text": "三玖看了你一眼。这一次她没有立刻移开视线。" },
+        { "type": "say", "who": "miku", "face": "school_normal", "text": "……你这个人，真的很奇怪。" },
+        { "type": "narrate", "focus": "miku", "text": "她说完就走了。但她走到走廊拐角的时候，脚步慢了一拍，像是在等你跟上来。" }
+      ]
+    },
+    {
+      "id": "scene_courtyard",
+      "background": "courtyard_dusk",
+      "steps": [
+        { "type": "narrate", "text": "放学后，你在中庭的长椅上坐下来，翻开从图书室借出来的那本《信长公记》。午后的阳光从树叶间落下来，书页上浮着晃动的光斑。" },
+        { "type": "narrate", "text": "你读了大概十分钟，一个人影停在了长椅旁边。" },
+        { "type": "narrate", "focus": "miku", "text": "三玖站在那里，脖子上挂着耳机，手里没有书。她的视线落在你手中的书上，表情介于「路过」和「特意走过来」之间。" },
+        { "type": "say", "who": "miku", "face": "school_normal", "text": "……你还在看那本。" },
+        { "type": "say", "who": "you", "text": "借都借了。" },
+        { "type": "narrate", "text": "她沉默了几秒。然后，在你旁边的长椅上坐了下来。隔了一个人的距离。" },
+        { "type": "bg", "id": "courtyard_bench_cg" },
+        { "type": "narrate", "focus": "miku", "text": "她双手放在膝盖上，视线看向前方而不是你。" },
+        { "type": "say", "who": "miku", "face": "school_normal", "text": "你觉得，信长是个什么样的人？" },
+        { "type": "narrate", "text": "这个问题问得很轻，但你知道它不是随口一问。" },
+        {
+          "type": "choice",
+          "options": [
+            { "text": "有魄力，但太急。火烧比叡山那件事，他不给自己留退路。", "affection": 1, "goto": "scene_nobunaga_a" },
+            { "text": "我不太喜欢他。但他确实改变了时代。", "affection": 2, "goto": "scene_nobunaga_b" },
+            { "text": "我想先听听你怎么看。", "affection": 3, "goto": "scene_nobunaga_c" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "scene_nobunaga_a",
+      "background": "courtyard_dusk",
+      "next": "scene_wordchain",
+      "steps": [
+        { "type": "narrate", "focus": "miku", "text": "三玖轻轻点了一下头，动作很小。" },
+        { "type": "say", "who": "miku", "face": "school_normal", "text": "……我也这么觉得。他太快了。快到来不及看清身边的人。" },
+        { "type": "narrate", "focus": "miku", "text": "她停了一下。" },
+        { "type": "say", "who": "miku", "face": "school_normal", "text": "但如果不快的话，他什么都改变不了。" }
+      ]
+    },
+    {
+      "id": "scene_nobunaga_b",
+      "background": "courtyard_dusk",
+      "next": "scene_wordchain",
+      "steps": [
+        { "type": "say", "who": "miku", "face": "school_normal", "text": "不喜欢。" },
+        { "type": "narrate", "focus": "miku", "text": "她重复了这两个字，语气里没有反驳的意思，反而像是理解了什么。" },
+        { "type": "say", "who": "miku", "face": "school_normal", "text": "很多人都说喜欢信长。但喜欢一个人，和看见他的缺点，可以同时成立。" },
+        { "type": "narrate", "focus": "miku", "text": "她低下头，声音更轻了。" },
+        { "type": "say", "who": "miku", "face": "school_normal", "text": "……我觉得那样比较好。" }
+      ]
+    },
+    {
+      "id": "scene_nobunaga_c",
+      "background": "courtyard_dusk",
+      "next": "scene_wordchain",
+      "steps": [
+        { "type": "narrate", "focus": "miku", "text": "三玖微微偏过头。她的刘海在这个角度下遮住了右眼，但你看到她的左眼里有一瞬间的意外。" },
+        { "type": "say", "who": "miku", "face": "school_awake", "text": "你问我？" },
+        { "type": "say", "who": "you", "text": "你在图书室把每一本书都放回原位。你比我更认真读了这些东西。我想听你的。" },
+        { "type": "narrate", "text": "她沉默了很久。长椅旁边的树被风吹了一下。" },
+        { "type": "say", "who": "miku", "face": "school_normal", "text": "……信长是个孤独的人。他做的事情，同时代的人大多看不懂。但他没有停下来解释。" },
+        { "type": "narrate", "focus": "miku", "text": "她把手放在膝盖上，指尖轻轻并拢。" },
+        { "type": "say", "who": "miku", "face": "school_normal", "text": "我……觉得那样很厉害。但我做不到。" }
+      ]
+    },
+    {
+      "id": "scene_wordchain",
+      "background": "courtyard_dusk",
+      "steps": [
+        { "type": "narrate", "text": "气氛沉下来了几秒。三玖似乎觉得自己说了太多，手指摸向脖子上的耳机。" },
+        { "type": "narrate", "text": "你没有给她戴上耳机的机会。" },
+        { "type": "say", "who": "you", "text": "三玖。来玩个游戏。" },
+        { "type": "say", "who": "miku", "face": "school_normal", "text": "……游戏？" },
+        { "type": "say", "who": "you", "text": "武将接龙。我说一个，你接一个。接不上的人请喝饮料。" },
+        { "type": "narrate", "focus": "miku", "text": "三玖的手指停在耳机上。她看着你，像是在判断你是不是认真的。" },
+        { "type": "say", "who": "miku", "face": "school_normal", "text": "……你确定？" },
+        { "type": "say", "who": "you", "text": "信长。" },
+        { "type": "narrate", "focus": "miku", "text": "三玖的表情发生了极细微的变化——眉梢挑了一下，像是被挑起了什么。" },
+        { "type": "say", "who": "miku", "face": "school_awake", "text": "……长久手。" },
+        { "type": "say", "who": "you", "text": "手取川。" },
+        { "type": "say", "who": "miku", "face": "school_awake", "text": "……川中岛。" },
+        { "type": "say", "who": "you", "text": "岛津义弘。" },
+        { "type": "bg", "id": "word_chain_cg" },
+        { "type": "narrate", "focus": "miku", "text": "三玖的语速变快了，声音也比平时清晰。她的眼睛亮了起来，那种光和她低头看书时完全不一样。" },
+        { "type": "say", "who": "miku", "face": "school_awake", "text": "弘前。……不，弘治。" },
+        { "type": "say", "who": "you", "text": "治部少辅。" },
+        { "type": "say", "who": "miku", "face": "school_normal", "text": "辅……辅佐？" },
+        { "type": "narrate", "focus": "miku", "text": "她卡住了。" },
+        {
+          "type": "choice",
+          "options": [
+            { "text": "时间到。你欠我一瓶饮料。", "affection": 1, "goto": "scene_chain_a" },
+            { "text": "提示：关原。", "affection": 2, "goto": "scene_chain_b" },
+            { "text": "（假装自己也卡住了。）……我也接不上。平局。", "affection": 2, "goto": "scene_chain_c" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "scene_chain_a",
+      "background": "courtyard_dusk",
+      "next": "scene_kitchen",
+      "steps": [
+        { "type": "say", "who": "miku", "face": "school_normal", "text": "……我知道。不用你说。" },
+        { "type": "narrate", "focus": "miku", "text": "她别过脸，但嘴角的线条没有绷紧。那是你第一次在她脸上看到近似「不服气」的表情。" }
+      ]
+    },
+    {
+      "id": "scene_chain_b",
+      "background": "courtyard_dusk",
+      "next": "scene_kitchen",
+      "steps": [
+        { "type": "narrate", "focus": "miku", "text": "三玖的眼睛眯了一下。" },
+        { "type": "say", "who": "miku", "face": "school_awake", "text": "不需要提示。" },
+        { "type": "narrate", "focus": "miku", "text": "她想了三秒。" },
+        { "type": "say", "who": "miku", "face": "school_awake", "text": "辅……辅弼。大谷吉继的『吉』。" },
+        { "type": "say", "who": "you", "text": "吉川元春。" },
+        { "type": "say", "who": "miku", "face": "school_awake", "text": "春……春日山。上杉谦信。" },
+        { "type": "narrate", "focus": "miku", "text": "她接上了。而且她看着你的眼神，像是在说「继续」。" }
+      ]
+    },
+    {
+      "id": "scene_chain_c",
+      "background": "courtyard_dusk",
+      "next": "scene_kitchen",
+      "steps": [
+        { "type": "narrate", "focus": "miku", "text": "三玖看着你，安静了一拍。" },
+        { "type": "say", "who": "miku", "face": "school_awake", "text": "……你在让我。" },
+        { "type": "say", "who": "you", "text": "没有。我也卡住了。" },
+        { "type": "say", "who": "miku", "face": "school_awake", "text": "你刚才说到「治部少辅」的时候，没有犹豫。" },
+        { "type": "narrate", "focus": "miku", "text": "她拆穿得很平静。但你注意到，她的语气里没有不高兴。" },
+        { "type": "say", "who": "miku", "face": "school_normal", "text": "……平局就平局。下次不会让你了。" },
+        { "type": "narrate", "focus": "miku", "text": "她把耳机在手指间轻轻转动，视线直视前方。" }
+      ]
+    },
+    {
+      "id": "scene_kitchen",
+      "background": "kitchen_evening",
+      "steps": [
+        { "type": "narrate", "text": "你和三玖一起回到中野家的时候，二乃正站在厨房门口，双手叉腰，表情像一尊门神。" },
+        { "type": "say", "who": "nino", "text": "三玖。你手里拿的什么。" },
+        { "type": "narrate", "text": "三玖手里拿着一瓶抹茶汽水——是她在路上的自动贩卖机买的。给谁的，她没有说，你也没有问，但那瓶汽水最后放在了你面前的桌上。" },
+        { "type": "say", "who": "miku", "face": "school_normal", "text": "……饮料。" },
+        { "type": "say", "who": "nino", "text": "我知道是饮料。我是说，你为什么要买饮料给他？" },
+        { "type": "narrate", "focus": "miku", "text": "三玖没有回答。她走进厨房，系上围裙。" },
+        { "type": "narrate", "text": "二乃的视线在你和三玖之间来回扫了两遍，然后发出了一个意味深长的「哼」。" },
+        { "type": "say", "who": "nino", "text": "行吧。但三玖，你做饭可以，不许碰调味料。上次的酱油抹茶我还没忘。" },
+        { "type": "say", "who": "miku", "face": "school_normal", "text": "……这次是抹茶。不是酱油。" },
+        { "type": "say", "who": "nino", "text": "问题不在抹茶还是酱油！" },
+        { "type": "narrate", "text": "四叶从客厅探进头来，手里还握着电视遥控器。" },
+        { "type": "say", "who": "yotsuba", "text": "啊！三玖要做饭！我来试吃！" },
+        { "type": "say", "who": "itsuki", "text": "四叶，你上次吃完三玖做的饭，喝了两升水。" },
+        { "type": "say", "who": "yotsuba", "text": "那是因为……运动后需要补水！" },
+        { "type": "say", "who": "ichika", "text": "哎呀。今天家里好热闹。是因为有客人吗？" },
+        { "type": "narrate", "text": "一花的视线落在你身上，又轻飘飘地移到三玖背上。" },
+        { "type": "narrate", "focus": "miku", "text": "三玖全程没有回头，但她的锅铲在锅里搅动的速度，比之前快了一点。" },
+        {
+          "type": "choice",
+          "options": [
+            { "text": "需要帮忙吗？", "affection": 1, "goto": "scene_kitchen_a" },
+            { "text": "（拿起那瓶抹茶汽水，打开，喝了一口。）味道不错。", "affection": 2, "goto": "scene_kitchen_b" },
+            { "text": "（对二乃）她做的，我都吃。", "affection": 2, "goto": "scene_kitchen_c" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "scene_kitchen_a",
+      "background": "kitchen_evening",
+      "next": "scene_dinner",
+      "steps": [
+        { "type": "say", "who": "miku", "face": "school_normal", "text": "……不用。" },
+        { "type": "narrate", "focus": "miku", "text": "过了两秒。" },
+        { "type": "say", "who": "miku", "face": "school_normal", "text": "……帮我把那个盘子拿过来。" }
+      ]
+    },
+    {
+      "id": "scene_kitchen_b",
+      "background": "kitchen_evening",
+      "next": "scene_dinner",
+      "steps": [
+        { "type": "narrate", "focus": "miku", "text": "三玖的锅铲停了半拍。她没有回头，但肩膀的线条松了一点。" },
+        { "type": "say", "who": "miku", "face": "school_normal", "text": "……那是我买给自己的。" },
+        { "type": "say", "who": "you", "text": "那你还放在我面前。" },
+        { "type": "say", "who": "miku", "face": "school_blush", "text": "……" },
+        { "type": "narrate", "text": "她没有再解释。二乃在旁边翻了一个巨大的白眼。" }
+      ]
+    },
+    {
+      "id": "scene_kitchen_c",
+      "background": "kitchen_evening",
+      "next": "scene_dinner",
+      "steps": [
+        { "type": "narrate", "text": "二乃的眉毛挑了起来。" },
+        { "type": "say", "who": "nino", "text": "喂。你这话说得好像你很了解她一样。" },
+        { "type": "say", "who": "miku", "face": "school_awake", "text": "二乃。" },
+        { "type": "narrate", "focus": "miku", "text": "三玖终于回头了。她看了二乃一眼，又看了你一眼，然后转回去继续翻锅。" },
+        { "type": "say", "who": "miku", "face": "school_normal", "text": "……他说的是『都吃』。不是『都好吃』。" },
+        { "type": "narrate", "text": "二乃张了张嘴，最后只挤出一句「随便你们」，转身走出了厨房。" }
+      ]
+    },
+    {
+      "id": "scene_dinner",
+      "background": "dining_evening",
+      "steps": [
+        { "type": "narrate", "text": "那锅东西被端上来的时候，颜色比上次好了一些。至少能分辨出是深绿色，而不是某种不明荧光。" },
+        { "type": "narrate", "text": "四叶第一个动筷子。她的表情在咀嚼过程中经历了惊讶、困惑、忍耐，最后定格在一种英勇的平静上。" },
+        { "type": "say", "who": "yotsuba", "text": "比上次……有进步！" },
+        { "type": "say", "who": "itsuki", "text": "……四叶，你不需要勉强自己。" },
+        { "type": "narrate", "text": "一花微笑着夹了一小口，评价是「很有个性」。二乃从头到尾没有碰那盘菜，但也没有再说什么。" },
+        { "type": "narrate", "focus": "miku", "text": "三玖坐在桌子对面，碗里的饭几乎没动。她在看其他人的反应，视线一次也没有落在你身上——但你知道她在等你的反应。" },
+        {
+          "type": "choice",
+          "options": [
+            { "text": "（夹了一大口，吃完。）不错。抹茶放得比上次少。", "affection": 2, "goto": "scene_dinner_a" },
+            { "text": "（小声对三玖）其实，我也不太擅长做饭。", "affection": 3, "goto": "scene_dinner_b" },
+            { "text": "（吃完后，认真地说）下次我教你做一道我拿手的。", "affection": 2, "goto": "scene_dinner_c" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "scene_dinner_a",
+      "background": "dining_evening",
+      "next": "scene_door",
+      "steps": [
+        { "type": "narrate", "focus": "miku", "text": "三玖的筷子轻轻搁在碗沿上。" },
+        { "type": "say", "who": "miku", "face": "school_normal", "text": "……你吃出来了。" },
+        { "type": "say", "who": "you", "text": "上次太苦了。这次刚好。" },
+        { "type": "say", "who": "miku", "face": "school_normal", "text": "……嗯。" },
+        { "type": "narrate", "focus": "miku", "text": "她低下头，开始吃自己碗里的饭。动作比之前自然了一些。" }
+      ]
+    },
+    {
+      "id": "scene_dinner_b",
+      "background": "dining_evening",
+      "next": "scene_door",
+      "steps": [
+        { "type": "narrate", "focus": "miku", "text": "三玖偏过头看你，刘海下的视线带着一点意外。" },
+        { "type": "say", "who": "miku", "face": "school_awake", "text": "……你也不擅长？" },
+        { "type": "say", "who": "you", "text": "煮面会糊，煎蛋会焦。所以我们算同类。" },
+        { "type": "narrate", "focus": "miku", "text": "她沉默了一小会儿。" },
+        { "type": "say", "who": "miku", "face": "school_blush", "text": "……同类。" },
+        { "type": "narrate", "focus": "miku", "text": "她重复这个词的声音很轻，像是在确认它的重量。" }
+      ]
+    },
+    {
+      "id": "scene_dinner_c",
+      "background": "dining_evening",
+      "next": "scene_door",
+      "steps": [
+        { "type": "narrate", "focus": "miku", "text": "三玖抬起头。" },
+        { "type": "say", "who": "miku", "face": "school_awake", "text": "你拿手的？" },
+        { "type": "say", "who": "you", "text": "下次做给你看。你负责判断好不好吃。" },
+        { "type": "narrate", "focus": "miku", "text": "她看了你一眼。这次的时间比平时长。" },
+        { "type": "say", "who": "miku", "face": "school_normal", "text": "……好。" },
+        { "type": "narrate", "text": "二乃从旁边插了一句「喂，别随便答应别人进厨房」，但没有人理她。" }
+      ]
+    },
+    {
+      "id": "scene_door",
+      "background": "corridor_night",
+      "steps": [
+        { "type": "narrate", "text": "晚饭后，五姐妹各自散去。你收拾好东西准备离开的时候，走廊尽头的房门开了一条缝。" },
+        { "type": "bg", "id": "door_night_cg" },
+        { "type": "narrate", "focus": "miku", "text": "三玖站在门后，只露出半张脸。耳机没有挂在脖子上——你第一次看到她把它放在了房间里。" },
+        { "type": "narrate", "focus": "miku", "text": "她的刘海有些凌乱，表情像是想说什么，又迟迟没有开口。" },
+        { "type": "say", "who": "miku", "face": "school_normal", "text": "……今天。" },
+        { "type": "narrate", "focus": "miku", "text": "她停了一下。" },
+        { "type": "say", "who": "miku", "face": "school_normal", "text": "谢谢你没有走开。" },
+        {
+          "type": "choice",
+          "options": [
+            { "text": "我为什么要走开？", "affection": 2, "goto": "scene_door_a" },
+            { "text": "下次图书室，我还会去。", "affection": 2, "goto": "scene_door_b" },
+            { "text": "三玖。你不是「五个人里最差的那个」。", "affection": 0, "goto": "scene_door_c" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "scene_door_a",
+      "background": "corridor_night",
+      "next": "scene_ending",
+      "steps": [
+        { "type": "narrate", "focus": "miku", "text": "三玖眨了眨眼，像是没料到你会这样回答。" },
+        { "type": "say", "who": "miku", "face": "school_normal", "text": "……因为其他人都会走开。" },
+        { "type": "narrate", "focus": "miku", "text": "她说完就把门关上了。但关门的速度很慢，慢到你能听到门锁合上之前，她轻轻叹了一口气。" }
+      ]
+    },
+    {
+      "id": "scene_door_b",
+      "background": "corridor_night",
+      "next": "scene_ending",
+      "steps": [
+        { "type": "say", "who": "miku", "face": "school_blush", "text": "……嗯。" },
+        { "type": "narrate", "focus": "miku", "text": "门缝后面，她的眼睛弯了一下。弧度很小，但你看到了。" },
+        { "type": "say", "who": "miku", "face": "school_normal", "text": "那本《信长公记》，你还没看完。别弄折页。" }
+      ]
+    },
+    {
+      "id": "scene_door_c",
+      "background": "corridor_night",
+      "steps": [
+        { "type": "narrate", "focus": "miku", "text": "门缝停住了。" },
+        { "type": "narrate", "text": "你没有看到她的表情，但你能感觉到门后的空气变了。她原本准备关门的动作停了下来。" },
+        { "type": "narrate", "text": "过了好几秒，她的声音才从门后传出来，低而稳，不像平时那样轻。" },
+        { "type": "say", "who": "miku", "face": "school_awake", "text": "你为什么会这样说。" },
+        { "type": "narrate", "focus": "miku", "text": "不是质问。是真的在问。" },
+        {
+          "type": "choice",
+          "options": [
+            { "text": "因为你说「其他人都会走开」。但你没有问我为什么留下。", "affection": 4, "goto": "scene_door_c1" },
+            { "text": "因为你把每一本书都放回原位。一个不在意自己读什么的人，不会那样做。", "affection": 4, "goto": "scene_door_c2" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "scene_door_c1",
+      "background": "corridor_night",
+      "next": "scene_ending",
+      "steps": [
+        { "type": "narrate", "focus": "miku", "text": "门开得比之前大了一点。三玖站在门框里，刘海下的双眼都露了出来。" },
+        { "type": "say", "who": "miku", "face": "school_awake", "text": "……那你为什么留下。" },
+        { "type": "say", "who": "you", "text": "因为我想知道，你接龙输掉的时候，会是什么表情。" },
+        { "type": "narrate", "focus": "miku", "text": "她愣住了。然后，很慢地，嘴角动了一下。" },
+        { "type": "say", "who": "miku", "face": "school_blush", "text": "……你这个人，真的很奇怪。" }
+      ]
+    },
+    {
+      "id": "scene_door_c2",
+      "background": "corridor_night",
+      "next": "scene_ending",
+      "steps": [
+        { "type": "narrate", "text": "门后安静了很久。久到你几乎以为她已经关上了门。" },
+        { "type": "narrate", "text": "然后她的声音传出来，带着一种很轻的、几乎不像她的坦诚。" },
+        { "type": "say", "who": "miku", "face": "school_normal", "text": "……那些书，是我唯一确定自己可以放对位置的东西。" },
+        { "type": "narrate", "focus": "miku", "text": "顿了一下。" },
+        { "type": "say", "who": "miku", "face": "school_normal", "text": "其他的……我不确定。" }
+      ]
+    },
+    {
+      "id": "scene_ending",
+      "background": "apartment_exterior",
+      "steps": [
+        { "type": "narrate", "text": "你走出中野家公寓的时候，夜风比来时要凉。" },
+        { "type": "narrate", "text": "口袋里有什么东西在响——是那瓶抹茶汽水的瓶盖，你离开前顺手拧下来放进了口袋。瓶身上还贴着一张小小的便签，是三玖的字迹，小得几乎看不清：" },
+        { "type": "narrate", "text": "「下次接龙，我不会输。」" },
+        { "type": "narrate", "text": "你回头看了一眼公寓的窗户。走廊尽头的那个房间，灯还亮着。" },
+        { "type": "narrate", "text": "耳机女孩今天摘下了耳机。" },
+        { "type": "narrate", "text": "只摘了一会儿。" },
+        { "type": "end" }
+      ]
+    }
+  ],
+  "sideStory": {
+    "threshold": 10,
+    "routes": [
+      { "id": "a", "label": "支线A", "title": "回家路上的抹茶汽水", "file": "side_02_a", "condition": "high" },
+      { "id": "b", "label": "支线B", "title": "一个人的书架", "file": "side_02_b", "condition": "low" }
+    ]
+  }
+}

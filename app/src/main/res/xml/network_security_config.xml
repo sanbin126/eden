@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  正式包网络安全配置：禁止一切明文 HTTP 流量，只信任系统 CA。
+  本地调试所需的局域网 HTTP 由 src/debug/res/xml/network_security_config.xml 同名资源覆盖放行，不影响正式包。
+-->
+<network-security-config>
+    <base-config cleartextTrafficPermitted="false">
+        <trust-anchors>
+            <certificates src="system" />
+        </trust-anchors>
+    </base-config>
+</network-security-config>

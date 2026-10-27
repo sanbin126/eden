@@ -5,7 +5,7 @@
     android:layout_height="wrap_content"
     android:gravity="center"
     android:orientation="horizontal"
-    android:paddingVertical="8dp">
+    android:paddingVertical="@dimen/space_8">
 
     <TextView
         android:id="@+id/tv_error_message"
@@ -15,8 +15,8 @@
         android:clickable="true"
         android:focusable="true"
         android:maxWidth="240dp"
-        android:paddingHorizontal="14dp"
-        android:paddingVertical="8dp"
+        android:paddingHorizontal="@dimen/space_16"
+        android:paddingVertical="@dimen/space_8"
         android:text="@string/item_message_error"
         android:textColor="#D32F2F"
         android:textSize="13sp" />

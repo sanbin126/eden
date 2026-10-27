@@ -7,5 +7,5 @@
         android:endColor="?attr/edenColorSurfaceTint"
         android:startColor="?attr/edenColorSurface"
         android:type="linear" />
-    <corners android:radius="24dp" />
+    <corners android:radius="@dimen/radius_large" />
 </shape>

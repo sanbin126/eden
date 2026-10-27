@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/bg_main_gradient"
     android:fillViewport="true"
+    android:fitsSystemWindows="true"
     tools:context=".LoginActivity">
 
     <LinearLayout
@@ -13,9 +14,9 @@
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:orientation="vertical"
-        android:paddingHorizontal="24dp"
-        android:paddingTop="72dp"
-        android:paddingBottom="40dp">
+        android:paddingHorizontal="@dimen/space_24"
+        android:paddingTop="@dimen/space_72"
+        android:paddingBottom="@dimen/space_40">
 
         <ImageView
             android:layout_width="72dp"
@@ -25,7 +26,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="@dimen/space_12"
             android:text="@string/app_name"
             android:textColor="?attr/edenColorPrimary"
             android:textSize="28sp"
@@ -34,7 +35,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="6dp"
+            android:layout_marginTop="@dimen/space_8"
             android:text="@string/login_slogan"
             android:textColor="?attr/edenColorTextSecondary"
             android:textSize="13sp" />
@@ -42,16 +43,16 @@
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="28dp"
+            android:layout_marginTop="@dimen/space_28"
             app:cardBackgroundColor="?attr/edenColorSurface"
-            app:cardCornerRadius="20dp"
+            app:cardCornerRadius="@dimen/radius_large"
             app:cardElevation="6dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="20dp">
+                android:padding="@dimen/space_20">
 
                 <!-- 登录方式切换（仅登录态显示） -->
                 <LinearLayout
@@ -60,7 +61,7 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/bg_tab_container"
                     android:orientation="horizontal"
-                    android:padding="4dp">
+                    android:padding="@dimen/space_4">
 
                     <TextView
                         android:id="@+id/tab_password"
@@ -85,11 +86,11 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="@dimen/space_16"
                     android:background="@drawable/bg_edit_box"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
-                    android:paddingHorizontal="12dp">
+                    android:paddingHorizontal="@dimen/space_12">
 
                     <ImageView
                         android:layout_width="20dp"
@@ -100,7 +101,7 @@
                         android:id="@+id/et_email"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_marginStart="8dp"
+                        android:layout_marginStart="@dimen/space_8"
                         android:layout_weight="1"
                         android:background="@null"
                         android:hint="@string/login_email_hint"
@@ -108,7 +109,7 @@
                         android:maxLines="1"
                         android:textColor="?attr/edenColorTextPrimary"
                         android:textColorHint="?attr/edenColorTextHint"
-                        android:textSize="15sp" />
+                        android:textSize="16sp" />
                 </LinearLayout>
 
                 <!-- 验证码 -->
@@ -116,7 +117,7 @@
                     android:id="@+id/row_code"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
+                    android:layout_marginTop="@dimen/space_12"
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
 
@@ -127,7 +128,7 @@
                         android:background="@drawable/bg_edit_box"
                         android:gravity="center_vertical"
                         android:orientation="horizontal"
-                        android:paddingHorizontal="12dp">
+                        android:paddingHorizontal="@dimen/space_12">
 
                         <ImageView
                             android:layout_width="20dp"
@@ -138,7 +139,7 @@
                             android:id="@+id/et_code"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
-                            android:layout_marginStart="8dp"
+                            android:layout_marginStart="@dimen/space_8"
                             android:layout_weight="1"
                             android:background="@null"
                             android:hint="@string/login_code_hint"
@@ -147,18 +148,18 @@
                             android:maxLines="1"
                             android:textColor="?attr/edenColorTextPrimary"
                             android:textColorHint="?attr/edenColorTextHint"
-                            android:textSize="15sp" />
+                            android:textSize="16sp" />
                     </LinearLayout>
 
                     <Button
                         android:id="@+id/btn_send_code"
                         android:layout_width="wrap_content"
                         android:layout_height="48dp"
-                        android:layout_marginStart="8dp"
+                        android:layout_marginStart="@dimen/space_8"
                         android:background="@drawable/bg_outline_button"
                         android:backgroundTint="@null"
                         android:minWidth="100dp"
-                        android:paddingHorizontal="12dp"
+                        android:paddingHorizontal="@dimen/space_12"
                         android:text="@string/login_get_code"
                         android:textAllCaps="false"
                         android:textColor="?attr/edenColorPrimary"
@@ -170,11 +171,11 @@
                     android:id="@+id/row_password"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
-                    android:layout_marginTop="12dp"
+                    android:layout_marginTop="@dimen/space_12"
                     android:background="@drawable/bg_edit_box"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
-                    android:paddingHorizontal="12dp">
+                    android:paddingHorizontal="@dimen/space_12">
 
                     <ImageView
                         android:layout_width="20dp"
@@ -185,7 +186,7 @@
                         android:id="@+id/et_password"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_marginStart="8dp"
+                        android:layout_marginStart="@dimen/space_8"
                         android:layout_weight="1"
                         android:background="@null"
                         android:hint="@string/login_password_hint"
@@ -193,7 +194,7 @@
                         android:maxLines="1"
                         android:textColor="?attr/edenColorTextPrimary"
                         android:textColorHint="?attr/edenColorTextHint"
-                        android:textSize="15sp" />
+                        android:textSize="16sp" />
                 </LinearLayout>
 
                 <!-- 确认密码 -->
@@ -201,11 +202,11 @@
                     android:id="@+id/row_confirm"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
-                    android:layout_marginTop="12dp"
+                    android:layout_marginTop="@dimen/space_12"
                     android:background="@drawable/bg_edit_box"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
-                    android:paddingHorizontal="12dp">
+                    android:paddingHorizontal="@dimen/space_12">
 
                     <ImageView
                         android:layout_width="20dp"
@@ -216,7 +217,7 @@
                         android:id="@+id/et_confirm"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_marginStart="8dp"
+                        android:layout_marginStart="@dimen/space_8"
                         android:layout_weight="1"
                         android:background="@null"
                         android:hint="@string/login_confirm_password_hint"
@@ -224,16 +225,16 @@
                         android:maxLines="1"
                         android:textColor="?attr/edenColorTextPrimary"
                         android:textColorHint="?attr/edenColorTextHint"
-                        android:textSize="15sp" />
+                        android:textSize="16sp" />
                 </LinearLayout>
 
                 <TextView
                     android:id="@+id/tv_forgot_password"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="@dimen/space_8"
                     android:gravity="end"
-                    android:paddingVertical="4dp"
+                    android:paddingVertical="@dimen/space_4"
                     android:text="@string/login_forgot"
                     android:textColor="?attr/edenColorPrimary"
                     android:textSize="13sp" />
@@ -242,7 +243,7 @@
                     android:id="@+id/btn_submit"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
-                    android:layout_marginTop="24dp"
+                    android:layout_marginTop="@dimen/space_24"
                     android:background="@drawable/bg_send_button"
                     android:backgroundTint="@null"
                     android:text="@string/login_submit"
@@ -254,9 +255,9 @@
                     android:id="@+id/tv_switch_mode"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
+                    android:layout_marginTop="@dimen/space_12"
                     android:gravity="center"
-                    android:padding="8dp"
+                    android:padding="@dimen/space_8"
                     android:text="@string/login_register"
                     android:textColor="?attr/edenColorPrimary"
                     android:textSize="13sp" />

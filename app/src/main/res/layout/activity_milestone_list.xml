@@ -15,14 +15,14 @@
         android:background="#80000000"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:paddingStart="8dp"
-        android:paddingEnd="8dp">
+        android:paddingStart="@dimen/space_8"
+        android:paddingEnd="@dimen/space_8">
 
         <Button
             android:id="@+id/btn_back"
             android:layout_width="24dp"
             android:layout_height="24dp"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="@dimen/space_8"
             android:background="@drawable/ic_back"
             android:backgroundTint="@null"
             android:padding="0dp" />
@@ -30,7 +30,7 @@
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="@dimen/space_16"
             android:layout_weight="1"
             android:text="@string/milestone_list_title"
             android:textColor="?attr/edenColorOnPrimary"
@@ -44,7 +44,7 @@
         android:layout_height="match_parent"
         android:layout_below="@+id/top_bar"
         android:clipToPadding="false"
-        android:paddingBottom="16dp" />
+        android:paddingBottom="@dimen/space_16" />
 
     <!-- 一条都没解锁时的空状态引导 -->
     <TextView
@@ -54,10 +54,10 @@
         android:layout_centerInParent="true"
         android:gravity="center"
         android:lineSpacingExtra="6dp"
-        android:paddingStart="32dp"
-        android:paddingEnd="32dp"
+        android:paddingStart="@dimen/space_32"
+        android:paddingEnd="@dimen/space_32"
         android:text="@string/milestone_list_empty"
-        android:textColor="#B3FFFFFF"
+        android:textColor="?attr/edenColorTextOnDarkSecondary"
         android:textSize="14sp"
         android:visibility="gone" />
 

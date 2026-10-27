@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 剧情对话框：不透明主题底色 + 低透明度白玫瑰纹理 + 描边（单层绘制，不影响原有尺寸） -->
+<drawable class="com.example.eden.core.ui.StoryDialogBackdropDrawable" />

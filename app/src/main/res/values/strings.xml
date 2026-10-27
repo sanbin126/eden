@@ -25,6 +25,7 @@
     <string name="game_name_minesweeper">扫雷</string>
     <string name="game_name_gomoku">五子棋</string>
     <string name="game_name_xiangqi">象棋</string>
+    <string name="game_name_platformer">横版跳跃</string>
 
     <!-- 修改密码 -->
     <string name="change_password_title">修改密码</string>
@@ -38,7 +39,6 @@
     <string name="chat_online">在线</string>
     <string name="chat_input_hint">输入消息...</string>
     <string name="chat_send">发送</string>
-    <string name="chat_action_focus">去专注</string>
     <string name="chat_action_feed">投喂</string>
 
     <!-- 裁剪图片 -->
@@ -57,7 +57,6 @@
     <string name="profile_nickname_required">昵称不能为空</string>
     <string name="profile_signature_label">个性签名</string>
     <string name="profile_signature_hint">介绍一下自己吧～</string>
-    <string name="profile_signature_empty">这个人很懒，什么都没留下</string>
     <string name="profile_save">保存</string>
     <string name="profile_saved">资料已保存</string>
 
@@ -112,9 +111,9 @@
     <string name="main_character_name">中野三玖</string>
     <string name="main_nickname_placeholder">迷糊玖</string>
     <string name="main_today_company">今日陪伴：1.5小时</string>
-    <string name="main_wallet_placeholder">礼物 · 0 円</string>
+    <string name="main_wallet_placeholder">0 円</string>
     <string name="main_sign_in">签到</string>
-    <string name="main_together">在一起</string>
+    <string name="main_together">0 天</string>
     <string name="main_tab_chat">聊天</string>
     <string name="main_cd_games">游戏</string>
     <string name="main_cd_diary">日志</string>
@@ -145,10 +144,32 @@
     <string name="settings_proactive_greeting">主动问候</string>
     <string name="settings_run_mode">运行模式</string>
     <string name="settings_detecting">检测中…</string>
+    <string name="settings_theme">主题</string>
+    <string name="theme_picker_title">主题</string>
+    <string name="theme_picker_sub">换一套配色，让 Eden 更像你喜欢的模样</string>
+    <string name="theme_pink">粉色主题（默认）</string>
+    <string name="theme_hydrangea">蓝色绣球主题</string>
     <string name="settings_clear_cache">清除缓存</string>
     <string name="settings_about">关于 Eden</string>
     <string name="settings_growth">成长说明</string>
+    <string name="settings_memory">她的记忆</string>
     <string name="settings_logout">退出登录</string>
+
+    <!-- 记忆管理 -->
+    <string name="memory_title">她的记忆</string>
+    <string name="memory_count">共 %1$d 条</string>
+    <string name="memory_empty">她还没有记住什么\n多陪她聊聊，她会慢慢记住你</string>
+    <string name="memory_importance">重要度 %1$d</string>
+    <string name="memory_mention_count">提及 %1$d 次</string>
+    <string name="memory_category_identity">基本信息</string>
+    <string name="memory_category_preference">喜欢与讨厌</string>
+    <string name="memory_category_event">经历过的事</string>
+    <string name="memory_category_relationship">关于你们</string>
+    <string name="memory_delete_title">忘掉这条记忆？</string>
+    <string name="memory_delete_message">「%1$s」\n删除后她就想不起来了。</string>
+    <string name="memory_delete_confirm">忘掉</string>
+    <string name="memory_deleted">已经忘掉了</string>
+
 
     <!-- 成长说明 -->
     <string name="growth_title">成长说明</string>
@@ -216,6 +237,14 @@
     <string name="anniversary_edit_anniversary">编辑纪念日</string>
     <string name="anniversary_edit_birthday">编辑生日</string>
 
+    <!-- 日期选择 -->
+    <string name="date_picker_anniversary_sub">为你们选一个开始的日子吧～</string>
+    <string name="date_picker_birthday_sub">告诉我你的生日吧～</string>
+    <string name="date_picker_picked_label">已选择的日子</string>
+    <string name="date_picker_week_placeholder">—</string>
+    <string name="date_picker_prev_year_cd">上一年</string>
+    <string name="date_picker_next_year_cd">下一年</string>
+
     <!-- 角色详情 -->
     <string name="character_detail_name">中野 三玖</string>
     <string name="character_detail_nickname">迷糊玖</string>
@@ -266,6 +295,8 @@
     <string name="game_picker_gomoku_sub">连成五子</string>
     <string name="game_picker_xiangqi_icon">🀄</string>
     <string name="game_picker_xiangqi_sub">楚河汉界</string>
+    <string name="game_picker_platformer_icon">🏃</string>
+    <string name="game_picker_platformer_sub">横屏闯关</string>
     <string name="game_picker_coming_sub">更多玩法筹备中</string>
 
     <!-- 投喂 / 送礼 -->
@@ -363,6 +394,9 @@
     <string name="story_chapter_progress">进行中</string>
     <string name="story_item_meta">%1$s · %2$d 场</string>
     <string name="story_start">开始</string>
+    <string name="story_continue">继续</string>
+    <string name="story_restart">重新开始</string>
+    <string name="story_replay">重温</string>
     <string name="story_skip">跳过</string>
     <string name="story_auto">自动</string>
     <string name="story_quit">返回</string>
@@ -370,6 +404,18 @@
     <string name="story_reward_toast">好感度 +%1$d</string>
     <string name="story_affection_toast">好感度 %1$s%2$d</string>
     <string name="story_chapter_end">本章完</string>
+    <string name="story_section_side">番外</string>
+    <string name="story_side_chip">番外</string>
+    <string name="story_side_meta">%1$s · %2$s</string>
+    <string name="story_side_lock_high">%1$s · 本章好感度 ≥ %2$d 解锁</string>
+    <string name="story_side_lock_low">%1$s · 本章好感度 &lt; %2$d 解锁</string>
+    <string name="story_side_unlocked">已解锁</string>
+    <string name="story_side_end">番外完</string>
+    <string name="story_verdict_title">章末判定</string>
+    <string name="story_verdict_message">本章好感度 %1$d / 阈值 %2$d</string>
+    <string name="story_verdict_unlock">解锁 %1$s「%2$s」</string>
+    <string name="story_verdict_hint">已收录至番外，可随时回看。</string>
+    <string name="story_verdict_confirm">收下</string>
 
     <!-- 每日任务 -->
     <string name="main_daily_task">每日任务</string>
@@ -385,4 +431,13 @@
     <string name="daily_task_claim_locked">全部完成后可领 %1$d 円</string>
     <string name="daily_task_claimed">今日奖励已领取</string>
     <string name="daily_task_claimed_toast">每日任务全部完成，收到 %1$d 円</string>
+
+    <!-- 隐私同意（首次启动） -->
+    <string name="privacy_title">隐私政策与用户协议</string>
+    <string name="privacy_summary">欢迎使用 Eden。为了让你和三玖正常聊天，我们需要处理以下信息：\n\n1. 账号信息：邮箱与密码（密码仅以加密摘要形式保存），用于注册、登录与找回。\n2. 聊天内容与长期记忆：你发送的消息、她的回复，以及从对话中提取的长期记忆，用于生成回复与保持剧情连续。\n3. 位置（仅城市级）：在你授权且开启问候开关时，用于获取当地天气并写入问候语；不采集精确坐标与行踪轨迹。\n4. 本地选择的图片与音乐：仅在你主动选择时，读取该文件用于头像与背景音乐。\n5. 设备与日志：为排查故障会记录必要的运行日志，不包含聊天正文。\n\n上述信息中，聊天内容、记忆与账号信息会传输到你登录所连接的后端服务器；天气数据来自 open-meteo 公共接口。我们不会出售你的个人信息。\n\n你可以随时在设置中查看、删除本地记忆与聊天记录，并申请注销账号。点击下方按钮前，我们不会申请任何系统权限，也不会发起网络请求。</string>
+    <string name="privacy_policy_link">查看完整《隐私政策》</string>
+    <string name="privacy_agree">同意并继续</string>
+    <string name="privacy_disagree">不同意</string>
+    <string name="privacy_link_unavailable">隐私政策页面暂不可用，请稍后再试</string>
+    <string name="privacy_disagree_toast">需要同意隐私政策才能使用 Eden</string>
 </resources>

@@ -14,18 +14,18 @@
         android:layout_gravity="center"
         android:gravity="center_horizontal"
         android:orientation="vertical"
-        android:paddingStart="32dp"
-        android:paddingEnd="32dp">
+        android:paddingStart="@dimen/space_32"
+        android:paddingEnd="@dimen/space_32">
 
         <TextView
             android:id="@+id/tv_title_chip"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/bg_story_nameplate"
-            android:paddingStart="14dp"
-            android:paddingTop="5dp"
-            android:paddingEnd="14dp"
-            android:paddingBottom="5dp"
+            android:paddingStart="@dimen/space_16"
+            android:paddingTop="@dimen/space_4"
+            android:paddingEnd="@dimen/space_16"
+            android:paddingBottom="@dimen/space_4"
             android:textColor="?attr/edenColorOnPrimary"
             android:textSize="12sp"
             android:textStyle="bold"
@@ -35,17 +35,17 @@
             android:id="@+id/tv_title_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="14dp"
+            android:layout_marginTop="@dimen/space_16"
             android:letterSpacing="0.12"
-            android:textColor="#99FFFFFF"
-            android:textSize="11sp"
+            android:textColor="?attr/edenColorTextOnDarkSecondary"
+            android:textSize="12sp"
             tools:text="CHAPTER 01" />
 
         <TextView
             android:id="@+id/tv_title_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="@dimen/space_12"
             android:gravity="center"
             android:textColor="#FFFFFF"
             android:textSize="24sp"
@@ -55,24 +55,24 @@
         <View
             android:layout_width="48dp"
             android:layout_height="2dp"
-            android:layout_marginTop="18dp"
+            android:layout_marginTop="@dimen/space_16"
             android:background="?attr/edenColorAccent" />
 
         <TextView
             android:id="@+id/tv_title_synopsis"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="18dp"
+            android:layout_marginTop="@dimen/space_16"
             android:gravity="center"
             android:lineSpacingExtra="8dp"
-            android:textColor="#B3FFFFFF"
+            android:textColor="?attr/edenColorTextOnDarkSecondary"
             android:textSize="14sp"
             tools:text="你接下了中野家的委托，成为五胞胎姐妹的家庭教师。" />
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="36dp"
+            android:layout_marginTop="@dimen/space_36"
             android:orientation="horizontal">
 
             <Button
@@ -81,8 +81,8 @@
                 android:layout_height="40dp"
                 android:background="@drawable/bg_btn_primary"
                 android:minWidth="104dp"
-                android:paddingStart="28dp"
-                android:paddingEnd="28dp"
+                android:paddingStart="@dimen/space_28"
+                android:paddingEnd="@dimen/space_28"
                 android:text="@string/story_start"
                 android:textColor="?attr/edenColorOnPrimary"
                 android:textSize="14sp" />
@@ -91,12 +91,12 @@
                 android:id="@+id/btn_title_skip"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="@dimen/space_16"
                 android:background="@drawable/bg_outline_button"
                 android:minWidth="104dp"
-                android:paddingStart="28dp"
-                android:paddingEnd="28dp"
-                android:text="@string/story_skip"
+                android:paddingStart="@dimen/space_28"
+                android:paddingEnd="@dimen/space_28"
+                android:text="@string/story_restart"
                 android:textColor="?attr/edenColorOnPrimary"
                 android:textSize="14sp" />
         </LinearLayout>

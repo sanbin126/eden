@@ -22,6 +22,8 @@
 
     <!-- 表面 / 卡片 / 描边 -->
     <attr name="edenColorSurface" format="color" />
+    <attr name="edenColorSurfaceGlass" format="color" />
+    <attr name="edenColorSurfaceGhost" format="color" />
     <attr name="edenColorSurfaceTint" format="color" />
     <attr name="edenColorChipBg" format="color" />
     <attr name="edenColorBorder" format="color" />
@@ -31,6 +33,8 @@
     <attr name="edenColorTextSecondary" format="color" />
     <attr name="edenColorTextTertiary" format="color" />
     <attr name="edenColorTextHint" format="color" />
+    <attr name="edenColorTextOnDark" format="color" />
+    <attr name="edenColorTextOnDarkSecondary" format="color" />
     <attr name="edenColorOnPrimary" format="color" />
 
     <!-- 图标 -->
@@ -56,9 +60,35 @@
     <attr name="edenCharPortrait" format="reference" />
     <attr name="edenCharChibi" format="reference" />
 
+    <!-- 主界面聊天按钮：粉色主题为实心渐变，蓝色绣球主题为磨砂玻璃 + 动态柔光 -->
+    <attr name="edenChatButtonBg" format="reference" />
+    <attr name="edenColorChatText" format="color" />
+    <attr name="edenChatHaloEnabled" format="boolean" />
+    <attr name="edenChatHaloColor1" format="color" />
+    <attr name="edenChatHaloColor2" format="color" />
+    <attr name="edenChatHaloColor3" format="color" />
+
+    <!-- 主界面问候语 / 心形粒子的随机色组 -->
+    <attr name="edenGreetingColors" format="reference" />
+
     <!-- 圆形头像控件（CircleImageView）自定义属性 -->
     <declare-styleable name="CircleImageView">
         <attr name="circleRingWidth" format="dimension" />
         <attr name="circleRingColor" format="color" />
+    </declare-styleable>
+
+    <!-- 聊天气泡刻花层（BubbleEngraveDrawable）自定义属性 -->
+    <declare-styleable name="BubbleEngraveDrawable">
+        <!-- 刻花锚定的角：bottomRight（默认）/ topLeft -->
+        <attr name="edenEngraveCorner">
+            <enum name="bottomRight" value="0" />
+            <enum name="topLeft" value="1" />
+        </attr>
+        <!-- 刻花整体不透明度（0-255） -->
+        <attr name="edenEngraveAlpha" format="integer" />
+        <!-- 刻花边长相对气泡高度的倍数 -->
+        <attr name="edenEngraveScale" format="float" />
+        <!-- 刻花边长上限（dp） -->
+        <attr name="edenEngraveMaxSize" format="float" />
     </declare-styleable>
 </resources>

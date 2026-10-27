@@ -1,0 +1,42 @@
+{
+  "id": "miku_side_02_b",
+  "index": 2,
+  "chapterLabel": "番外",
+  "title": "一个人的书架",
+  "synopsis": "第二天的图书室，借阅台上放着一本《信长公记》，扉页里夹着一张便签。",
+  "bgm": "daily_piano",
+  "casts": {
+    "miku": { "name": "三玖", "slot": "center" }
+  },
+  "backgrounds": {
+    "apartment_exterior": { "label": "公寓外 · 夜风", "top": "#1F2233", "bottom": "#0C0E16", "image": "story_bg/bg_nakano_entrance_night.png" },
+    "street_night":       { "label": "街道 · 路灯 · 夜", "top": "#2B2F4A", "bottom": "#11131D", "image": "story_bg/bg_street_night.png" },
+    "station_night":      { "label": "车站 · 长椅 · 夜", "top": "#252A44", "bottom": "#0D0F17", "image": "story_bg/bg_station_night.png" },
+    "library":            { "label": "学校 · 图书室 · 午休", "top": "#F4E9D8", "bottom": "#B7A78D", "image": "story_bg/bg_school_library_noon.png" }
+  },
+  "scenes": [
+    {
+      "id": "scene_night",
+      "background": "apartment_exterior",
+      "steps": [
+        { "type": "narrate", "text": "你走出中野家公寓。夜风比傍晚凉了不少，你把外套领子竖起来，朝车站走。" },
+        { "type": "bg", "id": "street_night" },
+        { "type": "narrate", "text": "走到公寓拐角的时候，你无意间回头看了一眼。二楼的窗户亮着灯，但走廊尽头那扇门——三玖的房间——门缝下的光灭了。" },
+        { "type": "narrate", "text": "你想起晚饭时她坐在桌子对面，碗里的饭几乎没动。想起她在厨房里背对着所有人翻锅，锅铲搅动的速度比平时快。想起她门后那句「谢谢你没有走开」，说完就把门关上了。" },
+        { "type": "bg", "id": "station_night" },
+        { "type": "narrate", "text": "你走到车站，在长椅上坐下来等车。口袋里的手机震了一下。是一封邮件，发件地址是一串没有备注的号码。" },
+        { "type": "narrate", "text": "「今天谢谢你。接龙，下次我不会输。」" },
+        { "type": "narrate", "text": "没有署名。但你知道是谁。" },
+        { "type": "narrate", "text": "你盯着屏幕看了一会儿，正准备回复，又来了一封。更短：" },
+        { "type": "narrate", "text": "「晚安。」" },
+        { "type": "narrate", "text": "你回了一个「晚安」。然后合上手机，看着车站的灯。" },
+        { "type": "bg", "id": "library" },
+        { "type": "narrate", "text": "第二天午休，图书室。你走进去的时候，历史区那排书架前没有人。但借阅台上放着一本书——《信长公记》，借阅卡上写着「中野三玖」，旁边用铅笔轻轻写了一行小字：" },
+        { "type": "narrate", "text": "「先借给你。我看过了。」" },
+        { "type": "narrate", "text": "你翻开书。扉页里夹着一张便签，和昨晚邮件一样的字迹：" },
+        { "type": "narrate", "text": "「看完告诉我感想。我在天台。」" },
+        { "type": "end" }
+      ]
+    }
+  ]
+}

@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="20dp">
+        android:padding="@dimen/space_20">
 
         <!-- 关闭按钮 -->
         <TextView
@@ -23,13 +23,13 @@
             android:gravity="center"
             android:text="@string/common_close"
             android:textColor="?attr/edenColorTextTertiary"
-            android:textSize="15sp" />
+            android:textSize="14sp" />
 
         <!-- 顶部身份区：小头像 + 名字 + 称号 + 在一起天数 -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="@dimen/space_4"
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
@@ -50,7 +50,7 @@
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="14dp"
+                android:layout_marginStart="@dimen/space_16"
                 android:layout_weight="1"
                 android:orientation="vertical">
 
@@ -67,7 +67,7 @@
                     android:id="@+id/cd_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="3dp"
+                    android:layout_marginTop="@dimen/space_4"
                     android:text="@string/character_detail_nickname"
                     android:textColor="#B08FA0"
                     android:textSize="12sp" />
@@ -76,7 +76,7 @@
                     android:id="@+id/cd_together"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="3dp"
+                    android:layout_marginTop="@dimen/space_4"
                     android:text="@string/character_detail_together"
                     android:textColor="#B08FA0"
                     android:textSize="12sp" />
@@ -87,10 +87,10 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="@dimen/space_16"
             android:background="@drawable/bg_game_card"
             android:orientation="vertical"
-            android:padding="14dp">
+            android:padding="@dimen/space_16">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -109,7 +109,7 @@
                     android:id="@+id/cd_mood_label"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="6dp"
+                    android:layout_marginStart="@dimen/space_8"
                     android:layout_weight="1"
                     android:text="@string/character_detail_mood"
                     android:textColor="?attr/edenColorAccent"
@@ -120,7 +120,7 @@
                     android:id="@+id/cd_mood_reroll"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:padding="4dp"
+                    android:padding="@dimen/space_4"
                     android:text="@string/character_detail_refresh"
                     android:textColor="#B08FA0"
                     android:textSize="12sp" />
@@ -130,7 +130,7 @@
                 android:id="@+id/cd_mood_line"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="@dimen/space_12"
                 android:lineSpacingExtra="3dp"
                 android:text="@string/character_detail_quote"
                 android:textColor="#555555"
@@ -141,7 +141,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="18dp"
+            android:layout_marginTop="@dimen/space_16"
             android:orientation="vertical">
 
             <LinearLayout
@@ -172,7 +172,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="10dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="@dimen/space_8"
                 android:background="@drawable/bg_affection_track"
                 android:orientation="horizontal">
 
@@ -192,10 +192,10 @@
                 android:id="@+id/cd_affection_hint"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="6dp"
+                android:layout_marginTop="@dimen/space_8"
                 android:text="@string/character_detail_next_milestone"
                 android:textColor="?attr/edenColorTextTertiary"
-                android:textSize="11sp" />
+                android:textSize="12sp" />
         </LinearLayout>
 
         <!-- 好感小剧场入口：跨过里程碑后可见红点，点击进入剧情（有新剧情）/列表（回看） -->
@@ -203,16 +203,16 @@
             android:id="@+id/cd_milestone_entry"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="@dimen/space_12"
             android:background="@drawable/bg_game_card"
             android:clickable="true"
             android:focusable="true"
             android:gravity="center_vertical"
             android:orientation="horizontal"
-            android:paddingStart="12dp"
-            android:paddingTop="10dp"
-            android:paddingEnd="12dp"
-            android:paddingBottom="10dp">
+            android:paddingStart="@dimen/space_12"
+            android:paddingTop="@dimen/space_12"
+            android:paddingEnd="@dimen/space_12"
+            android:paddingBottom="@dimen/space_12">
 
             <TextView
                 android:layout_width="0dp"
@@ -227,7 +227,7 @@
                 android:id="@+id/cd_milestone_dot"
                 android:layout_width="8dp"
                 android:layout_height="8dp"
-                android:layout_marginEnd="6dp"
+                android:layout_marginEnd="@dimen/space_8"
                 android:background="@drawable/bg_circle_pink"
                 android:visibility="gone" />
 
@@ -241,7 +241,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="18dp"
+            android:layout_marginTop="@dimen/space_16"
             android:orientation="horizontal">
 
             <LinearLayout
@@ -251,7 +251,7 @@
                 android:background="@drawable/bg_game_card"
                 android:gravity="center"
                 android:orientation="vertical"
-                android:padding="10dp">
+                android:padding="@dimen/space_12">
 
                 <TextView
                     android:id="@+id/cd_stat_company"
@@ -265,21 +265,21 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="2dp"
+                    android:layout_marginTop="@dimen/space_2"
                     android:text="@string/character_detail_today_company"
                     android:textColor="?attr/edenColorTextTertiary"
-                    android:textSize="11sp" />
+                    android:textSize="12sp" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
+                android:layout_marginStart="@dimen/space_12"
                 android:layout_weight="1"
                 android:background="@drawable/bg_game_card"
                 android:gravity="center"
                 android:orientation="vertical"
-                android:padding="10dp">
+                android:padding="@dimen/space_12">
 
                 <TextView
                     android:id="@+id/cd_stat_sign"
@@ -293,21 +293,21 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="2dp"
+                    android:layout_marginTop="@dimen/space_2"
                     android:text="@string/character_detail_sign_streak"
                     android:textColor="?attr/edenColorTextTertiary"
-                    android:textSize="11sp" />
+                    android:textSize="12sp" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
+                android:layout_marginStart="@dimen/space_12"
                 android:layout_weight="1"
                 android:background="@drawable/bg_game_card"
                 android:gravity="center"
                 android:orientation="vertical"
-                android:padding="10dp">
+                android:padding="@dimen/space_12">
 
                 <TextView
                     android:id="@+id/cd_stat_meet"
@@ -321,10 +321,10 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="2dp"
+                    android:layout_marginTop="@dimen/space_2"
                     android:text="@string/character_detail_first_meet"
                     android:textColor="?attr/edenColorTextTertiary"
-                    android:textSize="11sp" />
+                    android:textSize="12sp" />
             </LinearLayout>
         </LinearLayout>
 
@@ -332,7 +332,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="18dp"
+            android:layout_marginTop="@dimen/space_16"
             android:orientation="horizontal">
 
             <TextView
@@ -350,7 +350,7 @@
                 android:id="@+id/cd_btn_diary"
                 android:layout_width="0dp"
                 android:layout_height="42dp"
-                android:layout_marginStart="10dp"
+                android:layout_marginStart="@dimen/space_12"
                 android:layout_weight="1"
                 android:background="@drawable/bg_game_card"
                 android:gravity="center"

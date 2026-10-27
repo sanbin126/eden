@@ -19,18 +19,48 @@ val localProperties = Properties().apply {
 fun secretOr(key: String, defaultValue: String): String =
     localProperties.getProperty(key) ?: System.getenv(key) ?: defaultValue
 
+// ===== 正式包签名 =====
+// 四项配置只写在 local.properties（已 gitignore）或同名的环境变量里。
+// 任一缺失时 assembleRelease 直接失败并给出明确提示，避免误产出未签名/调试签名的包。
+val releaseStoreFile = secretOr("EDEN_RELEASE_STORE_FILE", "")
+val releaseStorePassword = secretOr("EDEN_RELEASE_STORE_PASSWORD", "")
+val releaseKeyAlias = secretOr("EDEN_RELEASE_KEY_ALIAS", "")
+val releaseKeyPassword = secretOr("EDEN_RELEASE_KEY_PASSWORD", "")
+
+fun releaseSigningProblem(): String? = when {
+    releaseStoreFile.isBlank() -> "EDEN_RELEASE_STORE_FILE 未配置"
+    !rootProject.file(releaseStoreFile).exists() ->
+        "签名文件不存在：${rootProject.file(releaseStoreFile).absolutePath}"
+    releaseStorePassword.isBlank() -> "EDEN_RELEASE_STORE_PASSWORD 未配置"
+    releaseKeyAlias.isBlank() -> "EDEN_RELEASE_KEY_ALIAS 未配置"
+    releaseKeyPassword.isBlank() -> "EDEN_RELEASE_KEY_PASSWORD 未配置"
+    else -> null
+}
+
 android {
     namespace = "com.example.eden"
     compileSdk {
         version = release(36)
     }
 
+    signingConfigs {
+        create("release") {
+            if (releaseStoreFile.isNotBlank()) {
+                storeFile = rootProject.file(releaseStoreFile)
+                storePassword = releaseStorePassword
+                keyAlias = releaseKeyAlias
+                keyPassword = releaseKeyPassword
+            }
+        }
+    }
+
     defaultConfig {
-        applicationId = "com.example.eden"
+        applicationId = "com.wanderer.eden"
         minSdk = 24
         targetSdk = 36
+        // 每次提审 versionCode 必须 +1，且永不复用。
         versionCode = 1
-        versionName = "1.0"
+        versionName = "1.0.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
@@ -59,15 +89,22 @@ android {
         )
 
         // 直连 API Key：只在 local.properties 里配置（已 gitignore），不要提交到仓库。
+        // 默认留空，只有 debug 构建才会注入真实值（见 buildTypes.debug），正式包永远为空。
         buildConfigField(
             "String", "LLM_DIRECT_API_KEY",
-            "\"${secretOr("EDEN_LLM_DIRECT_API_KEY", "")}\""
+            "\"\""
         )
 
         // 直连模型名 / 推理接入点 ID。
         buildConfigField(
             "String", "LLM_DIRECT_MODEL",
             "\"${secretOr("EDEN_LLM_DIRECT_MODEL", "doubao-seed-2-0-lite-260428")}\""
+        )
+
+        // 隐私政策页面地址：上架前必须换成已备案域名下可公网访问的页面。
+        buildConfigField(
+            "String", "PRIVACY_POLICY_URL",
+            "\"${secretOr("EDEN_PRIVACY_POLICY_URL", "https://example.com/eden/privacy")}\""
         )
     }
 
@@ -77,6 +114,27 @@ android {
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
+            )
+            signingConfig = signingConfigs.getByName("release")
+
+            // 正式包的接口地址单独配置，不继承 debug 的局域网 HTTP 地址，避免明文请求打进正式包。
+            // 拿到已备案域名后，在 local.properties 里补：
+            //   EDEN_RELEASE_AUTH_BASE_URL=https://你的域名/api/v1/
+            //   EDEN_RELEASE_AI_BASE_URL=https://你的域名/
+            buildConfigField(
+                "String", "AUTH_BASE_URL",
+                "\"${secretOr("EDEN_RELEASE_AUTH_BASE_URL", "https://api.eden.example.com/api/v1/")}\""
+            )
+            buildConfigField(
+                "String", "AI_BASE_URL",
+                "\"${secretOr("EDEN_RELEASE_AI_BASE_URL", "https://api.eden.example.com/")}\""
+            )
+        }
+        debug {
+            // 直连大模型仅限本地调试：真实 Key 只注入 debug 变体。
+            buildConfigField(
+                "String", "LLM_DIRECT_API_KEY",
+                "\"${secretOr("EDEN_LLM_DIRECT_API_KEY", "")}\""
             )
         }
     }
@@ -90,6 +148,20 @@ android {
     buildFeatures {
         compose = true
         buildConfig = true
+    }
+}
+
+// 出正式包前检查签名配置：缺失时直接失败，避免打包到一半才报签名错误。
+// 挂在 preReleaseBuild 上，assembleRelease / bundleRelease 都会先执行到它。
+tasks.matching { it.name == "preReleaseBuild" }.configureEach {
+    doFirst {
+        releaseSigningProblem()?.let { problem ->
+            throw GradleException(
+                "正式包签名不可用：$problem。请在 local.properties 补齐 " +
+                    "EDEN_RELEASE_STORE_FILE / EDEN_RELEASE_STORE_PASSWORD / " +
+                    "EDEN_RELEASE_KEY_ALIAS / EDEN_RELEASE_KEY_PASSWORD 后重试。"
+            )
+        }
     }
 }
 

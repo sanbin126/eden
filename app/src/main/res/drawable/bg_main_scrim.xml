@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 背景柔化遮罩：白色半透明渐变，顶部 #66 略压花纹、底部 #1A 几乎全透，
+     保留花丛原本的饱和度与层次 -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <gradient
+        android:angle="270"
+        android:endColor="#1AFFFFFF"
+        android:startColor="#66FFFFFF"
+        android:type="linear" />
+</shape>

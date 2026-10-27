@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 聊天气泡右下角的玫瑰刻花层（正片叠底 + 径向擦除），左右气泡共用 -->
+<drawable class="com.example.eden.core.ui.BubbleEngraveDrawable" />

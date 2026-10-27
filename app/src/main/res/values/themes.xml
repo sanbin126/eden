@@ -26,6 +26,8 @@
 
         <!-- 表面 / 卡片 / 描边 -->
         <item name="edenColorSurface">@color/eden_surface</item>
+        <item name="edenColorSurfaceGlass">@color/eden_surface_glass</item>
+        <item name="edenColorSurfaceGhost">@color/eden_surface_ghost</item>
         <item name="edenColorSurfaceTint">@color/eden_surface_tint</item>
         <item name="edenColorChipBg">@color/eden_chip_bg</item>
         <item name="edenColorBorder">@color/eden_border</item>
@@ -35,6 +37,8 @@
         <item name="edenColorTextSecondary">@color/eden_text_secondary</item>
         <item name="edenColorTextTertiary">@color/eden_text_tertiary</item>
         <item name="edenColorTextHint">@color/eden_text_hint</item>
+        <item name="edenColorTextOnDark">@color/eden_text_on_dark</item>
+        <item name="edenColorTextOnDarkSecondary">@color/eden_text_on_dark_secondary</item>
         <item name="edenColorOnPrimary">@color/eden_on_primary</item>
 
         <!-- 图标 -->
@@ -59,6 +63,15 @@
         <!-- 当前角色资源（换角色时改这里 + Characters 注册表） -->
         <item name="edenCharPortrait">@drawable/miku</item>
         <item name="edenCharChibi">@drawable/miku_chibi</item>
+
+        <!-- 主界面聊天按钮：粉色主题保持原实心渐变按钮，无动态柔光 -->
+        <item name="edenChatButtonBg">@drawable/btn_chat_selector</item>
+        <item name="edenColorChatText">@android:color/white</item>
+        <item name="edenChatHaloEnabled">false</item>
+        <item name="edenChatHaloColor1">@android:color/transparent</item>
+        <item name="edenChatHaloColor2">@android:color/transparent</item>
+        <item name="edenChatHaloColor3">@android:color/transparent</item>
+        <item name="edenGreetingColors">@array/eden_greeting_colors</item>
     </style>
 
     <!--
@@ -81,6 +94,34 @@
         <item name="edenColorSurfaceTint">@color/eden_ocean_surface_tint</item>
         <item name="edenColorChipBg">@color/eden_ocean_chip_bg</item>
         <item name="edenColorBorder">@color/eden_ocean_border</item>
+    </style>
+
+    <!--
+        蓝色绣球主题 Hydrangea（用户可切换的新皮肤）
+        继承 Theme.Eden，只覆盖配色与主界面聊天按钮相关的属性。
+        启用方式：设置页切换 -> SkinManager 在 Activity 创建前 setTheme。
+    -->
+    <style name="Theme.Eden.Skin.Hydrangea" parent="Theme.Eden">
+        <item name="edenColorPrimary">@color/eden_hydrangea_primary</item>
+        <item name="edenColorPrimaryPressed">@color/eden_hydrangea_primary_pressed</item>
+        <item name="edenColorPrimaryDeep">@color/eden_hydrangea_primary_deep</item>
+        <item name="edenColorPrimaryLight">@color/eden_hydrangea_primary_light</item>
+        <item name="edenColorAccent">@color/eden_hydrangea_accent</item>
+        <item name="edenColorAccentLight">@color/eden_hydrangea_accent_light</item>
+        <item name="edenColorGradientStart">@color/eden_hydrangea_gradient_start</item>
+        <item name="edenColorGradientEnd">@color/eden_hydrangea_gradient_end</item>
+        <item name="edenColorSurfaceTint">@color/eden_hydrangea_surface_tint</item>
+        <item name="edenColorChipBg">@color/eden_hydrangea_chip_bg</item>
+        <item name="edenColorBorder">@color/eden_hydrangea_border</item>
+
+        <!-- 主界面聊天按钮：磨砂玻璃 + 蓝紫渐变描边 + 动态渐变柔光 -->
+        <item name="edenChatButtonBg">@drawable/bg_chat_button_selector</item>
+        <item name="edenColorChatText">@color/eden_hydrangea_chat_text</item>
+        <item name="edenChatHaloEnabled">true</item>
+        <item name="edenChatHaloColor1">@color/eden_hydrangea_halo_1</item>
+        <item name="edenChatHaloColor2">@color/eden_hydrangea_halo_2</item>
+        <item name="edenChatHaloColor3">@color/eden_hydrangea_halo_3</item>
+        <item name="edenGreetingColors">@array/eden_hydrangea_greeting_colors</item>
     </style>
 
     <!--

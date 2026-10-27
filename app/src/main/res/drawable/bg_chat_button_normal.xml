@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 蓝色绣球主题主聊天按钮（常态）：磨砂玻璃圆章 + 蓝紫渐变描边 -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- 1. 外圈：整圆蓝紫渐变，作为渐变描边打底 -->
+    <item>
+        <shape android:shape="oval">
+            <gradient
+                android:angle="315"
+                android:endColor="#AE8BEA"
+                android:startColor="#8FA6F2"
+                android:type="linear" />
+        </shape>
+    </item>
+
+    <!-- 2. 玻璃白边：内缩 3dp，透出外圈形成 3dp 渐变描边 -->
+    <item
+        android:bottom="3dp"
+        android:left="3dp"
+        android:right="3dp"
+        android:top="3dp">
+        <shape android:shape="oval">
+            <solid android:color="#8FFFFFFF" />
+        </shape>
+    </item>
+
+    <!-- 3. 磨砂芯：半透明白紫渐变，透出背后的花海做磨砂质感 -->
+    <item
+        android:bottom="5dp"
+        android:left="5dp"
+        android:right="5dp"
+        android:top="5dp">
+        <shape android:shape="oval">
+            <gradient
+                android:angle="270"
+                android:endColor="#B8E6E2FF"
+                android:startColor="#CCFFFFFF"
+                android:type="linear" />
+        </shape>
+    </item>
+
+    <!-- 4. 顶部柔光高光，让玻璃有体积感 -->
+    <item
+        android:bottom="5dp"
+        android:left="5dp"
+        android:right="5dp"
+        android:top="5dp">
+        <shape android:shape="oval">
+            <gradient
+                android:centerX="0.5"
+                android:centerY="0.12"
+                android:endColor="#00FFFFFF"
+                android:gradientRadius="56dp"
+                android:startColor="#66FFFFFF"
+                android:type="radial" />
+        </shape>
+    </item>
+
+    <!-- 5. 右下角玫瑰刻花：正片叠底 + 径向擦除，只保留右下主花 -->
+    <item android:drawable="@drawable/chat_engrave_layer" />
+</layer-list>

@@ -3,16 +3,16 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:layout_marginVertical="4dp"
-    android:paddingStart="12dp"
-    android:paddingEnd="64dp">
+    android:layout_marginVertical="@dimen/space_4"
+    android:paddingStart="@dimen/space_12"
+    android:paddingEnd="@dimen/space_64">
 
     <!-- 角色头像 -->
     <ImageView
         android:id="@+id/iv_avatar_left"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="@dimen/space_8"
         android:src="@drawable/character_placeholder" />
 
     <!-- 消息气泡 -->
@@ -27,7 +27,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/bg_bubble_left"
-            android:padding="12dp"
+            android:padding="@dimen/space_12"
             android:textColor="#000000"
             android:textSize="16sp" />
 
@@ -36,7 +36,7 @@
             android:id="@+id/tv_time_left"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="2dp"
+            android:layout_marginTop="@dimen/space_2"
             android:text="@string/common_time_placeholder"
             android:textColor="#AAAAAA"
             android:textSize="12sp" />

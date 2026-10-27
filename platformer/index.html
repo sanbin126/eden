@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="theme-color" content="#080b12">
+  <title>跳跃小游戏 · 材料与图鉴</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="stage" id="stage">
+    <canvas id="game"></canvas>
+
+    <div class="hud">
+      <div class="hud__coins">
+        <span class="coin-dot"></span>
+        <span id="coinText">金币 0 / 12</span>
+        <span class="hud__divider" aria-hidden="true"></span>
+        <div class="hud__hp" id="hpHearts" aria-label="生命值">
+          <i class="heart"></i><i class="heart"></i><i class="heart"></i>
+        </div>
+      </div>
+      <div class="hud__right">
+        <div class="hud__hint">A / D 或 ← → 移动 · 空格 跳跃 · K 突进 · R 重开</div>
+        <button class="btn-codex" id="codexBtn" type="button">剧情图鉴</button>
+      </div>
+    </div>
+
+    <div class="toast" id="toast" hidden></div>
+
+    <div class="touch" id="touch">
+      <div class="touch__side">
+        <button class="pad pad--dash" type="button" data-key="dash" aria-label="突进">冲</button>
+        <button class="pad pad--jump" type="button" data-key="jump" aria-label="跳跃">跳</button>
+      </div>
+    </div>
+
+    <!-- 左半屏随手指落点唤出的横轴轮盘（只识别左右） -->
+    <div class="wheel" id="moveWheel" hidden>
+      <span class="wheel__arrow wheel__arrow--left" aria-hidden="true">◀</span>
+      <span class="wheel__arrow wheel__arrow--right" aria-hidden="true">▶</span>
+      <div class="wheel__knob" id="moveKnob"></div>
+    </div>
+
+    <div class="clear" id="clearLayer" hidden>
+      <div class="clear__card">
+        <h1>通关！</h1>
+        <p class="clear__row">本局金币：<span id="clearCoins">0</span> / <span id="clearCoinsTotal">12</span></p>
+        <p class="clear__row">累计金币：<span class="clear__value" id="clearBank">0</span>　通关时间：<span class="clear__value" id="clearTime">0:00.0</span></p>
+        <ul class="clear__materials" id="clearMaterials" aria-label="本局材料"></ul>
+        <p class="clear__extra" id="clearExtra" hidden>金币全收集！</p>
+        <div class="clear__actions">
+          <button class="btn-restart" id="restartBtn" type="button">重新开始</button>
+          <button class="btn-ghost" id="codexBtnClear" type="button">剧情图鉴</button>
+        </div>
+        <p class="clear__tip">按 R 也可重开</p>
+      </div>
+    </div>
+
+    <div class="codex" id="codexLayer" hidden>
+      <div class="codex__head">
+        <div>
+          <h2>剧情图鉴</h2>
+          <p class="codex__meta" id="codexMeta">累计金币 0</p>
+        </div>
+        <button class="btn-ghost" id="codexClose" type="button">关闭</button>
+      </div>
+      <div class="codex__list" id="codexList"></div>
+    </div>
+
+    <div class="portrait-tip">
+      <div>
+        <div class="portrait-tip__icon">⟳</div>
+        <p>请横屏游玩</p>
+      </div>
+    </div>
+  </main>
+
+  <script src="game.js"></script>
+</body>
+</html>

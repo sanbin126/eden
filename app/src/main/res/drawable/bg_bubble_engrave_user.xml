@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 用户气泡左上角的玫瑰刻花层：比角色气泡更小、更淡 -->
+<drawable class="com.example.eden.core.ui.BubbleEngraveDrawable"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:edenEngraveCorner="topLeft"
+    app:edenEngraveAlpha="26"
+    app:edenEngraveScale="1.6"
+    app:edenEngraveMaxSize="110" />

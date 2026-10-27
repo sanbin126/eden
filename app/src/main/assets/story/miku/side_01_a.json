@@ -1,0 +1,62 @@
+{
+  "id": "miku_side_01_a",
+  "index": 1,
+  "chapterLabel": "番外",
+  "title": "天台的温度",
+  "synopsis": "初见当晚，你刚走出公寓大门，身后传来一阵急促的脚步声。",
+  "bgm": "daily_piano",
+  "casts": {
+    "miku": { "name": "三玖", "slot": "center" }
+  },
+  "backgrounds": {
+    "apartment_exterior": { "label": "公寓外 · 夜风", "top": "#1F2233", "bottom": "#0C0E16", "image": "story_bg/bg_nakano_entrance_night.png" }
+  },
+  "scenes": [
+    {
+      "id": "scene_gate",
+      "background": "apartment_exterior",
+      "steps": [
+        { "type": "narrate", "text": "你离开中野家之后，走出公寓大门，夜风从领口灌进来。你把手插进口袋，摸到那枚抹茶汽水的瓶盖，正想把它扔进路边的垃圾桶——" },
+        { "type": "narrate", "text": "身后传来一阵急促的脚步声。很轻，但在安静的住宅区里格外清晰。" },
+        { "type": "narrate", "text": "你回头。三玖站在公寓门口的台阶上，没有穿外套，脖子上挂着那副蓝色耳机。她大概是跑下来的，呼吸有点乱，刘海被风吹得更散了一些。" },
+        { "type": "say", "who": "miku", "face": "school_normal", "text": "……等一下。" },
+        { "type": "narrate", "focus": "miku", "text": "她停在离你三步远的地方，像是不知道接下来该说什么。手指在耳机线上绕了一圈。" },
+        { "type": "say", "who": "miku", "face": "school_normal", "text": "你……明天还会来吗。" },
+        { "type": "choice", "options": [
+          { "text": "「会。我说了会认真做。」", "affection": 0, "goto": "scene_branch_a" },
+          { "text": "「你希望我来吗？」", "affection": 0, "goto": "scene_branch_b" }
+        ] }
+      ]
+    },
+    {
+      "id": "scene_branch_a",
+      "background": "apartment_exterior",
+      "next": "scene_after",
+      "steps": [
+        { "type": "narrate", "focus": "miku", "text": "三玖低下头，刘海遮住了大半表情。过了两秒，她轻轻「嗯」了一声，声音小得像是在自言自语。" },
+        { "type": "say", "who": "miku", "face": "school_normal", "text": "……那明天。图书室。午休。" },
+        { "type": "narrate", "text": "她说完就转身跑回了公寓，没有给你回答的时间。你听到她在门厅里差点绊了一跤的声音，然后是一句压低了的「没事」。" }
+      ]
+    },
+    {
+      "id": "scene_branch_b",
+      "background": "apartment_exterior",
+      "next": "scene_after",
+      "steps": [
+        { "type": "narrate", "focus": "miku", "text": "三玖的手指在耳机线上停住了。她偏过头，刘海下的视线飘向一边。" },
+        { "type": "say", "who": "miku", "face": "school_normal", "text": "……随便你。" },
+        { "type": "narrate", "text": "顿了一下。又补了一句，更小声。" },
+        { "type": "say", "who": "miku", "face": "school_normal", "text": "……但如果你来的话，我大概会在。" },
+        { "type": "narrate", "focus": "miku", "text": "她没等你回答就转身走了。这次走得很慢，慢到你能看到她的耳朵尖在路灯下泛着红。" }
+      ]
+    },
+    {
+      "id": "scene_after",
+      "background": "apartment_exterior",
+      "steps": [
+        { "type": "narrate", "text": "你站在原地，把瓶盖重新放回口袋。公寓门口已经没人了，但二楼的窗户亮了一盏灯，窗帘动了一下，又不动了。" },
+        { "type": "end" }
+      ]
+    }
+  ]
+}

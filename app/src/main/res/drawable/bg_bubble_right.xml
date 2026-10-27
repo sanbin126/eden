@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="?attr/edenColorPrimary" />
-    <corners
-        android:topLeftRadius="20dp"
-        android:topRightRadius="0dp"
-        android:bottomLeftRadius="20dp"
-        android:bottomRightRadius="20dp" />
-</shape>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape>
+            <solid android:color="?attr/edenColorPrimary" />
+            <corners
+                android:topLeftRadius="20dp"
+                android:topRightRadius="0dp"
+                android:bottomLeftRadius="20dp"
+                android:bottomRightRadius="20dp" />
+        </shape>
+    </item>
+    <!-- 左上角玫瑰刻花：更小更淡，正片叠底 + 径向擦除 -->
+    <item android:drawable="@drawable/bg_bubble_engrave_user" />
+</layer-list>

@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_main_gradient"
+    android:fitsSystemWindows="true"
     android:orientation="vertical"
     tools:context=".SettingsActivity">
 
@@ -14,7 +15,7 @@
         android:layout_height="56dp"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:paddingHorizontal="8dp">
+        android:paddingHorizontal="@dimen/space_8">
 
         <ImageView
             android:id="@+id/btn_back"
@@ -22,13 +23,13 @@
             android:layout_height="40dp"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:contentDescription="@string/common_back"
-            android:padding="8dp"
+            android:padding="@dimen/space_8"
             android:src="@drawable/ic_back" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="@dimen/space_8"
             android:text="@string/settings_title"
             android:textColor="?attr/edenColorTextPrimary"
             android:textSize="18sp"
@@ -46,16 +47,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingHorizontal="16dp"
-            android:paddingBottom="32dp">
+            android:paddingHorizontal="@dimen/space_16"
+            android:paddingBottom="@dimen/space_32">
 
             <!-- 账号信息 -->
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="@dimen/space_8"
                 app:cardBackgroundColor="?attr/edenColorSurface"
-                app:cardCornerRadius="16dp"
+                app:cardCornerRadius="@dimen/radius_medium"
                 app:cardElevation="2dp">
 
                 <LinearLayout
@@ -67,9 +68,9 @@
                     android:focusable="true"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
-                    android:padding="16dp">
+                    android:padding="@dimen/space_16">
 
-                    <com.example.eden.CircleImageView
+                    <com.example.eden.core.ui.CircleImageView
                         android:id="@+id/iv_profile_avatar"
                         android:layout_width="52dp"
                         android:layout_height="52dp"
@@ -79,7 +80,7 @@
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="14dp"
+                        android:layout_marginStart="@dimen/space_16"
                         android:layout_weight="1"
                         android:orientation="vertical">
 
@@ -91,36 +92,36 @@
                             android:ellipsize="end"
                             android:text="@string/settings_not_logged_in"
                             android:textColor="?attr/edenColorTextPrimary"
-                            android:textSize="17sp"
+                            android:textSize="16sp"
                             android:textStyle="bold" />
 
                         <TextView
                             android:id="@+id/tv_email"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp"
+                            android:layout_marginTop="@dimen/space_4"
                             android:maxLines="1"
                             android:ellipsize="end"
                             android:text="@string/common_dash"
                             android:textColor="?attr/edenColorTextTertiary"
-                            android:textSize="13sp" />
+                            android:textSize="12sp" />
 
                         <TextView
                             android:id="@+id/tv_signature"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp"
+                            android:layout_marginTop="@dimen/space_4"
                             android:maxLines="1"
                             android:ellipsize="end"
-                            android:text="@string/profile_signature_empty"
+                            android:visibility="gone"
                             android:textColor="?attr/edenColorTextTertiary"
-                            android:textSize="13sp" />
+                            android:textSize="12sp" />
                     </LinearLayout>
 
                     <ImageView
                         android:layout_width="18dp"
                         android:layout_height="18dp"
-                        android:layout_marginStart="6dp"
+                        android:layout_marginStart="@dimen/space_8"
                         android:src="@drawable/ic_chevron_right" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -129,9 +130,9 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="@dimen/space_16"
                 app:cardBackgroundColor="?attr/edenColorSurface"
-                app:cardCornerRadius="16dp"
+                app:cardCornerRadius="@dimen/radius_medium"
                 app:cardElevation="2dp">
 
                 <LinearLayout
@@ -146,7 +147,7 @@
                         android:background="?attr/selectableItemBackground"
                         android:gravity="center_vertical"
                         android:orientation="horizontal"
-                        android:paddingHorizontal="16dp">
+                        android:paddingHorizontal="@dimen/space_16">
 
                         <ImageView
                             android:layout_width="22dp"
@@ -156,11 +157,11 @@
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="14dp"
+                            android:layout_marginStart="@dimen/space_16"
                             android:layout_weight="1"
                             android:text="@string/settings_change_password"
                             android:textColor="?attr/edenColorTextPrimary"
-                            android:textSize="15sp" />
+                            android:textSize="16sp" />
 
                         <ImageView
                             android:layout_width="18dp"
@@ -174,9 +175,9 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="@dimen/space_16"
                 app:cardBackgroundColor="?attr/edenColorSurface"
-                app:cardCornerRadius="16dp"
+                app:cardCornerRadius="@dimen/radius_medium"
                 app:cardElevation="2dp">
 
                 <LinearLayout
@@ -191,7 +192,7 @@
                         android:background="?attr/selectableItemBackground"
                         android:gravity="center_vertical"
                         android:orientation="horizontal"
-                        android:paddingHorizontal="16dp">
+                        android:paddingHorizontal="@dimen/space_16">
 
                         <ImageView
                             android:layout_width="22dp"
@@ -201,11 +202,11 @@
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="14dp"
+                            android:layout_marginStart="@dimen/space_16"
                             android:layout_weight="1"
                             android:text="@string/settings_my_name"
                             android:textColor="?attr/edenColorTextPrimary"
-                            android:textSize="15sp" />
+                            android:textSize="16sp" />
 
                         <TextView
                             android:id="@+id/tv_nickname_value"
@@ -216,19 +217,19 @@
                             android:maxWidth="140dp"
                             android:text="@string/common_not_set"
                             android:textColor="?attr/edenColorTextTertiary"
-                            android:textSize="13sp" />
+                            android:textSize="12sp" />
 
                         <ImageView
                             android:layout_width="18dp"
                             android:layout_height="18dp"
-                            android:layout_marginStart="6dp"
+                            android:layout_marginStart="@dimen/space_8"
                             android:src="@drawable/ic_chevron_right" />
                     </LinearLayout>
 
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
-                        android:layout_marginStart="52dp"
+                        android:layout_marginStart="@dimen/settings_divider_inset"
                         android:background="?attr/edenColorDividerAlt" />
 
                     <!-- 亲密称呼 -->
@@ -239,7 +240,7 @@
                         android:background="?attr/selectableItemBackground"
                         android:gravity="center_vertical"
                         android:orientation="horizontal"
-                        android:paddingHorizontal="16dp">
+                        android:paddingHorizontal="@dimen/space_16">
 
                         <ImageView
                             android:layout_width="22dp"
@@ -249,11 +250,11 @@
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="14dp"
+                            android:layout_marginStart="@dimen/space_16"
                             android:layout_weight="1"
                             android:text="@string/settings_intimate_name"
                             android:textColor="?attr/edenColorTextPrimary"
-                            android:textSize="15sp" />
+                            android:textSize="16sp" />
 
                         <TextView
                             android:id="@+id/tv_intimate_value"
@@ -264,19 +265,19 @@
                             android:maxWidth="140dp"
                             android:text="@string/common_not_set"
                             android:textColor="?attr/edenColorTextTertiary"
-                            android:textSize="13sp" />
+                            android:textSize="12sp" />
 
                         <ImageView
                             android:layout_width="18dp"
                             android:layout_height="18dp"
-                            android:layout_marginStart="6dp"
+                            android:layout_marginStart="@dimen/space_8"
                             android:src="@drawable/ic_chevron_right" />
                     </LinearLayout>
 
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
-                        android:layout_marginStart="52dp"
+                        android:layout_marginStart="@dimen/settings_divider_inset"
                         android:background="?attr/edenColorDividerAlt" />
 
                     <!-- 纪念日 -->
@@ -287,7 +288,7 @@
                         android:background="?attr/selectableItemBackground"
                         android:gravity="center_vertical"
                         android:orientation="horizontal"
-                        android:paddingHorizontal="16dp">
+                        android:paddingHorizontal="@dimen/space_16">
 
                         <ImageView
                             android:layout_width="22dp"
@@ -297,11 +298,11 @@
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="14dp"
+                            android:layout_marginStart="@dimen/space_16"
                             android:layout_weight="1"
                             android:text="@string/settings_anniversary"
                             android:textColor="?attr/edenColorTextPrimary"
-                            android:textSize="15sp" />
+                            android:textSize="16sp" />
 
                         <TextView
                             android:id="@+id/tv_anniversary_value"
@@ -312,19 +313,19 @@
                             android:maxWidth="140dp"
                             android:text="@string/common_not_set"
                             android:textColor="?attr/edenColorTextTertiary"
-                            android:textSize="13sp" />
+                            android:textSize="12sp" />
 
                         <ImageView
                             android:layout_width="18dp"
                             android:layout_height="18dp"
-                            android:layout_marginStart="6dp"
+                            android:layout_marginStart="@dimen/space_8"
                             android:src="@drawable/ic_chevron_right" />
                     </LinearLayout>
 
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
-                        android:layout_marginStart="52dp"
+                        android:layout_marginStart="@dimen/settings_divider_inset"
                         android:background="?attr/edenColorDividerAlt" />
 
                     <!-- 我的生日 -->
@@ -335,7 +336,7 @@
                         android:background="?attr/selectableItemBackground"
                         android:gravity="center_vertical"
                         android:orientation="horizontal"
-                        android:paddingHorizontal="16dp">
+                        android:paddingHorizontal="@dimen/space_16">
 
                         <ImageView
                             android:layout_width="22dp"
@@ -345,11 +346,11 @@
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="14dp"
+                            android:layout_marginStart="@dimen/space_16"
                             android:layout_weight="1"
                             android:text="@string/settings_my_birthday"
                             android:textColor="?attr/edenColorTextPrimary"
-                            android:textSize="15sp" />
+                            android:textSize="16sp" />
 
                         <TextView
                             android:id="@+id/tv_birthday_value"
@@ -360,19 +361,19 @@
                             android:maxWidth="140dp"
                             android:text="@string/common_not_set"
                             android:textColor="?attr/edenColorTextTertiary"
-                            android:textSize="13sp" />
+                            android:textSize="12sp" />
 
                         <ImageView
                             android:layout_width="18dp"
                             android:layout_height="18dp"
-                            android:layout_marginStart="6dp"
+                            android:layout_marginStart="@dimen/space_8"
                             android:src="@drawable/ic_chevron_right" />
                     </LinearLayout>
 
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
-                        android:layout_marginStart="52dp"
+                        android:layout_marginStart="@dimen/settings_divider_inset"
                         android:background="?attr/edenColorDividerAlt" />
 
                     <LinearLayout
@@ -380,7 +381,7 @@
                         android:layout_height="56dp"
                         android:gravity="center_vertical"
                         android:orientation="horizontal"
-                        android:paddingHorizontal="16dp">
+                        android:paddingHorizontal="@dimen/space_16">
 
                         <ImageView
                             android:layout_width="22dp"
@@ -390,11 +391,11 @@
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="14dp"
+                            android:layout_marginStart="@dimen/space_16"
                             android:layout_weight="1"
                             android:text="@string/settings_notify"
                             android:textColor="?attr/edenColorTextPrimary"
-                            android:textSize="15sp" />
+                            android:textSize="16sp" />
 
                         <androidx.appcompat.widget.SwitchCompat
                             android:id="@+id/switch_notification"
@@ -405,7 +406,7 @@
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
-                        android:layout_marginStart="52dp"
+                        android:layout_marginStart="@dimen/settings_divider_inset"
                         android:background="?attr/edenColorDividerAlt" />
 
                     <LinearLayout
@@ -413,7 +414,7 @@
                         android:layout_height="56dp"
                         android:gravity="center_vertical"
                         android:orientation="horizontal"
-                        android:paddingHorizontal="16dp">
+                        android:paddingHorizontal="@dimen/space_16">
 
                         <ImageView
                             android:layout_width="22dp"
@@ -423,16 +424,52 @@
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="14dp"
+                            android:layout_marginStart="@dimen/space_16"
                             android:layout_weight="1"
                             android:text="@string/settings_proactive_greeting"
                             android:textColor="?attr/edenColorTextPrimary"
-                            android:textSize="15sp" />
+                            android:textSize="16sp" />
 
                         <androidx.appcompat.widget.SwitchCompat
                             android:id="@+id/switch_greeting"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginStart="@dimen/settings_divider_inset"
+                        android:background="?attr/edenColorDividerAlt" />
+
+                    <!-- 记忆管理：查看 / 删除三玖记住的关于你的事 -->
+                    <LinearLayout
+                        android:id="@+id/item_memory"
+                        android:layout_width="match_parent"
+                        android:layout_height="56dp"
+                        android:background="?attr/selectableItemBackground"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingHorizontal="@dimen/space_16">
+
+                        <ImageView
+                            android:layout_width="22dp"
+                            android:layout_height="22dp"
+                            android:src="@drawable/ic_heart" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/space_16"
+                            android:layout_weight="1"
+                            android:text="@string/settings_memory"
+                            android:textColor="?attr/edenColorTextPrimary"
+                            android:textSize="16sp" />
+
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:src="@drawable/ic_chevron_right" />
                     </LinearLayout>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -441,15 +478,59 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="@dimen/space_16"
                 app:cardBackgroundColor="?attr/edenColorSurface"
-                app:cardCornerRadius="16dp"
+                app:cardCornerRadius="@dimen/radius_medium"
                 app:cardElevation="2dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
+
+                    <!-- 主题：粉色（默认）/ 蓝色绣球，切换后立即全局生效 -->
+                    <LinearLayout
+                        android:id="@+id/item_theme"
+                        android:layout_width="match_parent"
+                        android:layout_height="56dp"
+                        android:background="?attr/selectableItemBackground"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingHorizontal="@dimen/space_16">
+
+                        <ImageView
+                            android:layout_width="22dp"
+                            android:layout_height="22dp"
+                            android:src="@drawable/ic_palette" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/space_16"
+                            android:layout_weight="1"
+                            android:text="@string/settings_theme"
+                            android:textColor="?attr/edenColorTextPrimary"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/tv_theme_value"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="?attr/edenColorTextTertiary"
+                            android:textSize="12sp" />
+
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:layout_marginStart="@dimen/space_8"
+                            android:src="@drawable/ic_chevron_right" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginStart="@dimen/settings_divider_inset"
+                        android:background="?attr/edenColorDividerAlt" />
 
                     <!-- 运行模式：只读展示（后端 / 直连），自动判定，用户不可切换 -->
                     <LinearLayout
@@ -458,7 +539,7 @@
                         android:layout_height="56dp"
                         android:gravity="center_vertical"
                         android:orientation="horizontal"
-                        android:paddingHorizontal="16dp">
+                        android:paddingHorizontal="@dimen/space_16">
 
                         <ImageView
                             android:layout_width="22dp"
@@ -468,11 +549,11 @@
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="14dp"
+                            android:layout_marginStart="@dimen/space_16"
                             android:layout_weight="1"
                             android:text="@string/settings_run_mode"
                             android:textColor="?attr/edenColorTextPrimary"
-                            android:textSize="15sp" />
+                            android:textSize="16sp" />
 
                         <TextView
                             android:id="@+id/tv_llm_mode"
@@ -480,13 +561,13 @@
                             android:layout_height="wrap_content"
                             android:text="@string/settings_detecting"
                             android:textColor="?attr/edenColorTextTertiary"
-                            android:textSize="13sp" />
+                            android:textSize="12sp" />
                     </LinearLayout>
 
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
-                        android:layout_marginStart="52dp"
+                        android:layout_marginStart="@dimen/settings_divider_inset"
                         android:background="?attr/edenColorDividerAlt" />
 
                     <!-- 成长说明：円 / 好感的来源与每日上限 -->
@@ -497,7 +578,7 @@
                         android:background="?attr/selectableItemBackground"
                         android:gravity="center_vertical"
                         android:orientation="horizontal"
-                        android:paddingHorizontal="16dp">
+                        android:paddingHorizontal="@dimen/space_16">
 
                         <ImageView
                             android:layout_width="22dp"
@@ -507,11 +588,11 @@
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="14dp"
+                            android:layout_marginStart="@dimen/space_16"
                             android:layout_weight="1"
                             android:text="@string/settings_growth"
                             android:textColor="?attr/edenColorTextPrimary"
-                            android:textSize="15sp" />
+                            android:textSize="16sp" />
 
                         <ImageView
                             android:layout_width="18dp"
@@ -522,7 +603,7 @@
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
-                        android:layout_marginStart="52dp"
+                        android:layout_marginStart="@dimen/settings_divider_inset"
                         android:background="?attr/edenColorDividerAlt" />
 
                     <LinearLayout
@@ -532,7 +613,7 @@
                         android:background="?attr/selectableItemBackground"
                         android:gravity="center_vertical"
                         android:orientation="horizontal"
-                        android:paddingHorizontal="16dp">
+                        android:paddingHorizontal="@dimen/space_16">
 
                         <ImageView
                             android:layout_width="22dp"
@@ -542,11 +623,11 @@
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="14dp"
+                            android:layout_marginStart="@dimen/space_16"
                             android:layout_weight="1"
                             android:text="@string/settings_clear_cache"
                             android:textColor="?attr/edenColorTextPrimary"
-                            android:textSize="15sp" />
+                            android:textSize="16sp" />
 
                         <TextView
                             android:id="@+id/tv_cache_size"
@@ -554,19 +635,19 @@
                             android:layout_height="wrap_content"
                             android:text=""
                             android:textColor="?attr/edenColorTextTertiary"
-                            android:textSize="13sp" />
+                            android:textSize="12sp" />
 
                         <ImageView
                             android:layout_width="18dp"
                             android:layout_height="18dp"
-                            android:layout_marginStart="6dp"
+                            android:layout_marginStart="@dimen/space_8"
                             android:src="@drawable/ic_chevron_right" />
                     </LinearLayout>
 
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
-                        android:layout_marginStart="52dp"
+                        android:layout_marginStart="@dimen/settings_divider_inset"
                         android:background="?attr/edenColorDividerAlt" />
 
                     <LinearLayout
@@ -576,7 +657,7 @@
                         android:background="?attr/selectableItemBackground"
                         android:gravity="center_vertical"
                         android:orientation="horizontal"
-                        android:paddingHorizontal="16dp">
+                        android:paddingHorizontal="@dimen/space_16">
 
                         <ImageView
                             android:layout_width="22dp"
@@ -586,11 +667,11 @@
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="14dp"
+                            android:layout_marginStart="@dimen/space_16"
                             android:layout_weight="1"
                             android:text="@string/settings_about"
                             android:textColor="?attr/edenColorTextPrimary"
-                            android:textSize="15sp" />
+                            android:textSize="16sp" />
 
                         <TextView
                             android:id="@+id/tv_version"
@@ -598,12 +679,12 @@
                             android:layout_height="wrap_content"
                             android:text=""
                             android:textColor="?attr/edenColorTextTertiary"
-                            android:textSize="13sp" />
+                            android:textSize="12sp" />
 
                         <ImageView
                             android:layout_width="18dp"
                             android:layout_height="18dp"
-                            android:layout_marginStart="6dp"
+                            android:layout_marginStart="@dimen/space_8"
                             android:src="@drawable/ic_chevron_right" />
                     </LinearLayout>
                 </LinearLayout>
@@ -614,7 +695,7 @@
                 android:id="@+id/btn_logout"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
-                android:layout_marginTop="28dp"
+                android:layout_marginTop="@dimen/space_28"
                 android:background="@drawable/bg_outline_button_red"
                 android:backgroundTint="@null"
                 android:text="@string/settings_logout"

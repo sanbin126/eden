@@ -1,0 +1,66 @@
+{
+  "id": "miku_side_02_a",
+  "index": 2,
+  "chapterLabel": "番外",
+  "title": "回家路上的抹茶汽水",
+  "synopsis": "你刚要走，三玖追了出来，往你手心里塞了一枚瓶盖。",
+  "bgm": "daily_piano",
+  "casts": {
+    "miku": { "name": "三玖", "slot": "center" }
+  },
+  "backgrounds": {
+    "apartment_exterior": { "label": "公寓外 · 夜风", "top": "#1F2233", "bottom": "#0C0E16", "image": "story_bg/bg_nakano_entrance_night.png" }
+  },
+  "scenes": [
+    {
+      "id": "scene_gate",
+      "background": "apartment_exterior",
+      "steps": [
+        { "type": "narrate", "text": "你走出中野家公寓，手里还攥着那瓶抹茶汽水——三玖买的那瓶，喝了一半，瓶身已经被手心的温度捂得不再冰凉。你正想把空瓶扔进门口的回收箱，身后传来一阵脚步声。" },
+        { "type": "narrate", "text": "这次是三玖追出来了。" },
+        { "type": "narrate", "text": "她穿着家居服，脚上是拖鞋，头发有点乱。大概是急着下楼，连外套都没披。她走到你面前，停下，呼吸有点急。" },
+        { "type": "say", "who": "miku", "face": "school_normal", "text": "……那个。" },
+        { "type": "narrate", "focus": "miku", "text": "她看着你手里的空瓶，像是在确认什么。" },
+        { "type": "say", "who": "miku", "face": "school_normal", "text": "明天。图书室。你说过会去。" },
+        { "type": "say", "who": "you", "text": "我说过。" },
+        { "type": "narrate", "focus": "miku", "text": "她点了点头，动作很轻。然后从睡衣口袋里摸出一样东西，递过来——是一枚新的瓶盖。抹茶汽水的，和她今天买的那瓶一模一样。" },
+        { "type": "say", "who": "miku", "face": "school_normal", "text": "……给你。你那个，不是拧下来了吗。" },
+        { "type": "choice", "options": [
+          { "text": "「你特意买的？」", "affection": 0, "goto": "scene_branch_a" },
+          { "text": "「这算是……回礼？」", "affection": 0, "goto": "scene_branch_b" }
+        ] }
+      ]
+    },
+    {
+      "id": "scene_branch_a",
+      "background": "apartment_exterior",
+      "next": "scene_after",
+      "steps": [
+        { "type": "narrate", "focus": "miku", "text": "三玖的视线偏开了。" },
+        { "type": "say", "who": "miku", "face": "school_normal", "text": "……自动贩卖机多找的。" },
+        { "type": "narrate", "text": "那个理由显然站不住脚。但她没有给你追问的机会，把瓶盖塞进你手心，转身就往回走。" },
+        { "type": "narrate", "text": "走了几步，又停下。" },
+        { "type": "say", "who": "miku", "face": "school_normal", "text": "明天。别迟到。" }
+      ]
+    },
+    {
+      "id": "scene_branch_b",
+      "background": "apartment_exterior",
+      "next": "scene_after",
+      "steps": [
+        { "type": "say", "who": "miku", "face": "school_normal", "text": "……不算。" },
+        { "type": "narrate", "text": "她顿了一下。" },
+        { "type": "say", "who": "miku", "face": "school_normal", "text": "算……交换。你喝我的汽水，我给你瓶盖。平了。" },
+        { "type": "narrate", "text": "这个逻辑完全不成立。但你收下瓶盖的时候，看到她的嘴角弯了一下，很小，在路灯下几乎看不清。" }
+      ]
+    },
+    {
+      "id": "scene_after",
+      "background": "apartment_exterior",
+      "steps": [
+        { "type": "narrate", "text": "你站在原地，把那枚瓶盖和之前的放在一起。两枚抹茶汽水的瓶盖，一模一样的绿色。公寓二楼的窗户亮着灯，窗帘拉开了一条缝，然后很快合上了。" },
+        { "type": "end" }
+      ]
+    }
+  ]
+}

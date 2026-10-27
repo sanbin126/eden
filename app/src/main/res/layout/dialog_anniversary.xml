@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="20dp">
+        android:padding="@dimen/space_20">
 
         <!-- 关闭按钮 -->
         <TextView
@@ -23,13 +23,13 @@
             android:gravity="center"
             android:text="@string/common_close"
             android:textColor="?attr/edenColorTextTertiary"
-            android:textSize="15sp" />
+            android:textSize="14sp" />
 
         <!-- 顶部身份区：小头像 + 标题 + 在一起天数 -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="@dimen/space_4"
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
@@ -50,7 +50,7 @@
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="14dp"
+                android:layout_marginStart="@dimen/space_16"
                 android:layout_weight="1"
                 android:orientation="vertical">
 
@@ -66,7 +66,7 @@
                     android:id="@+id/an_together"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="3dp"
+                    android:layout_marginTop="@dimen/space_4"
                     android:text="@string/anniversary_together_days"
                     android:textColor="#B08FA0"
                     android:textSize="12sp" />
@@ -77,11 +77,11 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="@dimen/space_16"
             android:background="@drawable/bg_game_card"
             android:gravity="center"
             android:orientation="vertical"
-            android:padding="16dp">
+            android:padding="@dimen/space_16">
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -102,8 +102,8 @@
                     android:id="@+id/an_days_unit"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="4dp"
-                    android:layout_marginBottom="5dp"
+                    android:layout_marginStart="@dimen/space_4"
+                    android:layout_marginBottom="@dimen/space_4"
                     android:text="@string/anniversary_unit_day"
                     android:textColor="?attr/edenColorAccent"
                     android:textSize="14sp" />
@@ -113,7 +113,7 @@
                 android:id="@+id/an_sub"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
+                android:layout_marginTop="@dimen/space_4"
                 android:gravity="center"
                 android:text="@string/anniversary_caption"
                 android:textColor="#B08FA0"
@@ -123,7 +123,7 @@
                 android:id="@+id/an_hit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="@dimen/space_12"
                 android:gravity="center"
                 android:lineSpacingExtra="2dp"
                 android:text="@string/anniversary_current"
@@ -135,7 +135,7 @@
                 android:id="@+id/an_next"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="@dimen/space_8"
                 android:gravity="center"
                 android:text="@string/anniversary_next"
                 android:textColor="?attr/edenColorTextTertiary"
@@ -147,16 +147,16 @@
             android:id="@+id/an_row_start"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="14dp"
+            android:layout_marginTop="@dimen/space_16"
             android:background="@drawable/bg_game_card"
             android:clickable="true"
             android:focusable="true"
             android:gravity="center_vertical"
             android:orientation="horizontal"
-            android:paddingStart="14dp"
-            android:paddingTop="12dp"
-            android:paddingEnd="14dp"
-            android:paddingBottom="12dp">
+            android:paddingStart="@dimen/space_16"
+            android:paddingTop="@dimen/space_12"
+            android:paddingEnd="@dimen/space_16"
+            android:paddingBottom="@dimen/space_12">
 
             <TextView
                 android:layout_width="0dp"
@@ -171,7 +171,7 @@
                 android:id="@+id/an_start_value"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="6dp"
+                android:layout_marginEnd="@dimen/space_8"
                 android:text="@string/common_not_set"
                 android:textColor="?attr/edenColorTextSecondary"
                 android:textSize="13sp" />
@@ -187,16 +187,16 @@
             android:id="@+id/an_row_birthday"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="@dimen/space_12"
             android:background="@drawable/bg_game_card"
             android:clickable="true"
             android:focusable="true"
             android:gravity="center_vertical"
             android:orientation="horizontal"
-            android:paddingStart="14dp"
-            android:paddingTop="12dp"
-            android:paddingEnd="14dp"
-            android:paddingBottom="12dp">
+            android:paddingStart="@dimen/space_16"
+            android:paddingTop="@dimen/space_12"
+            android:paddingEnd="@dimen/space_16"
+            android:paddingBottom="@dimen/space_12">
 
             <TextView
                 android:layout_width="0dp"
@@ -211,7 +211,7 @@
                 android:id="@+id/an_birthday_value"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="6dp"
+                android:layout_marginEnd="@dimen/space_8"
                 android:text="@string/common_not_set"
                 android:textColor="?attr/edenColorTextSecondary"
                 android:textSize="13sp" />
@@ -226,7 +226,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="18dp"
+            android:layout_marginTop="@dimen/space_16"
             android:orientation="horizontal">
 
             <TextView
@@ -244,7 +244,7 @@
                 android:id="@+id/an_btn_edit_birthday"
                 android:layout_width="0dp"
                 android:layout_height="42dp"
-                android:layout_marginStart="10dp"
+                android:layout_marginStart="@dimen/space_12"
                 android:layout_weight="1"
                 android:background="@drawable/bg_game_card"
                 android:gravity="center"

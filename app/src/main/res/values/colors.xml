@@ -24,6 +24,8 @@
 
     <!-- 表面 / 卡片 / 描边 -->
     <color name="eden_surface">#FFFFFF</color>
+    <color name="eden_surface_glass">#80FFFFFF</color>
+    <color name="eden_surface_ghost">#33FFFFFF</color>
     <color name="eden_surface_tint">#FFF0F6</color>
     <color name="eden_chip_bg">#FFE3F1</color>
     <color name="eden_border">#FFC1DE</color>
@@ -33,6 +35,8 @@
     <color name="eden_text_secondary">#888888</color>
     <color name="eden_text_tertiary">#999999</color>
     <color name="eden_text_hint">#BBBBBB</color>
+    <color name="eden_text_on_dark">#FFFFFFFF</color>
+    <color name="eden_text_on_dark_secondary">#B3FFFFFF</color>
     <color name="eden_on_primary">#FFFFFF</color>
 
     <!-- 图标 -->
@@ -83,4 +87,38 @@
     <color name="eden_ocean_surface_tint">#F0F8FF</color>
     <color name="eden_ocean_chip_bg">#E3F2FD</color>
     <color name="eden_ocean_border">#C1DEF0</color>
+
+    <!-- 蓝色绣球主题 Hydrangea（新主题，粉色仍为默认） -->
+    <color name="eden_hydrangea_primary">#7E8FE8</color>
+    <color name="eden_hydrangea_primary_pressed">#6A78D8</color>
+    <color name="eden_hydrangea_primary_deep">#5C6BC0</color>
+    <color name="eden_hydrangea_primary_light">#A9B8FF</color>
+    <color name="eden_hydrangea_accent">#9C8CE8</color>
+    <color name="eden_hydrangea_accent_light">#C9B8FF</color>
+    <color name="eden_hydrangea_gradient_start">#EDF1FF</color>
+    <color name="eden_hydrangea_gradient_end">#DCD4FF</color>
+    <color name="eden_hydrangea_surface_tint">#F2F5FF</color>
+    <color name="eden_hydrangea_chip_bg">#E7EBFF</color>
+    <color name="eden_hydrangea_border">#C0CBFF</color>
+
+    <!-- 聊天按钮文字 / 柔光三色（动态渐变用） -->
+    <color name="eden_hydrangea_chat_text">#3F4C9A</color>
+    <color name="eden_hydrangea_halo_1">#7FA8FF</color>
+    <color name="eden_hydrangea_halo_2">#A98CF0</color>
+    <color name="eden_hydrangea_halo_3">#E6C6FF</color>
+
+    <!-- 蓝色绣球主题的问候语随机色 -->
+    <color name="eden_hydrangea_greet_1">#5C6BC0</color>
+    <color name="eden_hydrangea_greet_2">#6A78D8</color>
+    <color name="eden_hydrangea_greet_3">#7E8FE8</color>
+    <color name="eden_hydrangea_greet_4">#8FA6F2</color>
+    <color name="eden_hydrangea_greet_5">#9C8CE8</color>
+
+    <array name="eden_hydrangea_greeting_colors">
+        <item>@color/eden_hydrangea_greet_1</item>
+        <item>@color/eden_hydrangea_greet_2</item>
+        <item>@color/eden_hydrangea_greet_3</item>
+        <item>@color/eden_hydrangea_greet_4</item>
+        <item>@color/eden_hydrangea_greet_5</item>
+    </array>
 </resources>

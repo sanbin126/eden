@@ -4,14 +4,14 @@
     android:id="@+id/giftRow"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="8dp"
+    android:layout_marginTop="@dimen/space_8"
     android:background="@drawable/bg_game_card"
     android:clickable="true"
     android:focusable="true"
     android:gravity="center_vertical"
     android:orientation="horizontal"
-    android:paddingHorizontal="14dp"
-    android:paddingVertical="12dp">
+    android:paddingHorizontal="@dimen/space_16"
+    android:paddingVertical="@dimen/space_12">
 
     <TextView
         android:id="@+id/tvGiftEmoji"
@@ -25,7 +25,7 @@
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
+        android:layout_marginStart="@dimen/space_12"
         android:layout_weight="1"
         android:orientation="vertical">
 
@@ -35,17 +35,17 @@
             android:layout_height="wrap_content"
             android:text="@string/item_gift_name"
             android:textColor="?attr/edenColorTextPrimary"
-            android:textSize="15sp"
+            android:textSize="16sp"
             android:textStyle="bold" />
 
         <TextView
             android:id="@+id/tvGiftSub"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="2dp"
+            android:layout_marginTop="@dimen/space_2"
             android:text="@string/item_gift_sub"
             android:textColor="#B08FA0"
-            android:textSize="11sp" />
+            android:textSize="12sp" />
     </LinearLayout>
 
     <TextView

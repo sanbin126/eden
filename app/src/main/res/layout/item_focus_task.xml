@@ -4,9 +4,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="10dp"
+    android:layout_marginBottom="@dimen/space_12"
     app:cardBackgroundColor="?attr/edenColorSurface"
-    app:cardCornerRadius="16dp"
+    app:cardCornerRadius="@dimen/radius_medium"
     app:cardElevation="1dp">
 
     <LinearLayout
@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:padding="14dp">
+        android:padding="@dimen/space_16">
 
         <ImageView
             android:id="@+id/iv_task_dot"
@@ -26,7 +26,7 @@
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
+            android:layout_marginStart="@dimen/space_12"
             android:layout_weight="1"
             android:orientation="vertical">
 
@@ -38,14 +38,14 @@
                 android:maxLines="1"
                 android:text="@string/item_focus_title"
                 android:textColor="?attr/edenColorTextPrimary"
-                android:textSize="15sp"
+                android:textSize="16sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/tv_task_progress"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="3dp"
+                android:layout_marginTop="@dimen/space_4"
                 android:text="@string/item_focus_progress"
                 android:textColor="?attr/edenColorPrimary"
                 android:textSize="12sp" />
@@ -57,7 +57,7 @@
             android:layout_height="36dp"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:contentDescription="@string/item_focus_delete_cd"
-            android:padding="8dp"
+            android:padding="@dimen/space_8"
             android:src="@drawable/ic_delete"
             app:tint="?attr/edenColorIconDisabled" />
     </LinearLayout>

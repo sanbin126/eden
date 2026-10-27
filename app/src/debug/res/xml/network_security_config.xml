@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  仅 debug 变体生效（同名资源覆盖 main 里的 network_security_config.xml）：
+  允许明文 HTTP，便于连本地/局域网的 FastAPI 后端（http://10.0.2.2:8001/ 等）。
+  release 包使用 main 中的版本，禁止明文。
+-->
+<network-security-config>
+    <base-config cleartextTrafficPermitted="true">
+        <trust-anchors>
+            <certificates src="system" />
+            <certificates src="user" />
+        </trust-anchors>
+    </base-config>
+</network-security-config>

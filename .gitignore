@@ -26,4 +26,17 @@ venv/
 server/eden.db
 server/eden.db-*
 server/.jwt_secret
+backend/app/eden.db*
+backend/app/.jwt_secret
+
+# 正式签名密钥库（丢失无法更新已上架应用，绝不入库）
+*.jks
+*.keystore
+
+# 后端打包产物
+eden-backend.zip
+
+# 超过 Gitee 单文件 100MB 限制的发布 APK
+app/release/app-release.apk
+
 __pycache__/

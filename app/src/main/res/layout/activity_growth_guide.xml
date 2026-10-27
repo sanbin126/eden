@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_main_gradient"
+    android:fitsSystemWindows="true"
     android:orientation="vertical"
     tools:context=".GrowthGuideActivity">
 
@@ -15,7 +16,7 @@
         android:layout_height="56dp"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:paddingHorizontal="8dp">
+        android:paddingHorizontal="@dimen/space_8">
 
         <ImageView
             android:id="@+id/btn_back"
@@ -23,13 +24,13 @@
             android:layout_height="40dp"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:contentDescription="@string/common_back"
-            android:padding="8dp"
+            android:padding="@dimen/space_8"
             android:src="@drawable/ic_back" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="@dimen/space_8"
             android:text="@string/growth_title"
             android:textColor="?attr/edenColorTextPrimary"
             android:textSize="18sp"
@@ -47,29 +48,29 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingHorizontal="16dp"
-            android:paddingBottom="32dp">
+            android:paddingHorizontal="@dimen/space_16"
+            android:paddingBottom="@dimen/space_32">
 
             <!-- 「円」的来源 -->
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="@dimen/space_8"
                 app:cardBackgroundColor="?attr/edenColorSurface"
-                app:cardCornerRadius="16dp"
+                app:cardCornerRadius="@dimen/radius_medium"
                 app:cardElevation="2dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:paddingVertical="4dp">
+                    android:paddingVertical="@dimen/space_4">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:paddingHorizontal="16dp"
-                        android:paddingVertical="10dp"
+                        android:paddingHorizontal="@dimen/space_16"
+                        android:paddingVertical="@dimen/space_12"
                         android:text="@string/growth_section_yen"
                         android:textColor="?attr/edenColorTextPrimary"
                         android:textSize="16sp"
@@ -153,22 +154,22 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="@dimen/space_16"
                 app:cardBackgroundColor="?attr/edenColorSurface"
-                app:cardCornerRadius="16dp"
+                app:cardCornerRadius="@dimen/radius_medium"
                 app:cardElevation="2dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:paddingVertical="4dp">
+                    android:paddingVertical="@dimen/space_4">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:paddingHorizontal="16dp"
-                        android:paddingVertical="10dp"
+                        android:paddingHorizontal="@dimen/space_16"
+                        android:paddingVertical="@dimen/space_12"
                         android:text="@string/growth_section_affection"
                         android:textColor="?attr/edenColorTextPrimary"
                         android:textSize="16sp"
@@ -239,8 +240,8 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:paddingHorizontal="4dp"
+                android:layout_marginTop="@dimen/space_16"
+                android:paddingHorizontal="@dimen/space_4"
                 android:text="@string/growth_footnote"
                 android:textColor="?attr/edenColorTextTertiary"
                 android:textSize="12sp" />

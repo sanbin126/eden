@@ -16,7 +16,7 @@
         android:scaleType="matrix" />
 
     <!-- 圆形取景遮罩（圆形外压暗 + 白色描边），不消费触摸 -->
-    <com.example.eden.CropOverlayView
+    <com.example.eden.feature.profile.CropOverlayView
         android:id="@+id/crop_overlay"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
@@ -27,10 +27,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="top|center_horizontal"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="@dimen/space_32"
         android:text="@string/crop_title"
         android:textColor="#FFFFFF"
-        android:textSize="17sp"
+        android:textSize="16sp"
         android:textStyle="bold" />
 
     <!-- 底部操作区 -->
@@ -39,15 +39,15 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         android:orientation="vertical"
-        android:padding="16dp">
+        android:padding="@dimen/space_16">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="16dp"
+            android:layout_marginBottom="@dimen/space_16"
             android:text="@string/crop_hint"
-            android:textColor="#B3FFFFFF"
+            android:textColor="?attr/edenColorTextOnDarkSecondary"
             android:textSize="13sp" />
 
         <LinearLayout
@@ -60,7 +60,7 @@
                 android:id="@+id/btn_cancel"
                 android:layout_width="0dp"
                 android:layout_height="48dp"
-                android:layout_marginEnd="8dp"
+                android:layout_marginEnd="@dimen/space_8"
                 android:layout_weight="1"
                 android:background="@drawable/bg_round_button"
                 android:text="@string/common_cancel"
@@ -72,7 +72,7 @@
                 android:id="@+id/btn_confirm"
                 android:layout_width="0dp"
                 android:layout_height="48dp"
-                android:layout_marginStart="8dp"
+                android:layout_marginStart="@dimen/space_8"
                 android:layout_weight="1"
                 android:background="@drawable/bg_send_button"
                 android:backgroundTint="@null"

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 间距与圆角 token。间距走 4dp 网格，圆角只保留 3 档。 -->
+<resources>
+
+    <!-- ========== 间距 ========== -->
+    <!-- 2dp：仅用于文字块内部的光学微调（如标题与副标题之间），不算网格档位 -->
+    <dimen name="space_2">2dp</dimen>
+    <dimen name="space_4">4dp</dimen>
+    <dimen name="space_8">8dp</dimen>
+    <dimen name="space_12">12dp</dimen>
+    <dimen name="space_16">16dp</dimen>
+    <dimen name="space_20">20dp</dimen>
+    <dimen name="space_24">24dp</dimen>
+    <dimen name="space_28">28dp</dimen>
+    <dimen name="space_32">32dp</dimen>
+    <dimen name="space_36">36dp</dimen>
+    <dimen name="space_40">40dp</dimen>
+    <dimen name="space_48">48dp</dimen>
+    <dimen name="space_56">56dp</dimen>
+    <dimen name="space_64">64dp</dimen>
+    <dimen name="space_72">72dp</dimen>
+    <dimen name="space_88">88dp</dimen>
+
+    <!-- 设置页分隔线缩进 = 16dp 内边距 + 22dp 图标 + 16dp 间距，用于对齐列表文字（派生值，不走网格） -->
+    <dimen name="settings_divider_inset">54dp</dimen>
+
+    <!-- ========== 圆角 ========== -->
+    <!-- 小：图标底板、标签、小按钮 -->
+    <dimen name="radius_small">8dp</dimen>
+    <!-- 中：卡片、输入框、弹窗面板 -->
+    <dimen name="radius_medium">16dp</dimen>
+    <!-- 大：主按钮、胶囊、大面板 -->
+    <dimen name="radius_large">20dp</dimen>
+
+</resources>

@@ -15,14 +15,14 @@
         android:background="#80000000"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:paddingStart="8dp"
-        android:paddingEnd="8dp">
+        android:paddingStart="@dimen/space_8"
+        android:paddingEnd="@dimen/space_8">
 
         <Button
             android:id="@+id/btn_back"
             android:layout_width="24dp"
             android:layout_height="24dp"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="@dimen/space_8"
             android:background="@drawable/ic_back"
             android:backgroundTint="@null"
             android:padding="0dp" />
@@ -30,7 +30,7 @@
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="@dimen/space_16"
             android:layout_weight="1"
             android:text="@string/story_home_title"
             android:textColor="?attr/edenColorOnPrimary"
@@ -43,7 +43,7 @@
         android:layout_height="match_parent"
         android:layout_below="@+id/top_bar"
         android:clipToPadding="false"
-        android:paddingBottom="24dp">
+        android:paddingBottom="@dimen/space_24">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -55,15 +55,15 @@
                 android:id="@+id/card_resume"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
+                android:layout_marginStart="@dimen/space_16"
+                android:layout_marginTop="@dimen/space_16"
+                android:layout_marginEnd="@dimen/space_16"
                 android:background="@drawable/bg_game_card"
                 android:clickable="true"
                 android:focusable="true"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
-                android:padding="16dp"
+                android:padding="@dimen/space_16"
                 android:visibility="gone">
 
                 <LinearLayout
@@ -84,7 +84,7 @@
                         android:id="@+id/tv_resume_title"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="6dp"
+                        android:layout_marginTop="@dimen/space_8"
                         android:textColor="?attr/edenColorTextPrimary"
                         android:textSize="16sp"
                         android:textStyle="bold"
@@ -94,7 +94,7 @@
                         android:id="@+id/tv_resume_scene"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
+                        android:layout_marginTop="@dimen/space_4"
                         android:textColor="?attr/edenColorTextSecondary"
                         android:textSize="12sp"
                         tools:text="第一章 · 上次读到" />
@@ -103,18 +103,18 @@
                 <ImageView
                     android:layout_width="16dp"
                     android:layout_height="16dp"
-                    android:layout_marginStart="8dp"
+                    android:layout_marginStart="@dimen/space_8"
                     android:src="@drawable/ic_chevron_right" />
             </LinearLayout>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="4dp"
+                android:layout_marginStart="@dimen/space_20"
+                android:layout_marginTop="@dimen/space_20"
+                android:layout_marginBottom="@dimen/space_4"
                 android:text="@string/story_section_chapters"
-                android:textColor="#B3FFFFFF"
+                android:textColor="?attr/edenColorTextOnDarkSecondary"
                 android:textSize="13sp"
                 android:textStyle="bold" />
 
@@ -125,15 +125,35 @@
                 android:orientation="vertical" />
 
             <TextView
+                android:id="@+id/tv_side_header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/space_20"
+                android:layout_marginTop="@dimen/space_20"
+                android:layout_marginBottom="@dimen/space_4"
+                android:text="@string/story_section_side"
+                android:textColor="?attr/edenColorTextOnDarkSecondary"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:id="@+id/ll_sides"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone" />
+
+            <TextView
                 android:id="@+id/tv_story_empty"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="48dp"
+                android:layout_marginTop="@dimen/space_48"
                 android:gravity="center"
-                android:paddingStart="32dp"
-                android:paddingEnd="32dp"
+                android:paddingStart="@dimen/space_32"
+                android:paddingEnd="@dimen/space_32"
                 android:text="@string/story_home_empty"
-                android:textColor="#B3FFFFFF"
+                android:textColor="?attr/edenColorTextOnDarkSecondary"
                 android:textSize="14sp"
                 android:visibility="gone" />
         </LinearLayout>

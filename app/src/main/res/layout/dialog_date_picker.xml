@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 日期选择弹窗：居中弹出，宽度由代码设为屏幕 90%，风格对齐「我的日签卡」 -->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_character_detail"
+    android:overScrollMode="never"
+    android:scrollbars="none">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/space_20">
+
+        <!-- 关闭按钮 -->
+        <TextView
+            android:id="@+id/dp_btn_close"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_gravity="end"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:gravity="center"
+            android:text="@string/common_close"
+            android:textColor="?attr/edenColorTextTertiary"
+            android:textSize="14sp" />
+
+        <!-- 顶部身份区：小头像 + 标题 + 副标题 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_4"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <FrameLayout
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:background="@drawable/bg_circle_pink">
+
+                <ImageView
+                    android:id="@+id/dp_avatar"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:contentDescription="@string/common_avatar_miku"
+                    android:scaleType="centerCrop"
+                    android:src="?attr/edenCharChibi" />
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/space_16"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/dp_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/anniversary_start_label"
+                    android:textColor="?attr/edenColorTextPrimary"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/dp_sub"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_4"
+                    android:text="@string/date_picker_anniversary_sub"
+                    android:textColor="#B08FA0"
+                    android:textSize="12sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- 已选日期卡 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_16"
+            android:background="@drawable/bg_game_card"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="@dimen/space_16">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/date_picker_picked_label"
+                android:textColor="?attr/edenColorTextTertiary"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/dp_picked_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_4"
+                android:text="@string/anniversary_days_value"
+                android:textColor="?attr/edenColorAccent"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/dp_picked_week"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_4"
+                android:text="@string/date_picker_week_placeholder"
+                android:textColor="?attr/edenColorTextTertiary"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <!-- 日历卡 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_16"
+            android:background="@drawable/bg_game_card"
+            android:orientation="vertical"
+            android:padding="@dimen/space_16">
+
+            <!-- 年月切换行：上一年 / 上月 / 年月 / 下月 / 下一年 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/dp_prev_year"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="?android:attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="@string/date_picker_prev_year_cd"
+                    android:padding="@dimen/space_8"
+                    android:rotation="180"
+                    android:src="@drawable/ic_skip_prev"
+                    android:tint="?attr/edenColorAccent" />
+
+                <ImageView
+                    android:id="@+id/dp_prev_month"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="?android:attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="@string/sign_calendar_prev_cd"
+                    android:padding="@dimen/space_8"
+                    android:rotation="180"
+                    android:src="@drawable/ic_chevron_right"
+                    android:tint="?attr/edenColorAccent" />
+
+                <TextView
+                    android:id="@+id/dp_month_title"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="@string/sign_calendar_month"
+                    android:textColor="?attr/edenColorTextPrimary"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/dp_next_month"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="?android:attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="@string/sign_calendar_next_cd"
+                    android:padding="@dimen/space_8"
+                    android:src="@drawable/ic_chevron_right"
+                    android:tint="?attr/edenColorAccent" />
+
+                <ImageView
+                    android:id="@+id/dp_next_year"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="?android:attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="@string/date_picker_next_year_cd"
+                    android:padding="@dimen/space_8"
+                    android:src="@drawable/ic_skip_next"
+                    android:tint="?attr/edenColorAccent" />
+            </LinearLayout>
+
+            <!-- 星期行 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_8"
+                android:orientation="horizontal">
+
+                <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:text="@string/sign_calendar_weekday_sun" android:textColor="?attr/edenColorTextTertiary" android:textSize="12sp" />
+                <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:text="@string/sign_calendar_weekday_mon" android:textColor="?attr/edenColorTextTertiary" android:textSize="12sp" />
+                <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:text="@string/sign_calendar_weekday_tue" android:textColor="?attr/edenColorTextTertiary" android:textSize="12sp" />
+                <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:text="@string/sign_calendar_weekday_wed" android:textColor="?attr/edenColorTextTertiary" android:textSize="12sp" />
+                <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:text="@string/sign_calendar_weekday_thu" android:textColor="?attr/edenColorTextTertiary" android:textSize="12sp" />
+                <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:text="@string/sign_calendar_weekday_fri" android:textColor="?attr/edenColorTextTertiary" android:textSize="12sp" />
+                <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:text="@string/sign_calendar_weekday_sat" android:textColor="?attr/edenColorTextTertiary" android:textSize="12sp" />
+            </LinearLayout>
+
+            <!-- 日历网格：高度由代码按行数动态计算，避免嵌套滚动 -->
+            <GridView
+                android:id="@+id/gv_date_calendar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_4"
+                android:horizontalSpacing="2dp"
+                android:numColumns="7"
+                android:stretchMode="columnWidth"
+                android:verticalSpacing="4dp" />
+        </LinearLayout>
+
+        <!-- 底部操作：取消 / 确定 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_16"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/dp_btn_cancel"
+                android:layout_width="0dp"
+                android:layout_height="42dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_game_card"
+                android:gravity="center"
+                android:text="@string/common_cancel"
+                android:textColor="?attr/edenColorAccent"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/dp_btn_confirm"
+                android:layout_width="0dp"
+                android:layout_height="42dp"
+                android:layout_marginStart="@dimen/space_12"
+                android:layout_weight="1"
+                android:background="@drawable/bg_btn_primary"
+                android:gravity="center"
+                android:text="@string/common_confirm"
+                android:textColor="?attr/edenColorOnPrimary"
+                android:textSize="14sp" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

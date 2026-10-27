@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 投喂入口图标：鸡腿（肉 + 骨头） -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="18dp"
+    android:height="18dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <path
+        android:fillColor="?attr/edenColorOnPrimary"
+        android:pathData="M14,2.2c3.8,0 6.8,3 6.8,6.8c0,3.8 -3,6.8 -6.8,6.8c-3.8,0 -6.8,-3 -6.8,-6.8c0,-3.8 3,-6.8 6.8,-6.8zM12.2,12.8 L13.8,14.2 L9.3,19.2 L7.7,17.8 ZM7,15.25c1.05,0 1.9,0.85 1.9,1.9c0,1.05 -0.85,1.9 -1.9,1.9c-1.05,0 -1.9,-0.85 -1.9,-1.9c0,-1.05 0.85,-1.9 1.9,-1.9zM10,17.95c1.05,0 1.9,0.85 1.9,1.9c0,1.05 -0.85,1.9 -1.9,1.9c-1.05,0 -1.9,-0.85 -1.9,-1.9c0,-1.05 0.85,-1.9 1.9,-1.9z" />
+</vector>

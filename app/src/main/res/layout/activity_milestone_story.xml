@@ -16,14 +16,14 @@
         android:background="#80000000"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:paddingStart="8dp"
-        android:paddingEnd="8dp">
+        android:paddingStart="@dimen/space_8"
+        android:paddingEnd="@dimen/space_8">
 
         <Button
             android:id="@+id/btn_back"
             android:layout_width="24dp"
             android:layout_height="24dp"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="@dimen/space_8"
             android:background="@drawable/ic_back"
             android:backgroundTint="@null"
             android:padding="0dp" />
@@ -31,7 +31,7 @@
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="@dimen/space_16"
             android:layout_weight="1"
             android:orientation="vertical">
 
@@ -50,7 +50,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/milestone_story_intimacy"
                 android:textColor="#FFC0CB"
-                android:textSize="11sp" />
+                android:textSize="12sp" />
         </LinearLayout>
     </LinearLayout>
 
@@ -62,8 +62,8 @@
         android:layout_above="@+id/ll_options"
         android:layout_below="@+id/top_bar"
         android:clipToPadding="false"
-        android:paddingTop="8dp"
-        android:paddingBottom="8dp" />
+        android:paddingTop="@dimen/space_8"
+        android:paddingBottom="@dimen/space_8" />
 
     <!-- 底部选项区：三玖抛出选项时逐条塞入按钮；不出选项时该区域为空不可见 -->
     <LinearLayout
@@ -73,7 +73,7 @@
         android:layout_alignParentBottom="true"
         android:background="?attr/edenColorScrim"
         android:orientation="vertical"
-        android:paddingStart="12dp"
-        android:paddingEnd="12dp" />
+        android:paddingStart="@dimen/space_12"
+        android:paddingEnd="@dimen/space_12" />
 
 </RelativeLayout>

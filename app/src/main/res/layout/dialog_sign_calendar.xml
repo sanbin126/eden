@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="20dp">
+        android:padding="@dimen/space_20">
 
         <!-- 关闭按钮 -->
         <TextView
@@ -23,13 +23,13 @@
             android:gravity="center"
             android:text="@string/common_close"
             android:textColor="?attr/edenColorTextTertiary"
-            android:textSize="15sp" />
+            android:textSize="14sp" />
 
         <!-- 顶部身份区：小头像 + 标题 + 连续打卡口号 -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="@dimen/space_4"
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
@@ -50,7 +50,7 @@
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="14dp"
+                android:layout_marginStart="@dimen/space_16"
                 android:layout_weight="1"
                 android:orientation="vertical">
 
@@ -66,7 +66,7 @@
                     android:id="@+id/tv_slogan"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="3dp"
+                    android:layout_marginTop="@dimen/space_4"
                     android:text="@string/sign_calendar_streak_sub"
                     android:textColor="#B08FA0"
                     android:textSize="12sp" />
@@ -77,7 +77,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="@dimen/space_16"
             android:orientation="horizontal">
 
             <LinearLayout
@@ -87,7 +87,7 @@
                 android:background="@drawable/bg_game_card"
                 android:gravity="center"
                 android:orientation="vertical"
-                android:padding="12dp">
+                android:padding="@dimen/space_12">
 
                 <TextView
                     android:id="@+id/tv_continuous_days"
@@ -101,21 +101,21 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="2dp"
+                    android:layout_marginTop="@dimen/space_2"
                     android:text="@string/sign_calendar_streak_label"
                     android:textColor="?attr/edenColorTextTertiary"
-                    android:textSize="11sp" />
+                    android:textSize="12sp" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
+                android:layout_marginStart="@dimen/space_12"
                 android:layout_weight="1"
                 android:background="@drawable/bg_game_card"
                 android:gravity="center"
                 android:orientation="vertical"
-                android:padding="12dp">
+                android:padding="@dimen/space_12">
 
                 <TextView
                     android:id="@+id/tv_total_days"
@@ -129,10 +129,10 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="2dp"
+                    android:layout_marginTop="@dimen/space_2"
                     android:text="@string/sign_calendar_total_label"
                     android:textColor="?attr/edenColorTextTertiary"
-                    android:textSize="11sp" />
+                    android:textSize="12sp" />
             </LinearLayout>
         </LinearLayout>
 
@@ -140,10 +140,10 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="@dimen/space_16"
             android:background="@drawable/bg_game_card"
             android:orientation="vertical"
-            android:padding="14dp">
+            android:padding="@dimen/space_16">
 
             <!-- 月份切换行：左箭头 + 月份 + 右箭头（右箭头不越过本月） -->
             <LinearLayout
@@ -158,7 +158,7 @@
                     android:layout_height="32dp"
                     android:background="?android:attr/selectableItemBackgroundBorderless"
                     android:contentDescription="@string/sign_calendar_prev_cd"
-                    android:padding="7dp"
+                    android:padding="@dimen/space_8"
                     android:rotation="180"
                     android:src="@drawable/ic_chevron_right"
                     android:tint="?attr/edenColorAccent" />
@@ -171,7 +171,7 @@
                     android:gravity="center"
                     android:text="@string/sign_calendar_month"
                     android:textColor="?attr/edenColorTextPrimary"
-                    android:textSize="15sp"
+                    android:textSize="14sp"
                     android:textStyle="bold" />
 
                 <ImageView
@@ -180,7 +180,7 @@
                     android:layout_height="32dp"
                     android:background="?android:attr/selectableItemBackgroundBorderless"
                     android:contentDescription="@string/sign_calendar_next_cd"
-                    android:padding="7dp"
+                    android:padding="@dimen/space_8"
                     android:src="@drawable/ic_chevron_right"
                     android:tint="?attr/edenColorAccent" />
             </LinearLayout>
@@ -189,7 +189,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="@dimen/space_8"
                 android:orientation="horizontal">
 
                 <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:text="@string/sign_calendar_weekday_sun" android:textColor="?attr/edenColorTextTertiary" android:textSize="12sp" />
@@ -206,7 +206,7 @@
                 android:id="@+id/gv_calendar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
+                android:layout_marginTop="@dimen/space_4"
                 android:horizontalSpacing="2dp"
                 android:numColumns="7"
                 android:stretchMode="columnWidth"
@@ -218,7 +218,7 @@
             android:id="@+id/tv_btn_sign"
             android:layout_width="match_parent"
             android:layout_height="42dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="@dimen/space_16"
             android:background="@drawable/bg_btn_primary"
             android:gravity="center"
             android:text="@string/sign_calendar_action"

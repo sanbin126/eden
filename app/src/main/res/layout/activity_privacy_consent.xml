@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 首次启动的隐私同意页：同意前不申请权限、不发网络请求 -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_main_gradient"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    android:paddingHorizontal="@dimen/space_24"
+    tools:context=".feature.privacy.PrivacyConsentActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_40"
+        android:gravity="center"
+        android:text="@string/privacy_title"
+        android:textColor="?attr/edenColorTextPrimary"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/space_16"
+        android:layout_weight="1"
+        android:fillViewport="true"
+        android:scrollbars="none">
+
+        <TextView
+            android:id="@+id/tv_privacy_summary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:lineSpacingExtra="5dp"
+            android:paddingBottom="@dimen/space_12"
+            android:text="@string/privacy_summary"
+            android:textColor="?attr/edenColorTextSecondary"
+            android:textSize="13sp" />
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/tv_privacy_policy_link"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center"
+        android:paddingVertical="@dimen/space_12"
+        android:text="@string/privacy_policy_link"
+        android:textColor="?attr/edenColorPrimary"
+        android:textSize="13sp" />
+
+    <TextView
+        android:id="@+id/btn_privacy_agree"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:background="@drawable/bg_btn_primary"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center"
+        android:text="@string/privacy_agree"
+        android:textColor="?attr/edenColorOnPrimary"
+        android:textSize="15sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/btn_privacy_disagree"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:layout_marginTop="@dimen/space_12"
+        android:layout_marginBottom="@dimen/space_24"
+        android:background="@drawable/bg_outline_button"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center"
+        android:text="@string/privacy_disagree"
+        android:textColor="?attr/edenColorPrimary"
+        android:textSize="15sp" />
+
+</LinearLayout>

@@ -5,16 +5,11 @@
     <!-- 网络权限 -->
     <uses-permission android:name="android.permission.INTERNET"
         tools:node="merge"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
-    <uses-permission android:name="android.permission.READ_MEDIA_VIDEO" />
-    <uses-permission android:name="android.permission.READ_MEDIA_AUDIO" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <!-- 音乐前台 Service：必需声明 FOREGROUND_SERVICE + mediaPlayback 类型（Android 14+ 强制） -->
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <!-- 天气只需要城市级定位，粗定位即可，不用精确位置 -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <!-- 精确闹钟（Android 12+）：用于每日 9:00 准点触发早安问候 -->
@@ -25,7 +20,7 @@
 
     <!-- 应用核心配置 -->
     <application
-        android:name=".EdenApp"
+        android:name="com.example.eden.EdenApp"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -34,11 +29,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Eden"
-        android:usesCleartextTraffic="true">
+        android:networkSecurityConfig="@xml/network_security_config">
 
-        <!-- 主界面（启动页） -->
+        <!-- 隐私同意页（启动入口）：同意前不申请权限、不发网络请求 -->
         <activity
-            android:name=".MainActivity"
+            android:name="com.example.eden.feature.privacy.PrivacyConsentActivity"
             android:exported="true"
             android:label="Eden"
             android:screenOrientation="portrait"
@@ -46,142 +41,165 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>  <!-- 已修复 -->
+            </intent-filter>
         </activity>
+
+        <!-- 主界面 -->
+        <activity
+            android:name="com.example.eden.feature.home.MainActivity"
+            android:exported="false"
+            android:label="Eden"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Eden" />
 
         <!-- 聊天界面 -->
         <activity
-            android:name=".ChatActivity"
+            android:name="com.example.eden.feature.chat.ChatActivity"
             android:exported="false"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Eden" />
 
         <!-- 登录 / 注册界面 -->
         <activity
-            android:name=".LoginActivity"
+            android:name="com.example.eden.feature.auth.LoginActivity"
             android:exported="false"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Eden" />
 
         <!-- 设置界面 -->
         <activity
-            android:name=".SettingsActivity"
+            android:name="com.example.eden.feature.profile.SettingsActivity"
             android:exported="false"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Eden" />
 
         <!-- 成长说明（円 / 好感的来源与每日上限） -->
         <activity
-            android:name=".GrowthGuideActivity"
+            android:name="com.example.eden.feature.home.GrowthGuideActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Eden" />
+
+        <!-- 记忆管理（查看 / 删除三玖记住的关于你的事） -->
+        <activity
+            android:name="com.example.eden.feature.memory.MemoryActivity"
             android:exported="false"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Eden" />
 
         <!-- 每日任务（当天 6 项任务清单 + 手动领取奖励） -->
         <activity
-            android:name=".DailyTaskActivity"
+            android:name="com.example.eden.feature.home.DailyTaskActivity"
             android:exported="false"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Eden" />
 
         <!-- 修改密码界面 -->
         <activity
-            android:name=".ChangePasswordActivity"
+            android:name="com.example.eden.feature.profile.ChangePasswordActivity"
             android:exported="false"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Eden" />
 
         <!-- 编辑个人资料（头像 / 昵称 / 个性签名） -->
         <activity
-            android:name=".ProfileEditActivity"
+            android:name="com.example.eden.feature.profile.ProfileEditActivity"
             android:exported="false"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Eden" />
 
         <!-- 头像圆形裁剪（相册选图后进入，可拖动 / 缩放） -->
         <activity
-            android:name=".CropActivity"
+            android:name="com.example.eden.feature.profile.CropActivity"
             android:exported="false"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Eden" />
 
         <!-- 日记界面 -->
         <activity
-            android:name=".DiaryActivity"
+            android:name="com.example.eden.feature.diary.DiaryActivity"
             android:exported="false"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Eden" />
 
         <!-- 扫雷小游戏 -->
         <activity
-            android:name=".MinesweeperActivity"
+            android:name="com.example.eden.feature.game.MinesweeperActivity"
             android:exported="false"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Eden" />
 
         <!-- 五子棋小游戏（双人 / 人机） -->
         <activity
-            android:name=".GomokuActivity"
+            android:name="com.example.eden.feature.game.GomokuActivity"
             android:exported="false"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Eden" />
 
         <!-- 象棋小游戏（双人 / 人机） -->
         <activity
-            android:name=".XiangqiActivity"
+            android:name="com.example.eden.feature.game.XiangqiActivity"
             android:exported="false"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Eden" />
 
+        <!-- 横版跳跃小游戏（WebView 加载 assets/platformer，横屏全屏） -->
+        <activity
+            android:name="com.example.eden.feature.game.PlatformerActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:exported="false"
+            android:screenOrientation="landscape"
+            android:theme="@style/Theme.Eden" />
+
         <!-- 专注陪伴（番茄钟：专注计时 + 任务 + 统计，专注时长并入今日陪伴） -->
         <activity
-            android:name=".FocusTimerActivity"
+            android:name="com.example.eden.feature.focus.FocusTimerActivity"
             android:exported="false"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Eden" />
 
         <!-- 好感度里程碑小剧场（聊天框样式剧情，逐句演出 + 选项） -->
         <activity
-            android:name=".MilestoneStoryActivity"
+            android:name="com.example.eden.feature.story.MilestoneStoryActivity"
             android:exported="false"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Eden" />
 
         <!-- 好感度小剧场列表（未看 / 已完成 / 未解锁） -->
         <activity
-            android:name=".MilestoneStoryListActivity"
+            android:name="com.example.eden.feature.story.MilestoneStoryListActivity"
             android:exported="false"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Eden" />
 
         <!-- 剧情板块首页（按线路列出章节，含解锁门槛与续读） -->
         <activity
-            android:name=".StoryHomeActivity"
+            android:name="com.example.eden.feature.story.StoryHomeActivity"
             android:exported="false"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Eden" />
 
         <!-- 剧情演出播放器（galgame 式逐句演出 + 选项分支） -->
         <activity
-            android:name=".StoryPlayerActivity"
+            android:name="com.example.eden.feature.story.StoryPlayerActivity"
             android:exported="false"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Eden" />
 
         <!-- 音乐播放前台 Service：持有 AudioTrack 合成 BGM / MediaPlayer 播放本地音乐 -->
         <service
-            android:name=".MusicService"
+            android:name="com.example.eden.feature.music.MusicService"
             android:exported="false"
             android:foregroundServiceType="mediaPlayback" />
 
-        <!-- 每日 9:00 闹钟触发后唤醒问候逻辑 -->
+        <!-- 每日定时闹钟（早安 9:30 / 想你随机 / 晚安 22:00）触发后唤醒问候逻辑 -->
         <receiver
-            android:name=".GreetingAlarmReceiver"
+            android:name="com.example.eden.feature.greeting.GreetingAlarmReceiver"
             android:exported="false" />
 
-        <!-- 设备重启后重新注册每日 9:00 闹钟（AlarmManager 闹钟不会跨重启存活） -->
+        <!-- 设备重启后重新注册每日闹钟（AlarmManager 闹钟不会跨重启存活） -->
         <receiver
-            android:name=".BootReceiver"
+            android:name="com.example.eden.feature.greeting.BootReceiver"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
