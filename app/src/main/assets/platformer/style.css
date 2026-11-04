@@ -199,13 +199,23 @@ body.is-touch .heart {
   transform: scale(0.94);
 }
 
+/* 按钮图标：内联 SVG，描边跟随 currentColor，不额外发起图片请求 */
+.pad__icon {
+  width: 48%;
+  height: 48%;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  pointer-events: none;
+}
+
 .pad--jump {
   width: clamp(50px, 9.3vh, 75px);
   height: clamp(50px, 9.3vh, 75px);
   background: rgba(255, 107, 157, 0.2);
   border-color: rgba(255, 150, 185, 0.4);
-  font-size: clamp(12px, 2.2vh, 18px);
-  letter-spacing: 0.06em;
 }
 
 .pad--jump.is-active {
@@ -218,8 +228,6 @@ body.is-touch .heart {
   height: clamp(46px, 8.6vh, 70px);
   background: rgba(110, 180, 255, 0.18);
   border-color: rgba(150, 210, 255, 0.38);
-  font-size: clamp(12px, 2.2vh, 18px);
-  letter-spacing: 0.06em;
 }
 
 .pad--dash.is-active {

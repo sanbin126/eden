@@ -1,0 +1,39 @@
+{
+  "id": "miku_side_03_b",
+  "index": 3,
+  "chapterLabel": "番外",
+  "title": "一起等雨",
+  "synopsis": "两封很短的邮件。一封说谢谢，一封只有三个字。",
+  "bgm": "daily_piano",
+  "casts": {
+    "miku": { "name": "三玖", "slot": "center" }
+  },
+  "backgrounds": {
+    "room_night": { "label": "你的房间 · 夜晚", "top": "#2B2F4A", "bottom": "#11131D", "image": "story_bg/bg_room_night_window.png" },
+    "night_phone_cg": { "label": "你的房间 · 夜晚", "top": "#2B2F4A", "bottom": "#11131D", "image": "story_cg/cg_night_phone_message.png" }
+  },
+  "scenes": [
+    {
+      "id": "scene_mail",
+      "background": "room_night",
+      "steps": [
+        { "type": "narrate", "text": "你回到家之后，把湿了的外套挂在椅背上。手机在口袋里震了一下。" },
+        { "type": "bg", "id": "night_phone_cg" },
+        { "type": "narrate", "text": "是一封邮件。发件地址是一串没有备注的号码。" },
+        { "type": "narrate", "text": "「今天谢谢你。图书室的事。」" },
+        { "type": "narrate", "text": "很短。比平时还要短。你看着屏幕，想起她在岔路口说「没问题」时的表情——很平静，但走得很慢。你说「先送你回去」的时候，她说「不用，很近」。你说「明天见」的时候，她点了点头。" },
+        { "type": "narrate", "text": "但你没有说「一起走」。" },
+        { "type": "narrate", "text": "你回了一个「不客气」。" },
+        { "type": "narrate", "text": "过了大概五分钟，又来了一封。" },
+        { "type": "narrate", "text": "「雨停了。」" },
+        { "type": "narrate", "text": "就这三个字。你想起她在路上说的信长写给浓姬的那封信——也是只有三个字。你盯着屏幕，忽然觉得这三个字的重量比看起来要重。" },
+        { "type": "narrate", "text": "你回了一个「嗯，雨停了」。" },
+        { "type": "narrate", "text": "这次她没有再回。" },
+        { "type": "narrate", "text": "你把手机放下，看着窗外。雨后的夜空很干净，能看到几颗星星。你想起图书室里她翻到桶狭间那一页时的表情——专注，安静，像是把什么很重要的东西藏在了那些字里行间。" },
+        { "type": "narrate", "text": "明天午休。图书室。她大概会在。" },
+        { "type": "narrate", "text": "你知道。" },
+        { "type": "end" }
+      ]
+    }
+  ]
+}

@@ -495,7 +495,4 @@ object XiangqiAi {
             (r - 3).coerceAtLeast(0) * 4 + if (crossed) 10 else 0
         }
     }
-
-    /** 中列奖励：越靠近中路越高，鼓励马炮出动 */
-    private fun colBonus(col: Int): Int = (2 - abs(col - 4)) * 3
 }

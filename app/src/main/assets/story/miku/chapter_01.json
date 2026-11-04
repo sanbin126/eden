@@ -20,7 +20,8 @@
     "rooftop_dusk":       { "label": "天台", "top": "#FCD9B8", "bottom": "#8E7BB5", "image": "story_bg/bg_nakano_rooftop_day.png" },
     "rooftop_first_meet_cg": { "label": "天台 · 黄昏", "top": "#FCD9B8", "bottom": "#8E7BB5", "image": "story_cg/cg_rooftop_first_meet.png" },
     "kitchen_evening":    { "label": "中野家 · 厨房 · 傍晚", "top": "#F7DCC4", "bottom": "#C79A82", "image": "story_bg/bg_nakano_kitchen_evening.png" },
-    "apartment_night":    { "label": "中野家 · 客厅 · 夜晚", "top": "#2E2B44", "bottom": "#15131F", "image": "story_bg/bg_nakano_living_night.png" }
+    "apartment_night":    { "label": "中野家 · 客厅 · 夜晚", "top": "#2E2B44", "bottom": "#15131F", "image": "story_bg/bg_nakano_living_night.png" },
+    "door_night_cg":      { "label": "中野家 · 走廊 · 夜晚", "top": "#2E2B44", "bottom": "#15131F", "image": "story_cg/cg_door_night.png" }
   },
   "scenes": [
     {
@@ -210,6 +211,8 @@
       "steps": [
         { "type": "narrate", "text": "夜幕降临。中野家的灯光一盏一盏亮起来。你坐在客厅的沙发上，翻开五姐妹的成绩单。三玖的名字旁边，是五个科目中唯一一个没有挂科的记录——社会。其余四科，全是红色。" },
         { "type": "narrate", "text": "你合上成绩单，抬头看向走廊尽头。有一扇门紧闭着，门缝里透出微弱的灯光，隐约能听到耳机里漏出的音乐声。" },
+        { "type": "bg", "id": "door_night_cg" },
+        { "type": "narrate", "text": "门被轻轻推开一条缝。三玖探出半张脸，看见是你，又没有立刻把门关上。" },
         { "type": "narrate", "text": "中野三玖。五姐妹中学习能力最强，却最不相信自己的人。" },
         { "type": "narrate", "text": "明天，你还要来。" },
         { "type": "end" }

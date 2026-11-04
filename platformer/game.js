@@ -138,6 +138,48 @@
     { x: 900, y: 150, scale: 0.86, speed: 7, alpha: 0.22 },
     { x: 1180, y: 96, scale: 1.05, speed: 6, alpha: 0.28 }
   ];
+  // 远云：更慢、更淡、偏冷，只用来填满天空上缘
+  const CLOUDS_FAR = [
+    { x: 210, y: 96, scale: 1.35, speed: 2.5, alpha: 0.16 },
+    { x: 720, y: 150, scale: 1.1, speed: 3.2, alpha: 0.13 },
+    { x: 1240, y: 78, scale: 1.5, speed: 2, alpha: 0.15 }
+  ];
+
+  // —— 分层背景：数字为横向视差系数，明度由远到近逐层拉开 ——
+  const RIDGE_FAR = { parallax: 0.10, baseY: 344, height: 128, color: '#b3d2e4', phase: 0 };
+  const RIDGE_MID = { parallax: 0.20, baseY: 368, height: 96, color: '#8fb2c9', phase: 900 };
+  const FOREST_NEAR = { parallax: 0.32, baseY: 396, height: 74, color: '#6f93af', phase: 2100 };
+  const SUN_X = 790;
+  const SUN_Y = 110;
+  // 体积光：以太阳为顶点的斜向光柱，alpha 极低，只做气氛
+  const LIGHT_BEAMS = [
+    { dx: -60, halfW: 150, alpha: 0.05 },
+    { dx: -220, halfW: 110, alpha: 0.04 },
+    { dx: 110, halfW: 90, alpha: 0.035 }
+  ];
+
+  // 前景飘雪：三层景深，近层更大更实；位置由固定种子生成，逐帧只随时间下落
+  const SNOWFALL = [
+    { count: 30, parallax: 0.55, radius: 1.1, alpha: 0.32, fall: 26, drift: 10 },
+    { count: 40, parallax: 0.90, radius: 1.7, alpha: 0.46, fall: 44, drift: 16 },
+    { count: 18, parallax: 1.30, radius: 2.8, alpha: 0.58, fall: 64, drift: 26 }
+  ];
+  const SNOWFALL_SEEDS = SNOWFALL.map((layer, li) => {
+    const seeds = [];
+    let seed = 1337 + li * 977;
+    for (let i = 0; i < layer.count; i++) {
+      seed = (seed * 1103515245 + 12345) & 0x7fffffff;
+      const nx = (seed % 10000) / 10000;
+      seed = (seed * 1103515245 + 12345) & 0x7fffffff;
+      seeds.push({ nx, ny: (seed % 10000) / 10000 });
+    }
+    return seeds;
+  });
+
+  // 落地扬雪：下落速度超过阈值才扬尘，避免走下缓坡时一路冒烟
+  const LAND_DUST_MIN_VY = 320;
+  const FX_DIR = 'art/fx/';
+  const FX_LIST = ['smoke_05'];
 
   // 关卡数据：LEVELS[0] 为第 1 关，内容与拆分前完全一致
   // platforms 为静态平台；lifts 为升降台（move 定义正弦往返）；
@@ -677,6 +719,7 @@
 
   const coinArt = {};
   const enemyArt = {};
+  const fxArt = {};
 
   function loadArt() {
     for (const name of ART_LIST) {
@@ -694,6 +737,14 @@
       };
       img.src = ART_DIR + 'enemies/' + name + '.png';
       enemyArt[name] = img;
+    }
+    for (const name of FX_LIST) {
+      const img = new Image();
+      img.onerror = () => {
+        console.warn('[platformer] 粒子素材加载失败，已回退程序化绘制：' + img.src);
+      };
+      img.src = FX_DIR + name + '.png';
+      fxArt[name] = img;
     }
   }
 
@@ -818,6 +869,8 @@
     }
 
     // ---- 分轴碰撞：先 X 后 Y ----
+    const wasOnGround = p.onGround;
+    const fallSpeed = p.vy;      // 碰撞前的下落速度，用来判断落地是否需要扬雪
     p.onGround = false;
 
     p.x += p.vx * dt;
@@ -841,6 +894,11 @@
         p.y = plat.y + plat.h;
         p.vy = 0;
       }
+    }
+
+    // 落地扬雪：只在下落速度足够大时触发，走下缓坡不冒烟
+    if (!wasOnGround && p.onGround && fallSpeed > LAND_DUST_MIN_VY) {
+      spawnLandDust(p.x + p.w / 2, p.y + p.h);
     }
 
     // 关卡左右边界
@@ -1129,11 +1187,27 @@
     }
   }
 
+  // 落地扬雪：三团极淡的雪雾，纯视觉，不参与碰撞
+  function spawnLandDust(cx, cy) {
+    for (let i = 0; i < 3; i++) {
+      game.particles.push({
+        x: cx + (i - 1) * 10,
+        y: cy - 2,
+        vx: (i - 1) * 46,
+        vy: -18 - i * 5,
+        life: 0.36,
+        max: 0.36,
+        color: '#f4fbff',
+        dust: true
+      });
+    }
+  }
+
   function updateParticles(dt) {
     const list = game.particles;
     for (let i = list.length - 1; i >= 0; i--) {
       const pt = list[i];
-      pt.vy += 900 * dt;
+      pt.vy += (pt.dust ? 300 : 900) * dt;   // 雪雾很轻，下落比碎片慢
       pt.x += pt.vx * dt;
       pt.y += pt.vy * dt;
       pt.life -= dt;
@@ -1395,9 +1469,20 @@
 
   const skyGradient = (() => {
     const g = ctx.createLinearGradient(0, 0, 0, VIEW_H);
-    g.addColorStop(0, '#7fb6d9');
+    g.addColorStop(0, '#74aed4');
     g.addColorStop(0.55, '#b9dff3');
     g.addColorStop(1, '#e8f7ff');
+    return g;
+  })();
+
+  // 暗角：一次性径向渐变，压住四角，去掉"网页截图"式的平铺感
+  const vignetteGradient = (() => {
+    const g = ctx.createRadialGradient(
+      VIEW_W / 2, VIEW_H / 2, VIEW_H * 0.42,
+      VIEW_W / 2, VIEW_H / 2, VIEW_H * 0.98
+    );
+    g.addColorStop(0, 'rgba(18, 42, 64, 0)');
+    g.addColorStop(1, 'rgba(18, 42, 64, 0.26)');
     return g;
   })();
 
@@ -1405,35 +1490,79 @@
     ctx.fillStyle = skyGradient;
     ctx.fillRect(0, 0, VIEW_W, VIEW_H);
 
-    drawClouds();
+    drawClouds(CLOUDS_FAR, 0.06, '#eaf6ff');   // 远云：低对比，几乎融进天空
+    drawSun();
 
-    // 冬日低角度阳光（纵向视差最弱）
-    const sunX = 790;
-    const sunY = 110 - game.camY * SUN_PARALLAX_Y;
-    const glow = ctx.createRadialGradient(sunX, sunY, 16, sunX, sunY, 130);
+    // 远山 → 雾带 → 中景山脊 → 雪丘 → 雾带 → 针叶林剪影：靠明度台阶拉出纵深
+    drawHills(RIDGE_FAR.parallax, RIDGE_FAR.baseY, RIDGE_FAR.color, RIDGE_FAR.height, RIDGE_FAR.phase);
+    drawHaze(286, 96, 0.5);
+    drawHills(RIDGE_MID.parallax, RIDGE_MID.baseY, RIDGE_MID.color, RIDGE_MID.height, RIDGE_MID.phase);
+    drawHills(0.22, 392, '#bfe0f2', 150);
+    drawHaze(372, 74, 0.42);
+    drawHills(FOREST_NEAR.parallax, FOREST_NEAR.baseY, FOREST_NEAR.color, FOREST_NEAR.height, FOREST_NEAR.phase);
+
+    drawClouds();
+    drawHills(0.45, 440, '#e6f5fd', 110);
+
+    drawLightBeams();
+    drawHaze(438, 88, 0.32);
+  }
+
+  // 冬日低角度阳光（纵向视差最弱）
+  function drawSun() {
+    const sunY = SUN_Y - game.camY * SUN_PARALLAX_Y;
+    const glow = ctx.createRadialGradient(SUN_X, sunY, 16, SUN_X, sunY, 130);
     glow.addColorStop(0, 'rgba(255, 253, 235, 0.55)');
     glow.addColorStop(1, 'rgba(255, 253, 235, 0)');
     ctx.fillStyle = glow;
     ctx.beginPath();
-    ctx.arc(sunX, sunY, 130, 0, Math.PI * 2);
+    ctx.arc(SUN_X, sunY, 130, 0, Math.PI * 2);
     ctx.fill();
 
     ctx.fillStyle = '#fffdf2';
     ctx.beginPath();
-    ctx.arc(sunX, sunY, 28, 0, Math.PI * 2);
+    ctx.arc(SUN_X, sunY, 28, 0, Math.PI * 2);
     ctx.fill();
+  }
 
-    // 视差雪丘：远层偏冷，近层接近雪白
-    drawHills(0.22, 392, '#bfe0f2', 150);
-    drawHills(0.45, 440, '#e6f5fd', 110);
+  // 层间雾带：纵向渐变、两端淡出，用来消除山脊接缝的硬边
+  function drawHaze(centerY, height, alpha) {
+    const g = ctx.createLinearGradient(0, centerY - height / 2, 0, centerY + height / 2);
+    g.addColorStop(0, 'rgba(232, 247, 255, 0)');
+    g.addColorStop(0.5, 'rgba(232, 247, 255, ' + alpha + ')');
+    g.addColorStop(1, 'rgba(232, 247, 255, 0)');
+    ctx.fillStyle = g;
+    ctx.fillRect(0, centerY - height / 2, VIEW_W, height);
+  }
+
+  // 体积光：从太阳斜射向下的梯形光柱，alpha 极低并缓慢呼吸
+  function drawLightBeams() {
+    const breathe = 0.75 + 0.25 * Math.sin(game.time * 0.35);
+    const sunY = SUN_Y - game.camY * SUN_PARALLAX_Y;
+    ctx.save();
+    ctx.globalCompositeOperation = 'lighter';
+    for (const beam of LIGHT_BEAMS) {
+      const g = ctx.createLinearGradient(SUN_X, sunY, SUN_X + beam.dx, VIEW_H);
+      g.addColorStop(0, 'rgba(255, 250, 224, ' + (beam.alpha * breathe) + ')');
+      g.addColorStop(1, 'rgba(255, 250, 224, 0)');
+      ctx.fillStyle = g;
+      ctx.beginPath();
+      ctx.moveTo(SUN_X - 14, sunY + 8);
+      ctx.lineTo(SUN_X + 14, sunY + 8);
+      ctx.lineTo(SUN_X + beam.dx + beam.halfW, VIEW_H);
+      ctx.lineTo(SUN_X + beam.dx - beam.halfW, VIEW_H);
+      ctx.closePath();
+      ctx.fill();
+    }
+    ctx.restore();
   }
 
   // 淡淡的云：远景视差 + 极慢自漂，纯路径绘制、不依赖任何图片
-  function drawClouds() {
+  function drawClouds(list = CLOUDS, parallax = CLOUD_PARALLAX, color = '#ffffff') {
     const span = VIEW_W + 260;
-    ctx.fillStyle = '#ffffff';
-    for (const c of CLOUDS) {
-      const raw = c.x - game.camX * CLOUD_PARALLAX + game.time * c.speed;
+    ctx.fillStyle = color;
+    for (const c of list) {
+      const raw = c.x - game.camX * parallax + game.time * c.speed;
       const x = ((raw % span) + span) % span - 130;
       const s = c.scale;
       ctx.globalAlpha = c.alpha;
@@ -1455,14 +1584,14 @@
     ctx.fill();
   }
 
-  function drawHills(parallax, baseY, color, height) {
+  function drawHills(parallax, baseY, color, height, phase = 0) {
     const offset = game.camX * parallax;
     const ridgeBase = baseY - game.camY * parallax;   // 纵向视差：摄像机下移时山脊上移
     ctx.fillStyle = color;
     ctx.beginPath();
     ctx.moveTo(-10, VIEW_H);
     for (let x = -10; x <= VIEW_W + 30; x += 20) {
-      const wx = x + offset;
+      const wx = x + offset + phase;
       const wave =
         Math.sin(wx * 0.0042) * 0.5 +
         Math.sin(wx * 0.0013 + 2.1) * 0.35 +
@@ -1473,6 +1602,30 @@
     ctx.lineTo(VIEW_W + 10, VIEW_H);
     ctx.closePath();
     ctx.fill();
+  }
+
+  // 前景飘雪：屏幕空间绘制，落在世界层之上、暗角之下
+  function drawSnowfall() {
+    const spanX = VIEW_W + 80;
+    const spanY = VIEW_H + 60;
+    for (let li = 0; li < SNOWFALL.length; li++) {
+      const layer = SNOWFALL[li];
+      const seeds = SNOWFALL_SEEDS[li];
+      ctx.fillStyle = 'rgba(255, 255, 255, ' + layer.alpha + ')';
+      for (const s of seeds) {
+        const x = ((s.nx * spanX - game.camX * layer.parallax + game.time * layer.drift) % spanX + spanX) % spanX - 40;
+        const y = ((s.ny * spanY + game.time * layer.fall) % spanY) - 30;
+        ctx.beginPath();
+        ctx.arc(x, y, layer.radius, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+  }
+
+  // 后期暗角：压四角、收住画面边缘
+  function drawVignette() {
+    ctx.fillStyle = vignetteGradient;
+    ctx.fillRect(0, 0, VIEW_W, VIEW_H);
   }
 
   function drawPlatforms() {
@@ -1499,7 +1652,39 @@
     }
   }
 
-  // 70×70 雪地砖平铺并裁切到平台矩形：地面露整块，浮空平台只露顶部雪面
+  // 程序化雪唇：沿平台顶边画一条起伏白边，盖住贴砖的直边，弱化"平铺感"
+  const SNOW_LIP_H = 7;
+
+  function drawSnowLip(p) {
+    // 20px 的浮台太薄，雪唇会把整块平台糊白，直接跳过
+    if (p.h < 24) return;
+    const h = Math.min(SNOW_LIP_H, p.h * 0.3);
+
+    // 先用冷色描一遍波形：白唇叠在近白的雪面上本来分不出边界，靠这条线读出起伏
+    ctx.strokeStyle = 'rgba(96, 150, 180, 0.3)';
+    ctx.lineWidth = 1.5;
+    ctx.beginPath();
+    for (let x = 0; x <= p.w; x += 14) {
+      const t = (p.x + x) * 0.045;
+      const y = p.y + h * 0.45 + Math.sin(t) * 2.2 + Math.sin(t * 2.3 + 1.7) * 1.1;
+      if (x === 0) ctx.moveTo(p.x, y);
+      else ctx.lineTo(p.x + x, y);
+    }
+    ctx.stroke();
+
+    ctx.fillStyle = '#ffffff';
+    ctx.beginPath();
+    ctx.moveTo(p.x, p.y + h);
+    for (let x = 0; x <= p.w; x += 14) {
+      const t = (p.x + x) * 0.045;
+      const y = p.y + h * 0.45 + Math.sin(t) * 2.2 + Math.sin(t * 2.3 + 1.7) * 1.1;
+      ctx.lineTo(p.x + x, y);
+    }
+    ctx.lineTo(p.x + p.w, p.y + h);
+    ctx.closePath();
+    ctx.fill();
+  }
+
   function drawPlatformTiles(p) {
     ctx.save();
     ctx.beginPath();
@@ -1517,6 +1702,16 @@
     if (!p.ground) {
       drawFloatingPlatformDetail(p);
     }
+
+    // 冰面反光：顶面向下渐隐的白色，薄平台按高度收窄
+    const sheenH = Math.min(12, p.h * 0.5);
+    const ice = ctx.createLinearGradient(0, p.y, 0, p.y + sheenH);
+    ice.addColorStop(0, 'rgba(255, 255, 255, 0.55)');
+    ice.addColorStop(1, 'rgba(255, 255, 255, 0)');
+    ctx.fillStyle = ice;
+    ctx.fillRect(p.x, p.y, p.w, sheenH);
+
+    drawSnowLip(p);
   }
 
   // 浮空平台质感：淡蓝渐变压暗 + 很淡的悬浮投影 + 底部倒挂冰锥（纯代码）
@@ -1826,8 +2021,23 @@
   }
 
   function drawParticles() {
+    const dustReady = artReady(fxArt, 'smoke_05');
     for (const pt of game.particles) {
       const k = pt.life / pt.max;
+      if (pt.dust) {
+        // 落地雪雾：素材就绪时用 Kenney smoke 贴图，否则退化为半透明圆点
+        const size = 16 + (1 - k) * 18;
+        ctx.globalAlpha = k * 0.5;
+        if (dustReady) {
+          ctx.drawImage(fxArt.smoke_05, pt.x - size / 2, pt.y - size / 2, size, size);
+        } else {
+          ctx.fillStyle = pt.color;
+          ctx.beginPath();
+          ctx.arc(pt.x, pt.y, size * 0.3, 0, Math.PI * 2);
+          ctx.fill();
+        }
+        continue;
+      }
       const size = 2.5 * k + 1;
       ctx.globalAlpha = k;
       ctx.fillStyle = pt.color || '#ffe38a';
@@ -1995,6 +2205,9 @@
     drawPlayer();
     drawParticles();
     ctx.restore();
+
+    drawSnowfall();
+    drawVignette();
   }
 
   /* ============================================================

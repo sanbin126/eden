@@ -192,6 +192,24 @@
             android:exported="false"
             android:foregroundServiceType="mediaPlayback" />
 
+        <!-- 桌面小组件：立绘 + 今日心情 + 一句话，点击进入聊天 -->
+        <receiver
+            android:name="com.example.eden.feature.widget.EdenWidgetProvider"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/eden_widget_info" />
+        </receiver>
+
+        <!-- 小组件点击中转：按隐私同意 / 登录态分流后立即关闭 -->
+        <activity
+            android:name="com.example.eden.feature.widget.WidgetRouterActivity"
+            android:exported="false"
+            android:theme="@style/Theme.Eden" />
+
         <!-- 每日定时闹钟（早安 9:30 / 想你随机 / 晚安 22:00）触发后唤醒问候逻辑 -->
         <receiver
             android:name="com.example.eden.feature.greeting.GreetingAlarmReceiver"

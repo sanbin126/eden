@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 桌面小组件背景：沿用主题的渐变语义色，RemoteViews 无法读取 ?attr，故直接引用颜色资源 -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <gradient
+        android:angle="315"
+        android:endColor="@color/eden_gradient_end"
+        android:startColor="@color/eden_gradient_start" />
+    <corners android:radius="20dp" />
+</shape>

@@ -4,15 +4,11 @@ package com.example.eden.feature.story
 import com.example.eden.R
 import com.example.eden.core.ui.BaseActivity
 import com.example.eden.core.ui.ThemedDialog
-import com.example.eden.data.repository.ProfileRepository
 import com.example.eden.domain.economy.EconomyManager
 import android.graphics.Bitmap
-import android.graphics.Color
-import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.view.LayoutInflater
 import android.view.View
 import android.widget.ImageView
 import android.widget.LinearLayout
@@ -20,14 +16,11 @@ import android.widget.TextView
 import android.widget.Toast
 import com.example.eden.domain.character.Characters
 import com.example.eden.domain.character.StoryChapter
-import com.example.eden.domain.character.StoryChoice
 import com.example.eden.domain.character.StoryLibrary
 import com.example.eden.domain.character.StoryScene
 import com.example.eden.domain.character.StoryStep
 import com.example.eden.domain.world.WorldEvent
 import com.example.eden.domain.world.WorldStateStore
-import kotlin.math.abs
-import kotlin.math.roundToInt
 
 /**
  * 剧情演出播放器：galgame 式逐句推进。
@@ -38,6 +31,10 @@ import kotlin.math.roundToInt
  * - 线路 [lineId] 决定剧本来源 `assets/story/<lineId>/` 与进度 `story_prefs_<lineId>`；
  * - 剧中说话人 [StoryStep.Say.who] 决定立绘来源 `assets/portrait/<castId>/`。
  * 两者都来自 Intent / 剧本，切角色时不会互相污染。
+ *
+ * ## 拆分
+ * 台词 / 打字机 / 选项卡 / 自动播放见 StoryPlayerDialogue.kt，
+ * 背景 / 立绘见 StoryPlayerVisuals.kt；演出状态仍集中在本类。
  */
 class StoryPlayerActivity : BaseActivity() {
 
@@ -49,88 +46,88 @@ class StoryPlayerActivity : BaseActivity() {
         const val EXTRA_SIDE_FILE = "extra_side_file"
 
         /** 打字机速度：每字间隔 */
-        private const val TYPE_INTERVAL_MS = 35L
+        internal const val TYPE_INTERVAL_MS = 35L
 
         /** 自动播放时，一句读完后停留时长 */
-        private const val AUTO_DELAY_MS = 1600L
+        internal const val AUTO_DELAY_MS = 1600L
 
         /** 「重温」时，选项默认选中的展示时长，之后自动按上次的选择继续 */
-        private const val REPLAY_CHOICE_DELAY_MS = 1200L
+        internal const val REPLAY_CHOICE_DELAY_MS = 1200L
 
         /** 立绘解码目标高度（px），足够清晰又省内存 */
-        private const val PORTRAIT_TARGET_PX = 1300
+        internal const val PORTRAIT_TARGET_PX = 1300
 
         /** 立绘默认显示高度（dp），与布局中的基准值一致 */
-        private const val PORTRAIT_HEIGHT_DEFAULT_DP = 360
+        internal const val PORTRAIT_HEIGHT_DEFAULT_DP = 360
 
         /**
          * 立绘显示高度覆盖（dp）。四叶的立绘是跳跃欢呼姿态（单臂高举、抬腿），
          * 身体在画布中的占比明显小于其他姐妹，同高度下视觉上会小一圈，故单独放大。
          */
-        private val PORTRAIT_HEIGHT_OVERRIDE_DP = mapOf("yotsuba" to 415)
+        internal val PORTRAIT_HEIGHT_OVERRIDE_DP = mapOf("yotsuba" to 415)
 
         /** 玩家角色的说话人 id（剧本中用 you 表示） */
-        private const val YOU = "you"
+        internal const val YOU = "you"
 
         /** CG 插画在 assets 下的目录前缀；CG 自带人物，演出期间隐藏立绘 */
-        private const val CG_ROOT = "story_cg/"
+        internal const val CG_ROOT = "story_cg/"
     }
 
     /** 标题卡的进入形态：首次打开 / 中途续读 / 已通关重温。 */
     private enum class EntryMode { FIRST, RESUME, REPLAY }
 
-    private lateinit var lineId: String
-    private var chapterIndex: Int = 1
-    private var chapter: StoryChapter? = null
+    internal lateinit var lineId: String
+    internal var chapterIndex: Int = 1
+    internal var chapter: StoryChapter? = null
 
     /** 支线剧本文件名；非空时处于支线播放模式（不写主线进度、不结算好感）。 */
     private var sideFile: String? = null
-    private val sideMode: Boolean get() = sideFile != null
+    internal val sideMode: Boolean get() = sideFile != null
 
-    private lateinit var ivStoryBg: ImageView
-    private lateinit var ivStoryPortrait: ImageView
-    private lateinit var tvSceneLabel: TextView
-    private lateinit var llChoices: LinearLayout
-    private lateinit var tvDialogName: TextView
-    private lateinit var tvDialogText: TextView
-    private lateinit var tvDialogNext: TextView
+    internal lateinit var ivStoryBg: ImageView
+    internal lateinit var ivStoryPortrait: ImageView
+    internal lateinit var tvSceneLabel: TextView
+    internal lateinit var llChoices: LinearLayout
+    internal lateinit var tvDialogName: TextView
+    internal lateinit var tvDialogText: TextView
+    internal lateinit var tvDialogNext: TextView
     private lateinit var btnStoryBack: View
-    private lateinit var btnStoryAuto: TextView
+    internal lateinit var btnStoryAuto: TextView
     private lateinit var btnStorySkip: TextView
     private lateinit var cardTitle: View
     private lateinit var btnTitleStart: TextView
     private lateinit var btnTitleRestart: TextView
 
     // ==================== 演出状态 ====================
-    private val ui = Handler(Looper.getMainLooper())
-    private val portraitCache = mutableMapOf<String, Bitmap>()
+    internal val ui = Handler(Looper.getMainLooper())
+    internal val portraitCache = mutableMapOf<String, Bitmap>()
 
     private var currentScene: StoryScene? = null
     private var stepIndex = 0
 
-    private var typing = false
-    private var fullText = ""
-    private var typeRunnable: Runnable? = null
+    internal var typing = false
+    internal var fullText = ""
+    internal var typeRunnable: Runnable? = null
 
-    private var autoMode = false
-    private var autoRunnable: Runnable? = null
+    internal var autoMode = false
+    internal var autoRunnable: Runnable? = null
 
     /** 选项卡展示中：此时点击舞台不推进 */
-    private var choiceActive = false
+    internal var choiceActive = false
 
     /** 重温模式：选项不可再选，自动沿上次的选择继续，且不重复结算好感 */
-    private var replayMode = false
+    internal var replayMode = false
 
     /** 当前背景是否为 CG 插画：CG 内的三玖是全屏画面，此时不再叠加立绘 */
-    private var bgIsCg = false
+    internal var bgIsCg = false
 
     /** 已到「本章完」，再点一次才结算离开 */
-    private var ending = false
+    internal var ending = false
 
     private var finished = false
 
     /** 本章选项累计好感度（章末判定用，不含全局好感与通关奖励）。 */
-    private var chapterAffection = 0
+    internal var chapterAffection = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -261,7 +258,7 @@ class StoryPlayerActivity : BaseActivity() {
 
     // ==================== 场景 / 步骤推进 ====================
 
-    private fun enterScene(scene: StoryScene) {
+    internal fun enterScene(scene: StoryScene) {
         currentScene = scene
         stepIndex = 0
         applyBackground(scene.backgroundId)
@@ -283,7 +280,7 @@ class StoryPlayerActivity : BaseActivity() {
         return true
     }
 
-    private fun nextStep() {
+    internal fun nextStep() {
         val scene = currentScene ?: return
         if (stepIndex >= scene.steps.size) {
             advanceScene()
@@ -325,205 +322,6 @@ class StoryPlayerActivity : BaseActivity() {
         }
         if (choiceActive) return
         nextStep()
-    }
-
-    // ==================== 台词 / 打字机 ====================
-
-    private fun showLine(step: StoryStep?, text: String) {
-        cancelTypewriter()
-        cancelAuto()
-        tvDialogNext.visibility = View.INVISIBLE
-
-        when (step) {
-            is StoryStep.Say -> if (step.who == YOU) {
-                // 玩家台词：不显示角色立绘，名字牌用全名（未设置则用小名）
-                tvDialogName.visibility = View.VISIBLE
-                tvDialogName.text = playerName()
-                showPlayerPortrait()
-            } else {
-                tvDialogName.visibility = View.VISIBLE
-                tvDialogName.text = chapter?.casts?.get(step.who)?.name ?: step.who
-                showPortrait(step.who, step.face)
-            }
-            is StoryStep.Narrate -> {
-                // 旁白不显示名字牌；只有「单独描写某个角色」的旁白才挂该角色立绘，
-                // 环境描写、多人动作等一律隐藏立绘，避免立绘一直挂着。
-                tvDialogName.visibility = View.GONE
-                val focus = step.focus
-                if (focus != null) showPortrait(focus, null) else ivStoryPortrait.visibility = View.GONE
-            }
-            else -> tvDialogName.visibility = View.GONE
-        }
-        typeText(text)
-    }
-
-    private fun typeText(text: String) {
-        fullText = text
-        tvDialogText.text = ""
-        if (text.isEmpty()) {
-            onTypingDone()
-            return
-        }
-        typing = true
-        var shown = 0
-        val runnable = object : Runnable {
-            override fun run() {
-                shown++
-                tvDialogText.text = text.substring(0, shown)
-                if (shown < text.length) {
-                    ui.postDelayed(this, TYPE_INTERVAL_MS)
-                } else {
-                    onTypingDone()
-                }
-            }
-        }
-        typeRunnable = runnable
-        ui.postDelayed(runnable, TYPE_INTERVAL_MS)
-    }
-
-    private fun onTypingDone() {
-        typing = false
-        typeRunnable = null
-        tvDialogNext.visibility = View.VISIBLE
-        scheduleAuto()
-    }
-
-    private fun completeTyping() {
-        cancelTypewriter()
-        tvDialogText.text = fullText
-        typing = false
-        tvDialogNext.visibility = View.VISIBLE
-        scheduleAuto()
-    }
-
-    private fun cancelTypewriter() {
-        typeRunnable?.let { ui.removeCallbacks(it) }
-        typeRunnable = null
-    }
-
-    // ==================== 选项卡 ====================
-
-    private fun showChoices(options: List<StoryChoice>, sceneId: String, choiceIndex: Int) {
-        cancelAuto()
-        cancelTypewriter()
-        tvDialogNext.visibility = View.INVISIBLE
-        choiceActive = true
-
-        // 重温时「上次的选择」的下标；非重温为 -1（不锁）
-        val lockedIndex = if (replayMode) {
-            StoryProgressRepository.rememberedChoice(this, lineId, chapterIndex, sceneId, choiceIndex) ?: 0
-        } else {
-            -1
-        }
-
-        llChoices.removeAllViews()
-        val inflater = LayoutInflater.from(this)
-        options.forEachIndexed { index, option ->
-            val item = inflater.inflate(R.layout.item_story_choice, llChoices, false) as TextView
-            item.text = resolve(option.text)
-            if (replayMode) {
-                // 重温：选项不可再选，默认选中上次的选择，稍后自动沿它继续
-                item.isClickable = false
-                item.isSelected = index == lockedIndex
-                item.alpha = if (index == lockedIndex) 1f else 0.45f
-            } else {
-                item.setOnClickListener {
-                    // 首次点击选中，再次点击确认
-                    if (item.isSelected) {
-                        confirmChoice(option, sceneId, choiceIndex, index)
-                    } else {
-                        selectOnly(item)
-                    }
-                }
-            }
-            llChoices.addView(item)
-        }
-        llChoices.visibility = View.VISIBLE
-
-        if (replayMode) {
-            val pick = options.getOrNull(lockedIndex)
-            if (pick != null) {
-                ui.postDelayed({ confirmChoice(pick, sceneId, choiceIndex, lockedIndex) }, REPLAY_CHOICE_DELAY_MS)
-            }
-        }
-    }
-
-    private fun selectOnly(target: View) {
-        for (i in 0 until llChoices.childCount) {
-            llChoices.getChildAt(i).isSelected = false
-        }
-        target.isSelected = true
-    }
-
-    private fun confirmChoice(option: StoryChoice, sceneId: String, choiceIndex: Int, optionIndex: Int) {
-        choiceActive = false
-        hideChoices()
-
-        if (!sideMode) {
-            if (!replayMode) {
-                // 记下这次选择（供以后重温默认选中），并结算全局好感
-                StoryProgressRepository.rememberChoice(this, lineId, chapterIndex, sceneId, choiceIndex, optionIndex)
-                applyAffection(option.affection)
-            }
-            // 本章好感度单独累计，供章末判定使用（重温也累计，便于解锁另一条支线）
-            chapterAffection = StoryProgressRepository.addChapterAffection(this, lineId, chapterIndex, option.affection)
-        }
-
-        val target = option.goto?.let { chapter?.sceneById(it) }
-        if (target != null) enterScene(target) else nextStep()
-    }
-
-    private fun hideChoices() {
-        llChoices.visibility = View.GONE
-        llChoices.removeAllViews()
-    }
-
-    private fun applyAffection(delta: Int) {
-        if (delta == 0) return
-        if (delta > 0) {
-            EconomyManager.increase(this, delta)
-        } else {
-            EconomyManager.decrease(this, -delta)
-        }
-        val sign = if (delta > 0) "+" else "-"
-        Toast.makeText(this, getString(R.string.story_affection_toast, sign, abs(delta)), Toast.LENGTH_SHORT).show()
-    }
-
-    // ==================== 自动 / 结束 ====================
-
-    private fun toggleAuto() {
-        autoMode = !autoMode
-        btnStoryAuto.alpha = if (autoMode) 1f else 0.55f
-        if (autoMode) {
-            if (!typing && !choiceActive && !ending) scheduleAuto()
-        } else {
-            cancelAuto()
-        }
-    }
-
-    private fun scheduleAuto() {
-        if (!autoMode || choiceActive || ending) return
-        cancelAuto()
-        val runnable = Runnable { nextStep() }
-        autoRunnable = runnable
-        ui.postDelayed(runnable, AUTO_DELAY_MS)
-    }
-
-    private fun cancelAuto() {
-        autoRunnable?.let { ui.removeCallbacks(it) }
-        autoRunnable = null
-    }
-
-    private fun showEnding() {
-        cancelTypewriter()
-        cancelAuto()
-        choiceActive = false
-        ending = true
-        fullText = getString(if (sideMode) R.string.story_side_end else R.string.story_chapter_end)
-        tvDialogName.visibility = View.GONE
-        tvDialogText.text = fullText
-        tvDialogNext.visibility = View.VISIBLE
-        typing = false
     }
 
     private fun finishChapter() {
@@ -587,81 +385,6 @@ class StoryPlayerActivity : BaseActivity() {
             cancelable = false
         ) { finish() }
     }
-
-    // ==================== 背景 / 立绘 / 文本 ====================
-
-    private fun applyBackground(backgroundId: String) {
-        val bg = chapter?.backgrounds?.get(backgroundId) ?: return
-        bgIsCg = bg.image?.startsWith(CG_ROOT) == true
-        // 优先用真实背景图；缺失或解码失败时回退到上下渐变，保证不崩
-        val bitmap = StoryLibrary.loadBackground(this, bg.image, resources.displayMetrics.heightPixels)
-        if (bitmap != null) {
-            ivStoryBg.setImageBitmap(bitmap)
-        } else {
-            val top = parseColor(bg.topColor, Color.parseColor("#FFEEF4"))
-            val bottom = parseColor(bg.bottomColor, Color.parseColor("#CBB8DE"))
-            ivStoryBg.setImageDrawable(
-                GradientDrawable(GradientDrawable.Orientation.TOP_BOTTOM, intArrayOf(top, bottom))
-            )
-        }
-        tvSceneLabel.text = bg.label
-    }
-
-    private fun parseColor(hex: String, fallback: Int): Int =
-        runCatching { Color.parseColor(hex) }.getOrDefault(fallback)
-
-    /**
-     * 玩家（"you"）台词时的立绘演出。
-     *
-     * 目前玩家还没有立绘资源，所以直接清空舞台上的角色立绘。
-     * 后续接入「自定义玩家立绘」时，只需在这里改成按玩家配置的图片展示
-     * （例如从自定义立绘目录加载，再走 [applyPortraitHeight] 之类的高度规则），
-     * 台词 / 旁白 / 分支流程都不需要再改。
-     */
-    private fun showPlayerPortrait() {
-        ivStoryPortrait.visibility = View.GONE
-    }
-
-    /**
-     * 展示说话人立绘：固定靠左（气泡左上角），底边与对话框底边对齐，
-     * 下半身被不透明浅色气泡遮住 → 呈「露出半身」的 galgame 演出。
-     * 高度按角色覆写（见 [PORTRAIT_HEIGHT_OVERRIDE_DP]），宽度由 adjustViewBounds 等比得出。
-     */
-    private fun showPortrait(castId: String, face: String?) {
-        // CG 背景期间隐藏立绘：CG 里已经有角色全身像，叠加会变成「两个三玖」
-        if (bgIsCg) {
-            ivStoryPortrait.visibility = View.GONE
-            return
-        }
-        val key = "$castId|${face.orEmpty()}"
-        val bitmap = portraitCache[key]
-            ?: StoryLibrary.loadPortrait(this, castId, face, PORTRAIT_TARGET_PX)?.also { portraitCache[key] = it }
-        if (bitmap == null) {
-            ivStoryPortrait.visibility = View.GONE
-            return
-        }
-        applyPortraitHeight(castId)
-        ivStoryPortrait.setImageBitmap(bitmap)
-        ivStoryPortrait.visibility = View.VISIBLE
-    }
-
-    private fun applyPortraitHeight(castId: String) {
-        val dp = PORTRAIT_HEIGHT_OVERRIDE_DP[castId] ?: PORTRAIT_HEIGHT_DEFAULT_DP
-        val px = (dp * resources.displayMetrics.density).roundToInt()
-        val lp = ivStoryPortrait.layoutParams
-        if (lp.height != px) {
-            lp.height = px
-            ivStoryPortrait.layoutParams = lp
-        }
-    }
-
-    /** 玩家角色名：优先全名，未设置则退回小名。 */
-    private fun playerName(): String =
-        ProfileRepository.getFormal(this).ifEmpty { ProfileRepository.getCall(this) }
-
-    /** 剧本占位符替换：{meFull} → 全名，{me} → 小名。 */
-    private fun resolve(text: String): String =
-        text.replace("{meFull}", playerName()).replace("{me}", ProfileRepository.getCall(this))
 
     override fun onDestroy() {
         super.onDestroy()

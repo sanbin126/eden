@@ -1,0 +1,38 @@
+{
+  "id": "miku_side_03_a",
+  "index": 3,
+  "chapterLabel": "番外",
+  "title": "送伞",
+  "synopsis": "回到家才发现伞没还。手机接连震了三下，发件人没有署名。",
+  "bgm": "daily_piano",
+  "casts": {
+    "miku": { "name": "三玖", "slot": "center" }
+  },
+  "backgrounds": {
+    "room_night": { "label": "你的房间 · 夜晚", "top": "#2B2F4A", "bottom": "#11131D", "image": "story_bg/bg_room_night_window.png" },
+    "night_phone_cg": { "label": "你的房间 · 夜晚", "top": "#2B2F4A", "bottom": "#11131D", "image": "story_cg/cg_night_phone_message.png" }
+  },
+  "scenes": [
+    {
+      "id": "scene_mail",
+      "background": "room_night",
+      "steps": [
+        { "type": "narrate", "text": "你回到家之后，才发现四叶那把折叠伞还在你书包里。伞面上印着卡通图案，蓝色的，和三玖的耳机颜色很像。" },
+        { "type": "narrate", "text": "你正想着明天要记得还，手机震了一下。是一封邮件，发件地址是一串没有备注的号码。" },
+        { "type": "bg", "id": "night_phone_cg" },
+        { "type": "narrate", "text": "「今天谢谢你。伞的事，还有图书室的事。」" },
+        { "type": "narrate", "text": "没有署名。但你认得那个字迹——虽然这是邮件，不是手写，但那种句子短得像是能省则省的感觉，和她在便签上的笔迹一样。" },
+        { "type": "narrate", "text": "你正要回复，又来了一封。" },
+        { "type": "narrate", "text": "「明天会下雨。天气预报说的。」" },
+        { "type": "narrate", "text": "顿了一下，第三封。" },
+        { "type": "narrate", "text": "「你带伞。」" },
+        { "type": "narrate", "text": "你盯着屏幕看了几秒，然后回了一个「好」。" },
+        { "type": "narrate", "text": "过了一会儿，手机又震了。这次只有两个字：" },
+        { "type": "narrate", "text": "「晚安。」" },
+        { "type": "narrate", "text": "你合上手机，看着窗外。雨后的夜空很干净，能看到几颗星星。书包里那把折叠伞的伞柄露在外面，在月光下泛着一点微光。" },
+        { "type": "narrate", "text": "你想着明天要记得还伞。也想着，明天要带伞。" },
+        { "type": "end" }
+      ]
+    }
+  ]
+}

@@ -21,6 +21,12 @@
     <string name="common_icon_sparkle">✨</string>
     <string name="gift_icon">🎁</string>
 
+    <!-- 桌面小组件 -->
+    <string name="widget_name">三玖</string>
+    <string name="widget_portrait_desc">三玖立绘</string>
+    <string name="widget_description">在桌面查看三玖的今日心情</string>
+    <string name="widget_need_open">点一下，来见三玖</string>
+
     <!-- 小游戏名称 -->
     <string name="game_name_minesweeper">扫雷</string>
     <string name="game_name_gomoku">五子棋</string>

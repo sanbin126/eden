@@ -39,4 +39,9 @@ eden-backend.zip
 # 超过 Gitee 单文件 100MB 限制的发布 APK
 app/release/app-release.apk
 
+# Kenney 原始素材包（CC0，本地参考用，体积大不入库；游戏实际用到的切片另行入库）
+kenney_particle-pack/
+kenney_input-prompts/
+kenney_scribble-platformer-expansion/
+
 __pycache__/

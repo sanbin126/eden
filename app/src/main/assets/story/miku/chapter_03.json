@@ -1,0 +1,431 @@
+{
+  "id": "miku_chapter_03",
+  "index": 3,
+  "chapterLabel": "第三章",
+  "title": "雨天的信长公记",
+  "synopsis": "一场毫无预兆的暴雨把所有人困在了学校里。图书室的窗边，三玖翻开《信长公记》，讲起桶狭间的那场雨——以及信长一生都在赶的那件事。",
+  "unlock": { "prevChapter": 2, "affection": 0 },
+  "reward": { "affection": 5 },
+  "bgm": "daily_piano",
+  "casts": {
+    "ichika":  { "name": "一花", "slot": "left" },
+    "nino":    { "name": "二乃", "slot": "left" },
+    "miku":    { "name": "三玖", "slot": "center" },
+    "yotsuba": { "name": "四叶", "slot": "right" },
+    "itsuki":  { "name": "五月", "slot": "right" }
+  },
+  "backgrounds": {
+    "hallway_rain":    { "label": "学校 · 教室走廊 · 放学后（雨）", "top": "#8C99A8", "bottom": "#4A5563", "image": "story_bg/bg_school_hallway_rain.png" },
+    "library_rain":    { "label": "学校 · 图书室 · 雨天", "top": "#5C6470", "bottom": "#2E343C", "image": "story_bg/bg_school_library_rain.png" },
+    "street_rain":     { "label": "学校 · 校门口 · 雨中傍晚", "top": "#5A5F72", "bottom": "#2A2E3C", "image": "story_bg/bg_school_gate_rain.png" },
+    "crossing_dusk":   { "label": "岔路口 · 雨停", "top": "#9A8FA8", "bottom": "#4A4458", "image": "story_bg/bg_crossroad_evening.png" },
+    "apartment_dusk":  { "label": "中野家公寓 · 门口 · 雨停", "top": "#B58E7A", "bottom": "#3A3550", "image": "story_bg/bg_nakano_entrance_evening_afterrain.png" },
+    "library_window_cg": { "label": "图书室 · 窗边（雨）", "top": "#5C6470", "bottom": "#2E343C", "image": "story_cg/cg_library_window_rain.png" },
+    "book_turned_cg":  { "label": "图书室 · 桶狭间", "top": "#5C6470", "bottom": "#2E343C", "image": "story_cg/cg_book_turned_to_you.png" },
+    "walking_rain_cg": { "label": "雨中回家路", "top": "#8E7898", "bottom": "#2A2E3C", "image": "story_cg/cg_walking_in_rain.png" },
+    "gate_afterrain_cg": { "label": "中野家公寓 · 门口 · 雨停", "top": "#B58E7A", "bottom": "#3A3550", "image": "story_cg/cg_apartment_gate_afterrain.png" }
+  },
+  "scenes": [
+    {
+      "id": "scene_hallway",
+      "background": "hallway_rain",
+      "steps": [
+        { "type": "narrate", "text": "最后一节课结束的时候，天还是晴的。你收拾好东西，刚走到走廊上，窗外就毫无预兆地暗了下来。" },
+        { "type": "narrate", "text": "然后是一场倾盆大雨。" },
+        { "type": "narrate", "text": "雨点砸在窗户上，发出密集的响声。走廊里挤满了没带伞的学生，有人抱怨，有人打电话，有人干脆冲进雨里。你站在人群边缘，看着校门口的方向。雨幕厚得看不清对面的教学楼。" },
+        { "type": "say", "who": "yotsuba", "face": "school_normal", "text": "哇——这雨也太突然了吧！" },
+        { "type": "narrate", "focus": "yotsuba", "text": "四叶从你身后冒出来，书包顶在头上，像是已经做好了冲出去的心理准备。" },
+        { "type": "say", "who": "yotsuba", "face": "school_normal", "text": "你有伞吗？没有的话我可以借你——啊，但是我要先去趟社团，可能一会儿才能回来。" },
+        { "type": "narrate", "focus": "yotsuba", "text": "你正要回答，四叶忽然想起了什么，拍了一下手。" },
+        { "type": "say", "who": "yotsuba", "face": "school_normal", "text": "对了，三玖还在图书室！她午休就说要去还书，到现在都没回来。她肯定不知道下雨了。" },
+        {
+          "type": "choice",
+          "options": [
+            { "text": "我去图书室看看。", "affection": 2, "goto": "scene_hallway_a" },
+            { "text": "她应该自己会想办法吧。", "affection": 0, "goto": "scene_hallway_b" },
+            { "text": "四叶，你那边有多余的伞吗？", "affection": 1, "goto": "scene_hallway_c" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "scene_hallway_a",
+      "background": "hallway_rain",
+      "next": "scene_library",
+      "steps": [
+        { "type": "narrate", "focus": "yotsuba", "text": "四叶的眼睛亮了一下。" },
+        { "type": "say", "who": "yotsuba", "face": "school_normal", "text": "好！那图书室就交给你了！我先去社团，一会儿雨小了再回来！" },
+        { "type": "narrate", "text": "她顶着书包冲进雨里，跑了两步又回头喊了一句。" },
+        { "type": "say", "who": "yotsuba", "face": "school_normal", "text": "三玖要是还在看书，你就跟她说『四叶说的，下雨了』！她听这个就知道不是骗子！" }
+      ]
+    },
+    {
+      "id": "scene_hallway_b",
+      "background": "hallway_rain",
+      "next": "scene_library",
+      "steps": [
+        { "type": "narrate", "focus": "yotsuba", "text": "四叶歪了歪头，表情有点担心，但也没有反驳。" },
+        { "type": "say", "who": "yotsuba", "face": "school_normal", "text": "唔……也是。三玖有时候确实挺有自己的办法的。那我先走啦！" },
+        { "type": "narrate", "text": "她冲进雨里，书包顶在头上，很快就变成了一个模糊的影子。" },
+        { "type": "narrate", "text": "你站在走廊上，看着雨。过了大概五分钟，雨没有变小的趋势。你想起图书室那扇总是关不严的窗户，和那个总坐在窗边看书的人。" }
+      ]
+    },
+    {
+      "id": "scene_hallway_c",
+      "background": "hallway_rain",
+      "next": "scene_library",
+      "steps": [
+        { "type": "narrate", "focus": "yotsuba", "text": "四叶翻了翻书包，掏出一把折叠伞。" },
+        { "type": "say", "who": "yotsuba", "face": "school_normal", "text": "有是有，但是有点小。两个人撑肯定不够。要不你先拿去用？" },
+        { "type": "narrate", "text": "你接过伞，谢了四叶。她笑着摆摆手，顶着书包冲进了雨里。" }
+      ]
+    },
+
+    {
+      "id": "scene_library",
+      "background": "library_rain",
+      "steps": [
+        { "type": "narrate", "text": "图书室的门虚掩着。你推开门，里面比平时暗得多，只有靠窗的那一排还亮着。雨声隔着玻璃变得沉闷，像是有人在远处敲鼓。" },
+        { "type": "bg", "id": "library_window_cg" },
+        { "type": "narrate", "focus": "miku", "text": "三玖坐在窗边的位置上。耳机挂在脖子上，手里翻着一本厚厚的书，完全没有注意到外面的天气。她面前的桌子上摞着三四本已经还完的历史书，每一本都对齐了书角。" },
+        { "type": "bg", "id": "library_rain" },
+        { "type": "narrate", "text": "你走过去，影子落在她书页上。她抬起头。" },
+        { "type": "say", "who": "miku", "face": "slight_open", "text": "……你。" },
+        { "type": "narrate", "focus": "miku", "text": "她的视线越过你，落在窗户上。然后她愣住了。雨幕把整面窗户糊成了一片流动的灰色。" },
+        { "type": "say", "who": "miku", "face": "slight_open", "text": "……下雨了。" },
+        {
+          "type": "choice",
+          "options": [
+            { "text": "嗯。挺大的。你带伞了吗？", "affection": 1, "goto": "scene_library_a" },
+            { "text": "你在这儿坐了一下午，都没发现？", "affection": 1, "goto": "scene_library_b" },
+            { "text": "（在她对面坐下。）反正也走不了。你看到哪了？", "affection": 2, "goto": "scene_library_c" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "scene_library_a",
+      "background": "library_rain",
+      "next": "scene_library_rain",
+      "steps": [
+        { "type": "narrate", "focus": "miku", "text": "三玖沉默了一拍，然后缓慢地摇了摇头。" },
+        { "type": "say", "who": "miku", "face": "school_normal", "text": "……没有。" },
+        { "type": "narrate", "text": "她把书合上，动作比平时慢。视线又飘向窗外，像是在估算雨什么时候会停。" }
+      ]
+    },
+    {
+      "id": "scene_library_b",
+      "background": "library_rain",
+      "next": "scene_library_rain",
+      "steps": [
+        { "type": "say", "who": "miku", "face": "look_down", "text": "……看书的时候，听不见外面。" },
+        { "type": "narrate", "focus": "miku", "text": "她的声音比平时小了一点，像是在解释，又像是在承认什么。" },
+        { "type": "say", "who": "miku", "face": "look_down", "text": "而且……耳机里在放东西。" },
+        { "type": "narrate", "focus": "miku", "text": "她摸了一下脖子上的耳机，没有戴上。但你注意到，她说这话的时候，视线没有看你。" }
+      ]
+    },
+    {
+      "id": "scene_library_c",
+      "background": "library_rain",
+      "next": "scene_library_rain",
+      "steps": [
+        { "type": "narrate", "focus": "miku", "text": "三玖看着你在对面坐下来，没有反对。她把书往你那边推了一点，让你能看到封面——《信长公记》，和她之前借的那本一样。" },
+        { "type": "say", "who": "miku", "face": "slight_open", "text": "……桶狭间。" },
+        { "type": "narrate", "focus": "miku", "text": "她指了指正在看的那一页。" },
+        { "type": "say", "who": "miku", "face": "slight_open", "text": "信长在暴雨里突袭今川义元。两万人对三千人。" }
+      ]
+    },
+
+    {
+      "id": "scene_library_rain",
+      "background": "library_rain",
+      "steps": [
+        { "type": "narrate", "text": "窗外的雨声忽然大了一阵。三玖抬起头，看着窗户。雨水顺着玻璃流下来，把外面的世界切割成无数条模糊的线。" },
+        { "type": "say", "who": "miku", "face": "whisper", "text": "桶狭间那天，也是这样的雨。" },
+        { "type": "narrate", "text": "雨没有停。反而更大了。图书室的管理员老师过来看了一眼，说了一句「你们等雨小点再走」，然后就锁门离开了。整个图书室只剩下你们两个人，和一排排沉默的书架。" },
+        { "type": "narrate", "focus": "miku", "text": "三玖把书翻回前面几页，手指在某一页的段落上停住。" },
+        { "type": "say", "who": "miku", "face": "whisper", "text": "信长在桶狭间之前，写过一个字。" },
+        { "type": "bg", "id": "book_turned_cg" },
+        { "type": "narrate", "text": "她把书转过来给你看。页面上有一个很大的毛笔字，印在插图旁边。" },
+        { "type": "say", "who": "miku", "face": "whisper", "text": "『急』。" },
+        {
+          "type": "choice",
+          "options": [
+            { "text": "因为他知道，不快就赢不了。", "affection": 1, "goto": "scene_rain_a" },
+            { "text": "但『急』这个字，也可以读成『来不及』。", "affection": 2, "goto": "scene_rain_b" },
+            { "text": "（安静地等她继续说。）", "affection": 3, "goto": "scene_rain_c" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "scene_rain_a",
+      "background": "library_rain",
+      "next": "scene_library_evening",
+      "steps": [
+        { "type": "narrate", "focus": "miku", "text": "三玖轻轻点了一下头。" },
+        { "type": "say", "who": "miku", "face": "serious", "text": "……今川义元不着急。他带了两万人，慢慢走。信长只有三千人，不快的话，连站在战场上的资格都没有。" },
+        { "type": "narrate", "text": "她翻了一页。" },
+        { "type": "say", "who": "miku", "face": "look_down", "text": "但太快的话……就会像他后来那样。" },
+        { "type": "narrate", "focus": "miku", "text": "她没有说「那样」是什么。但你知道。本能寺。" }
+      ]
+    },
+    {
+      "id": "scene_rain_b",
+      "background": "library_rain",
+      "next": "scene_library_evening",
+      "steps": [
+        { "type": "narrate", "focus": "miku", "text": "三玖抬起头看你。刘海从右眼上滑开了一点。" },
+        { "type": "say", "who": "miku", "face": "slight_open", "text": "……来不及。" },
+        { "type": "narrate", "focus": "miku", "text": "她重复了这三个字，像是在咀嚼。" },
+        { "type": "say", "who": "miku", "face": "serious", "text": "信长一生都在赶。赶着统一，赶着改变，赶着证明自己不需要解释。但他最后……确实来不及。" },
+        { "type": "narrate", "text": "她低下头，声音更轻了。" },
+        { "type": "say", "who": "miku", "face": "whisper", "text": "我觉得，他可能一直都知道。" }
+      ]
+    },
+    {
+      "id": "scene_rain_c",
+      "background": "library_rain",
+      "next": "scene_library_evening",
+      "steps": [
+        { "type": "narrate", "text": "三玖没有立刻说话。她看着窗外，雨声填满了沉默。" },
+        { "type": "narrate", "text": "过了大概半分钟，她开口了。" },
+        { "type": "say", "who": "miku", "face": "whisper", "text": "信长在桶狭间之前，其实没有必胜的把握。他自己也知道。" },
+        { "type": "narrate", "focus": "miku", "text": "她把手放在书页上，指尖轻轻按着那张插图。" },
+        { "type": "say", "who": "miku", "face": "whisper", "text": "但他还是去了。" },
+        { "type": "narrate", "text": "顿了一下。" },
+        { "type": "say", "who": "miku", "face": "whisper", "text": "我一直在想，他出发的时候，是什么心情。" }
+      ]
+    },
+
+    {
+      "id": "scene_library_evening",
+      "background": "library_rain",
+      "steps": [
+        { "type": "narrate", "text": "雨终于小了一些。从倾盆变成了细密的雨丝，窗外的天空也从铅灰变成了一种将暗未暗的蓝。" },
+        { "type": "narrate", "focus": "miku", "text": "三玖合上书，站起来，把桌上的书一本一本放回还书台。她放得很慢，每一本都对齐了书角。" },
+        { "type": "say", "who": "miku", "face": "school_normal", "text": "……你带了伞吗。" },
+        {
+          "type": "choice",
+          "options": [
+            { "text": "没有。但我可以跑回去。", "affection": 1, "goto": "scene_evening_a" },
+            { "text": "有。四叶借的，有点小。", "affection": 2, "goto": "scene_evening_b" },
+            { "text": "没有。不过雨小了，一起走？", "affection": 3, "goto": "scene_evening_c" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "scene_evening_a",
+      "background": "library_rain",
+      "next": "scene_street_rain",
+      "steps": [
+        { "type": "say", "who": "miku", "face": "school_normal", "text": "……跑回去。" },
+        { "type": "narrate", "focus": "miku", "text": "她重复了一遍，语气里没有赞同也没有反对。" },
+        { "type": "say", "who": "miku", "face": "school_normal", "text": "会淋湿。" },
+        { "type": "narrate", "text": "顿了一下。" },
+        { "type": "say", "who": "miku", "face": "awkward", "text": "……我也没有伞。所以，一起跑？" },
+        { "type": "narrate", "focus": "miku", "text": "她说这话的时候没有看你，但她的耳朵尖在图书室昏暗的光线里泛了一点颜色。" }
+      ]
+    },
+    {
+      "id": "scene_evening_b",
+      "background": "library_rain",
+      "next": "scene_street_rain",
+      "steps": [
+        { "type": "narrate", "focus": "miku", "text": "三玖看了你手里的折叠伞一眼。很小，蓝色的，印着四叶喜欢的卡通图案。" },
+        { "type": "say", "who": "miku", "face": "school_normal", "text": "……四叶的。" },
+        { "type": "narrate", "text": "她把自己的书包背上，走到你旁边。" },
+        { "type": "say", "who": "miku", "face": "school_normal", "text": "小也没关系。走吧。" }
+      ]
+    },
+    {
+      "id": "scene_evening_c",
+      "background": "library_rain",
+      "next": "scene_street_rain",
+      "steps": [
+        { "type": "narrate", "focus": "miku", "text": "三玖的脚步停了一下。" },
+        { "type": "say", "who": "miku", "face": "awkward", "text": "……一起走。" },
+        { "type": "narrate", "focus": "miku", "text": "她重复了这三个字，声音很轻。然后她点了点头。" },
+        { "type": "say", "who": "miku", "face": "awkward", "text": "嗯。" }
+      ]
+    },
+
+    {
+      "id": "scene_street_rain",
+      "background": "street_rain",
+      "steps": [
+        { "type": "narrate", "text": "你们走出校门的时候，雨已经小到不需要跑的程度。细密的雨丝落在头发上、肩膀上，凉但不冷。" },
+        { "type": "narrate", "focus": "miku", "text": "三玖走在你旁边，书包抱在胸前，耳朵上的耳机没有戴，挂在脖子上晃。" },
+        { "type": "bg", "id": "walking_rain_cg" },
+        { "type": "narrate", "text": "走了一段路，她忽然开口。" },
+        { "type": "say", "who": "miku", "face": "whisper", "text": "信长在桶狭间之后，给浓姬写了一封信。" },
+        {
+          "type": "choice",
+          "options": [
+            { "text": "写了什么？", "affection": 1, "goto": "scene_street_a" },
+            { "text": "你连这个都记得。", "affection": 2, "goto": "scene_street_b" },
+            { "text": "（放慢脚步，等她说下去。）", "affection": 2, "goto": "scene_street_c" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "scene_street_a",
+      "background": "street_rain",
+      "next": "scene_crossing",
+      "steps": [
+        { "type": "say", "who": "miku", "face": "whisper", "text": "只有一句话。" },
+        { "type": "narrate", "focus": "miku", "text": "她看着前方的路，雨丝落在她的刘海上，凝成细小的水珠。" },
+        { "type": "say", "who": "miku", "face": "whisper", "text": "『雨停了。』" }
+      ]
+    },
+    {
+      "id": "scene_street_b",
+      "background": "street_rain",
+      "next": "scene_crossing",
+      "steps": [
+        { "type": "narrate", "focus": "miku", "text": "三玖偏过头看了你一眼。" },
+        { "type": "say", "who": "miku", "face": "awkward_side", "text": "……因为看很多遍了。" },
+        { "type": "narrate", "focus": "miku", "text": "她说得很平淡，但语气里有一种不容易被察觉的、被注意到之后的轻微紧张。" }
+      ]
+    },
+    {
+      "id": "scene_street_c",
+      "background": "street_rain",
+      "next": "scene_crossing",
+      "steps": [
+        { "type": "narrate", "focus": "miku", "text": "三玖的语速慢了下来，像是在回忆书页上的字。" },
+        { "type": "say", "who": "miku", "face": "whisper", "text": "『雨停了。』" },
+        { "type": "narrate", "text": "她说完之后停了几秒，雨声在两个人之间填满了空隙。" },
+        { "type": "say", "who": "miku", "face": "whisper", "text": "桶狭间打赢了，雨也停了。他写给他的正室，只写了这三个字。" }
+      ]
+    },
+
+    {
+      "id": "scene_crossing",
+      "background": "crossing_dusk",
+      "steps": [
+        { "type": "narrate", "text": "走到岔路口的时候，雨几乎停了。三玖停下脚步，看了看左边的路，又看了看右边的路。" },
+        { "type": "say", "who": "miku", "face": "school_normal", "text": "我家往左。你往哪边。" },
+        {
+          "type": "choice",
+          "options": [
+            { "text": "先送你回去。", "affection": 3, "goto": "scene_crossing_a" },
+            { "text": "我往右。明天见。", "affection": 1, "goto": "scene_crossing_b" },
+            { "text": "你一个人走回去，没问题吗？", "affection": 2, "goto": "scene_crossing_c" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "scene_crossing_a",
+      "background": "crossing_dusk",
+      "next": "scene_apartment",
+      "steps": [
+        { "type": "narrate", "focus": "miku", "text": "三玖看了你一眼。这一次的时间比平时长。" },
+        { "type": "say", "who": "miku", "face": "school_normal", "text": "……不用。很近。" },
+        { "type": "narrate", "text": "顿了一下。" },
+        { "type": "say", "who": "miku", "face": "awkward_side", "text": "……但如果你要送，我不拦你。" },
+        { "type": "narrate", "focus": "miku", "text": "她转身朝左边的路走去，脚步不快，也没有回头确认你有没有跟上来。但你注意到，她走路的节奏比平时慢了一点。" }
+      ]
+    },
+    {
+      "id": "scene_crossing_b",
+      "background": "crossing_dusk",
+      "next": "scene_apartment",
+      "steps": [
+        { "type": "narrate", "focus": "miku", "text": "三玖点了点头，动作很轻。" },
+        { "type": "say", "who": "miku", "face": "school_normal", "text": "嗯。明天见。" },
+        { "type": "narrate", "focus": "miku", "text": "她朝左边走了几步，然后停下来，回头。" },
+        { "type": "say", "who": "miku", "face": "turn_back", "text": "……今天，谢谢。伞的事。" },
+        { "type": "narrate", "text": "她说完就转身走了，这次走得比刚才快。" }
+      ]
+    },
+    {
+      "id": "scene_crossing_c",
+      "background": "crossing_dusk",
+      "next": "scene_apartment",
+      "steps": [
+        { "type": "narrate", "focus": "miku", "text": "三玖把书包抱紧了一点。" },
+        { "type": "say", "who": "miku", "face": "school_normal", "text": "没问题。" },
+        { "type": "narrate", "focus": "miku", "text": "她回答得很快，但走了两步之后，脚步慢了下来。她没有回头，但声音飘过来，比平时小。" },
+        { "type": "say", "who": "miku", "face": "whisper", "text": "……但雨还没完全停。" },
+        { "type": "narrate", "text": "这句话像是在自言自语，又像是在给你一个跟上去的理由。" }
+      ]
+    },
+
+    {
+      "id": "scene_apartment",
+      "background": "apartment_dusk",
+      "steps": [
+        { "type": "narrate", "text": "不管走了哪条路，最后你们都到了中野家公寓门口。雨已经完全停了，云层裂开一道缝，露出一小片傍晚的橙色天光。" },
+        { "type": "bg", "id": "gate_afterrain_cg" },
+        { "type": "narrate", "focus": "miku", "text": "三玖站在公寓大门前，把书包抱在胸前，像是在想要不要说什么。" },
+        { "type": "say", "who": "miku", "face": "school_normal", "text": "……今天。" },
+        { "type": "narrate", "text": "她停了一下。" },
+        { "type": "say", "who": "miku", "face": "school_normal", "text": "谢谢你。图书室的事。" },
+        {
+          "type": "choice",
+          "options": [
+            { "text": "谢什么。我也想看那本书。", "affection": 1, "goto": "scene_door_a" },
+            { "text": "下次下雨，记得先看看窗外。", "affection": 2, "goto": "scene_door_b" },
+            { "text": "桶狭间的事，下次接着讲。", "affection": 2, "goto": "scene_door_c" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "scene_door_a",
+      "background": "apartment_dusk",
+      "next": "scene_ending",
+      "steps": [
+        { "type": "narrate", "focus": "miku", "text": "三玖的嘴角动了一下，弧度很小。" },
+        { "type": "say", "who": "miku", "face": "faint_smile", "text": "……那本书，你看完了告诉我。" },
+        { "type": "narrate", "text": "她转身推开公寓门，走进去，没有回头。但门关上的速度比平时慢了一拍。" }
+      ]
+    },
+    {
+      "id": "scene_door_b",
+      "background": "apartment_dusk",
+      "next": "scene_ending",
+      "steps": [
+        { "type": "say", "who": "miku", "face": "awkward_side", "text": "……多嘴。" },
+        { "type": "narrate", "focus": "miku", "text": "她偏过头，但声音里没有不高兴。" },
+        { "type": "say", "who": "miku", "face": "awkward_side", "text": "下次……我会看的。" }
+      ]
+    },
+    {
+      "id": "scene_door_c",
+      "background": "apartment_dusk",
+      "next": "scene_ending",
+      "steps": [
+        { "type": "narrate", "focus": "miku", "text": "三玖站在门口，手放在门把上，没有立刻推开。" },
+        { "type": "say", "who": "miku", "face": "slight_open", "text": "……你想听？" },
+        { "type": "say", "who": "you", "text": "想。" },
+        { "type": "narrate", "text": "她沉默了一拍。" },
+        { "type": "say", "who": "miku", "face": "slight_open", "text": "那……明天。图书室。午休。" },
+        { "type": "narrate", "text": "她推开门走了进去。门在她身后合上，但你能听到门后传来一声很轻的、像是松了一口气的呼吸。" }
+      ]
+    },
+
+    {
+      "id": "scene_ending",
+      "background": "apartment_dusk",
+      "steps": [
+        { "type": "narrate", "text": "你转身离开中野家公寓的时候，天边那道缝已经裂得更大了。橙色的光从云层后面透出来，把湿漉漉的街道染成了暖色。" },
+        { "type": "narrate", "text": "口袋里有什么东西硌着手指——是四叶那把折叠伞的伞柄，你忘了还给她。你想着明天要记得带。" },
+        { "type": "narrate", "text": "雨停了。" },
+        { "type": "narrate", "text": "和三玖说的那句话一样。" },
+        { "type": "end" }
+      ]
+    }
+  ],
+  "sideStory": {
+    "threshold": 8,
+    "routes": [
+      { "id": "a", "label": "支线A", "title": "送伞", "file": "side_03_a", "condition": "high" },
+      { "id": "b", "label": "支线B", "title": "一起等雨", "file": "side_03_b", "condition": "low" }
+    ]
+  }
+}
